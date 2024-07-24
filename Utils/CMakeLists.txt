@@ -1,0 +1,20 @@
+cmake_minimum_required(VERSION 3.22)
+
+project(VUTLlS LANGUAGES C CXX)
+
+# Set output directories for different target types
+
+
+file(GLOB_RECURSE VUTILS_SOURCES CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/*.c)
+
+add_library(VUtils STATIC ${VUTILS_SOURCES} )
+
+target_include_directories(VUtils PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
+set_target_properties(VUtils PROPERTIES
+  LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+  RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+  ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+  DEBUG_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+  PDB_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+)

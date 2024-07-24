@@ -60,6 +60,9 @@
     "ht.h": "c",
     "assert.h": "c",
     "stdlib.h": "c",
-    "stddef.h": "c"
+    "stddef.h": "c",
+    "cstring.h": "c",
+    "string.h": "c",
+    "stdint.h": "c"
   }
 }
