@@ -32,26 +32,27 @@ string_t* string_t_create_from_cstring_t(const cstring_t cs);
 
 /*
     Gets the value of an index of the string
-    @param index -> index for value
+    @param index -> index for value(CAN BE NEGATIVE OR POSITIVE)
     @return value of char at index
 */
-char string_t_get(const size_t index);
+char string_t_get(const string_t * str, ssize_t index);
 
 /*
     Sets the index of the string to a value
-    @param index -> index for value
+    @param str -> source string
+    @param index -> index for value(CAN BE NEGATIVE OR POSITIVE)
     @param value -> value to set at the index
-    @return none
+    @return -1 if index no in bonds
 */
-void string_t_set(const size_t index, const char value);
+int string_t_set(const string_t * str, ssize_t index, const char value);
 
 /*
     Sets all the indices of the string to a value
-    @param src -> string to change
+    @param str -> source string
     @param value -> value to set at each index
     @return none
 */
-void string_t_fill(string_t* src, const char value);
+void string_t_fill(string_t* str, const char value);
 
 /*
     Gets the length of the string
@@ -225,7 +226,7 @@ cstring_t string_t_to_cstring_t(const string_t* src);
     @param src -> source string
     @return cstring_t
 */
-cstring_t string_t_to_cstring_t_then_free(const string_t* src);
+cstring_t string_t_to_cstring_t_then_free(string_t* src);
 
 /*
     Converts string to char* then frees string_t structure
