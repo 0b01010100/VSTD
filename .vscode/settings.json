@@ -63,6 +63,10 @@
     "stddef.h": "c",
     "cstring.h": "c",
     "string.h": "c",
-    "stdint.h": "c"
+    "stdint.h": "c",
+    "stdbool.h": "c",
+    "stdio.h": "c",
+    "ctype.h": "c",
+    "string_t.h": "c"
   }
 }
