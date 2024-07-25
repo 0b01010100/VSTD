@@ -3,6 +3,13 @@
 #include <stdbool.h> // for bool type
 #include <stdint.h> // for size_t
 
+#if defined(_MSC_VER)
+#include <BaseTsd.h>
+typedef SSIZE_T ssize_t; //why windows, why? 
+#else
+#include <unistd.h>
+#endif // for ssize_t 
+
 //string struct
 typedef struct string_t string_t;
 
@@ -44,7 +51,7 @@ char string_t_get(const string_t * str, ssize_t index);
     @param value -> value to set at the index
     @return -1 if index no in bonds
 */
-int string_t_set(const string_t * str, ssize_t index, const char value);
+int string_t_set(string_t* str, ssize_t index, const char value);
 
 /*
     Sets all the indices of the string to a value

@@ -1,21 +1,25 @@
-#include <string_t.h>
 #include <assert.h>
 #include <string.h>
 #include <stdlib.h>
-struct string_t
-{
+#include <ctype.h>
+#include <stdio.h>
+#include <string_t.h>
+
+typedef char* cstring_t;
+
+typedef struct string_t {
     cstring_t array;
     size_t size;
-};
+}string_t;
 
-string_t* string_t_create(const size_t size)
-{
+// Function to create a string_t with a given size
+string_t* string_t_create(const size_t size) {
     // Allocate memory for the string_t structure
     string_t* s = (string_t*)calloc(1, sizeof(string_t));
     if (!s) return NULL;
 
     // Allocate memory for the char array, including space for the null terminator
-    s->array = (char*)calloc((size + /*'\0'*/1), sizeof(char));
+    s->array = (char*)calloc((size + 1), sizeof(char));
     if (!s->array) {
         free(s);
         return NULL;
@@ -30,8 +34,8 @@ string_t* string_t_create(const size_t size)
     return s;
 }
 
-string_t* string_t_create_from_cstring_t(const cstring_t cs)
-{
+// Function to create a string_t from a C-string
+string_t* string_t_create_from_cstring_t(const cstring_t cs) {
     // Allocate memory for the string_t structure
     string_t* s = (string_t*)calloc(1, sizeof(string_t));
     if (!s) return NULL;
@@ -40,17 +44,14 @@ string_t* string_t_create_from_cstring_t(const cstring_t cs)
     size_t size = strlen(cs);
 
     // Allocate memory for the char array, including space for the null terminator
-    s->array = (char*)calloc((size + /*'\0'*/1), sizeof(char));
+    s->array = (char*)calloc((size + 1), sizeof(char));
     if (!s->array) {
         free(s);
         return NULL;
     }
 
     // Copy the C-string to the string array
-    strncpy(s->array, cs, size);
-
-    // Ensure the string array is null-terminated
-    s->array[size] = '\0';
+    strcpy(s->array, cs);
 
     // Set the size of the string
     s->size = size;
@@ -58,11 +59,11 @@ string_t* string_t_create_from_cstring_t(const cstring_t cs)
     return s;
 }
 
-char string_t_get(const string_t * str, ssize_t index)
-{
-    assert(str != NULL || str->size == 0);
+// Function to get a character from a string_t
+char string_t_get(const string_t* str, ssize_t index) {
+    assert(str != NULL);
 
-    // If negative, Convert negative index to positive equivalent
+    // If negative, convert negative index to positive equivalent
     if (index < 0) index = str->size + index; 
 
     // Check if the index is within bounds
@@ -73,10 +74,11 @@ char string_t_get(const string_t * str, ssize_t index)
     }
 }
 
-int string_t_set(const string_t * str, ssize_t index, const char value)
-{
-    assert(str != NULL || str->size == 0);
-    // If negative, Convert negative index to positive equivalent
+// Function to set a character in a string_t
+int string_t_set(string_t* str, ssize_t index, const char value) {
+    assert(str != NULL);
+
+    // If negative, convert negative index to positive equivalent
     if (index < 0) index = str->size + index; 
 
     // Check if the index is within bounds
@@ -87,61 +89,66 @@ int string_t_set(const string_t * str, ssize_t index, const char value)
     return -1;
 }
 
-void string_t_fill(string_t* str, const char value)
-{
-    assert(str != NULL || str->size == 0);
-    //set all indies to the same value
-    size_t i = 0;
-    for (;i < str->size; i++)
-    {
+// Function to fill a string_t with a specified character
+void string_t_fill(string_t* str, const char value) {
+    assert(str != NULL);
+
+    // Set all indices to the same value
+    for (size_t i = 0; i < str->size; i++) {
         str->array[i] = value;
     }
 }
 
-size_t string_t_length(const string_t* src)
-{
+// Function to get the length of a string_t
+size_t string_t_length(const string_t* src) {
     assert(src != NULL);
-    //return string size
     return src->size;
 }
 
-size_t string_t_concat(const string_t* src0, const string_t* src1, string_t* out)
-{
-    assert(src0 != NULL || src1 != NULL);
+// Function to concatenate two string_t objects
+size_t string_t_concat(const string_t* src0, const string_t* src1, string_t* out) {
+    assert(src0 != NULL && src1 != NULL);
 
-    //If size of both is zero just return out
-    if(src0->array == 0 && src1->array == 0) return 0;
-
-    // Allocate memory for the output string_t struct
+    // Allocate memory for the concatenated string_t
     out = (string_t*)calloc(1, sizeof(string_t));
-    if(!out) return 0;
+    if (!out) return 0;
 
-    //Create char array to hold the concatinated strings from src0 and src1
-    out->array = (cstring_t)calloc(src0->size + src1->size + /*'\0'*/1, sizeof(char));
-    if(!out->array) return 0;
+    // Allocate memory for the concatenated char array, including space for the null terminator
+    out->array = (char*)calloc(src0->size + src1->size + 1, sizeof(char));
+    if (!out->array) {
+        free(out);
+        return 0;
+    }
 
-    //Copy src0 to out->array
+    // Copy src0 to out->array
     memcpy(out->array, src0->array, src0->size);
 
-    //Concatenate src1 to out->array
+    // Concatenate src1 to out->array
     memcpy(out->array + src0->size, src1->array, src1->size);
 
-    //Null terminate the concatenated string
+    // Null-terminate the concatenated string
     out->array[src0->size + src1->size] = '\0';
 
-    //Set the size of the concatenated string
+    // Set the size of the concatenated string
     out->size = src0->size + src1->size;
+
+    return out->size;
 }
 
-void string_t_reverse(string_t* src)
-{
+// Function to compare two string_t objects
+int string_t_compare(const string_t* src0, const string_t* src1) {
+    if (!src0 || !src1 || !src0->array || !src1->array) return -1;
+    return strcmp(src0->array, src1->array);
+}
+
+// Function to reverse a string_t
+void string_t_reverse(string_t* src) {
     assert(src != NULL);
 
-    if(src->size == 0) return;
+    if (src->size == 0) return;
 
-    int length = src->size;
-    int start = 0;
-    int end = length - 1;
+    size_t start = 0;
+    size_t end = src->size - 1;
     char temp;
 
     while (start < end) {
@@ -156,56 +163,62 @@ void string_t_reverse(string_t* src)
     }
 }
 
-cstring_t string_t_to_cstring_t(const string_t* src)
-{
-    assert(src != NULL || src->size == 0);
-    
-    //allocate memory for cstring_t
-    cstring_t cs = (cstring_t)calloc(src->size, sizeof(char));
-    //copy data from src->array to cs
-    memmove(cs, src->array, src->size);
+// Function to convert a string_t to a C-string
+cstring_t string_t_to_cstring_t(const string_t* src) {
+    assert(src != NULL);
+
+    // Allocate memory for cstring_t
+    cstring_t cs = (cstring_t)calloc(src->size + 1, sizeof(char));
+    if (!cs) return NULL;
+
+    // Copy data from src->array to cs
+    memcpy(cs, src->array, src->size);
+    cs[src->size] = '\0';
+
     return cs;
 }
 
-cstring_t string_t_to_cstring_t_then_free(string_t* src)
-{    
-    assert(src != NULL|| src->size == 0);
+// Function to convert a string_t to a C-string and free the string_t
+cstring_t string_t_to_cstring_t_then_free(string_t* src) {    
+    assert(src != NULL);
 
-    //make cs pointer own char array now
+    // Make cs pointer own char array now
     cstring_t cs = src->array;
     src->array = NULL;
 
-    //destroy string_t
+    // Free the string_t
     string_t_free(src);
 
-    // ret the cstring_t
+    // Return the cstring_t
     return cs;
 }
 
-void string_t_printf(const string_t* src)
-{
+// Function to print a string_t
+void string_t_printf(const string_t* src) {
     assert(src != NULL);
-    //return out if no memory was allocated
-    if(src->size == 0) return;
-    //display char array to console
-    printf(src->array);
+
+    // Return out if no memory was allocated
+    if (src->size == 0) return;
+
+    // Display char array to console
+    printf("%s", src->array);
 }
 
-void string_t_clear(string_t* src)
-{
+// Function to clear a string_t by setting all characters to '\0'
+void string_t_clear(string_t* src) {
     assert(src != NULL);
 
-    //return out if no memory was allocated
-    if(src->size == 0) return;
+    // Return out if no memory was allocated
+    if (src->size == 0) return;
 
-    //zero memoery
+    // Zero memory
     memset(src->array, 0, src->size);
 }
 
-void string_t_free(string_t* src)
-{
+// Function to free a string_t
+void string_t_free(string_t* src) {
     if (src) {
-        if(src->array) free(src->array);
+        if (src->array) free(src->array);
         free(src);
     }
 }

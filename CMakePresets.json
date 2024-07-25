@@ -2,7 +2,64 @@
     "version": 3,
     "configurePresets": [
         {
-            "name": "windows-base",
+            "name": "MinGW-base",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "installDir": "${sourceDir}/out/install/${presetName}",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "gcc.exe",
+                "CMAKE_CXX_COMPILER": "g++.exe"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        },
+        {
+            "name": "mingw-x64-debug",
+            "displayName": "MinGW-x64 Debug",
+            "inherits": "MinGW-base",
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "mingw-x64-release",
+            "displayName": "MinGW-x64 Release",
+            "inherits": "mingw-x64-debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "mingw-x86-debug",
+            "displayName": "MinGW-x86 Debug",
+            "inherits": "MinGW-base",
+            "architecture": {
+                "value": "x86",
+                "strategy": "external"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "mingw-x86-release",
+            "displayName": "MinGW-x86 Release",
+            "inherits": "mingw-x86-debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+
+        {
+            "name": "MSVC-base",
             "hidden": true,
             "generator": "Ninja",
             "binaryDir": "${sourceDir}/out/build/${presetName}",
@@ -18,9 +75,9 @@
             }
         },
         {
-            "name": "x64-debug",
-            "displayName": "x64 Debug",
-            "inherits": "windows-base",
+            "name": "msvc-x64-debug",
+            "displayName": "cl.exe-x64 Debug",
+            "inherits": "MSVC-base",
             "architecture": {
                 "value": "x64",
                 "strategy": "external"
@@ -30,17 +87,17 @@
             }
         },
         {
-            "name": "x64-release",
-            "displayName": "x64 Release",
-            "inherits": "x64-debug",
+            "name": "msvc-x64-release",
+            "displayName": "cl.exe-x64 Release",
+            "inherits": "msvc-x64-debug",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
             }
         },
         {
-            "name": "x86-debug",
-            "displayName": "x86 Debug",
-            "inherits": "windows-base",
+            "name": "msvc-x86-debug",
+            "displayName": "cl.exe-x86 Debug",
+            "inherits": "MSVC-base",
             "architecture": {
                 "value": "x86",
                 "strategy": "external"
@@ -50,13 +107,14 @@
             }
         },
         {
-            "name": "x86-release",
-            "displayName": "x86 Release",
-            "inherits": "x86-debug",
+            "name": "msvc-x86-release",
+            "displayName": "cl.exe-x86 Release",
+            "inherits": "msvc-x86-debug",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
             }
         },
+    
         {
             "name": "linux-debug",
             "displayName": "Linux Debug",
