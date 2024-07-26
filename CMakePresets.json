@@ -2,7 +2,7 @@
     "version": 3,
     "configurePresets": [
         {
-            "name": "MinGW-base",
+            "name": "mingw-base",
             "hidden": true,
             "generator": "Ninja",
             "binaryDir": "${sourceDir}/out/build/${presetName}",
@@ -19,8 +19,8 @@
         },
         {
             "name": "mingw-x64-debug",
-            "displayName": "MinGW-x64 Debug",
-            "inherits": "MinGW-base",
+            "displayName": "mingw-x64 Debug",
+            "inherits": "mingw-base",
             "architecture": {
                 "value": "x64",
                 "strategy": "external"
@@ -31,7 +31,7 @@
         },
         {
             "name": "mingw-x64-release",
-            "displayName": "MinGW-x64 Release",
+            "displayName": "mingw-x64 Release",
             "inherits": "mingw-x64-debug",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
@@ -39,8 +39,8 @@
         },
         {
             "name": "mingw-x86-debug",
-            "displayName": "MinGW-x86 Debug",
-            "inherits": "MinGW-base",
+            "displayName": "mingw-x86 Debug",
+            "inherits": "mingw-base",
             "architecture": {
                 "value": "x86",
                 "strategy": "external"
@@ -51,7 +51,7 @@
         },
         {
             "name": "mingw-x86-release",
-            "displayName": "MinGW-x86 Release",
+            "displayName": "mingw-x86 Release",
             "inherits": "mingw-x86-debug",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
@@ -59,7 +59,7 @@
         },
 
         {
-            "name": "MSVC-base",
+            "name": "mscl-base",
             "hidden": true,
             "generator": "Ninja",
             "binaryDir": "${sourceDir}/out/build/${presetName}",
@@ -75,9 +75,9 @@
             }
         },
         {
-            "name": "msvc-x64-debug",
-            "displayName": "cl.exe-x64 Debug",
-            "inherits": "MSVC-base",
+            "name": "mscl-x64-debug",
+            "displayName": "mscl-x64 Debug",
+            "inherits": "mscl-base",
             "architecture": {
                 "value": "x64",
                 "strategy": "external"
@@ -87,17 +87,17 @@
             }
         },
         {
-            "name": "msvc-x64-release",
-            "displayName": "cl.exe-x64 Release",
-            "inherits": "msvc-x64-debug",
+            "name": "mscl-x64-release",
+            "displayName": "mscl-x64 Release",
+            "inherits": "mscl-x64-debug",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
             }
         },
         {
-            "name": "msvc-x86-debug",
-            "displayName": "cl.exe-x86 Debug",
-            "inherits": "MSVC-base",
+            "name": "mscl-x86-debug",
+            "displayName": "mscl-x86 Debug",
+            "inherits": "mscl-base",
             "architecture": {
                 "value": "x86",
                 "strategy": "external"
@@ -107,9 +107,9 @@
             }
         },
         {
-            "name": "msvc-x86-release",
-            "displayName": "cl.exe-x86 Release",
-            "inherits": "msvc-x86-debug",
+            "name": "mscl-x86-release",
+            "displayName": "mscl-x86 Release",
+            "inherits": "mscl-x86-debug",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
             }
