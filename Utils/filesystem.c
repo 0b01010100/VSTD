@@ -5,8 +5,7 @@
 #if defined (U_WINDOWS)
 #include <Windows.h>
 
-// Gets the absolute file path
-char* abs_path(Path rel) {
+char* FS_abs(Path rel) {
     if (rel == NULL) return NULL;
 
     char *absolute_path = calloc(MAX_PATH, sizeof(char));
@@ -26,7 +25,7 @@ char* abs_path(Path rel) {
 
 // Tells you whether a file is a folder or text file
 // 0 for text file, 1 for folder, -1 for error
-int is_folder(Path path) {
+int FS_is_folder(Path path) {
     DWORD attributes = GetFileAttributes(path);
     if (attributes == INVALID_FILE_ATTRIBUTES) {
         printf("Error: %lu\n", GetLastError());
@@ -46,7 +45,7 @@ int is_folder(Path path) {
 #include <fileapi.h>
 #endif
 // Gets the absolute file path
-char* abs_path(Path rel) {
+char* FS_abs(Path rel) {
     if (rel == NULL) return NULL;
 
     char *absolute_path = calloc(PATH_MAX, sizeof(char));
@@ -74,9 +73,7 @@ char* abs_path(Path rel) {
     return absolute_path;
 }
 
-// Tells you whether a file is a folder or text file
-// 0 for text file, 1 for folder, -1 for error
-int is_folder(Path path) {
+int FS_is_folder(Path path) {
     struct stat path_stat;
     if (stat(path, &path_stat) != 0) {
         perror("stat");
@@ -88,3 +85,35 @@ int is_folder(Path path) {
 #else
 #error "None found for you compiler"
 #endif
+
+bool FS_exist(Path path)
+{
+    FILE *file = fopen(path, "r");
+    if (file != NULL) {
+        fclose(file);
+        return 1; 
+    }
+    return 0; 
+}
+
+long FS_FileSize(Path path)
+{
+    FILE* file = fopen(path, "r");
+    if (file == NULL) return -1;
+
+    if (fseek(file, 0, SEEK_END) != 0) {
+        fclose(file);
+        return -1;
+    }
+
+    long file_size = ftell(file);
+    if (file_size == -1L) {
+        fclose(file);
+        return -1;
+    }
+
+    fseek(file, 0, SEEK_SET);
+    fclose(file);
+
+    return file_size;
+}

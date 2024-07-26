@@ -4,7 +4,7 @@
 #include <filesystem.h>
 int main() 
 {
-	char * t = abs_path("d");
-	
+	char * t = FS_abs("d");
+	bool d = FS_exist(t);
 	return 0;
 }
