@@ -28,9 +28,13 @@ char * strsub_ex(const char * src, size_t sub_start, size_t sub_end);
 
 char * strnsub_ex(const char * src, size_t src_size, size_t sub_start, size_t sub_end);
 
-char* strninsert_s_ex(char* dest, size_t dest_size, size_t index, const char* substr, size_t ss_len);
-
 ///////////////////////////////
+
+char* strinsert_ex(char* dest, size_t index, const char* substr);
+
+char* strninsert_ex(char* dest, size_t dest_size, size_t index, const char* substr);
+
+char* strninsert_s_ex(char* dest, size_t dest_size, size_t index, const char* substr, size_t ss_len);
 
 char * strupper_ex(char * str);
 
