@@ -1,10 +1,10 @@
 #include <stdlib.h>
-#include <cstring.h>
-#include <string.h>
-#include <filesystem.h>
+#include <stdio.h>
+#include <stringex.h>
 int main() 
 {
-	char * t = FS_abs("d");
-	bool d = FS_exist(t);
+	char * temp = strfastinit_ex("string");
+	temp = strninsert_ex(temp, strlen(temp), 11, "josj");
+	printf("%s",temp);
 	return 0;
 }
