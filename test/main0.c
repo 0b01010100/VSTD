@@ -4,7 +4,8 @@
 int main() 
 {
 	char * temp = strfastinit_ex("string");
-	temp = strninsert_ex(temp, strlen(temp), 11, "josj");
+	temp = strninsert_ex(temp, strlen(temp), 7, "my");
 	printf("%s",temp);
+	printf("%zu",strlen(temp));
 	return 0;
 }

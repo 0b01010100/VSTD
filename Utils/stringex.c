@@ -25,7 +25,7 @@ char * strfastinit_ex(const char * original)
 {
     if (original == NULL) return NULL;
     size_t size = strlen(original);
-    if (size == 0) return NULL;
+    if(size == 0) return NULL;
     char* n = (char*)malloc((size + 1) * sizeof(char));
     if (n == NULL) return NULL;
     strcpy(n, original); // copy the original string
@@ -74,6 +74,17 @@ char* strfastinit_printf_ex(const char* format, ...)
     return buffer;
 }
 
+char * strsub_ex(const char * src, size_t sub_start, size_t sub_end)
+{
+    return strnsub_ex(src, strlen(src), sub_start, sub_end);
+}
+
+char * strnsub_ex(const char * src, size_t src_size, size_t sub_start, size_t sub_end)
+{
+    if(src == NULL || src_size == sub_start || sub_end == 0 || sub_start == src_size) return NULL;
+   char * sub = calloc((sub_end - sub_start) + 1, 1);
+   sub = strncpy(sub, src + sub_start, sub_end - sub_start);
+}
 char * strupper_ex(char * str)
 {
     if(str == NULL) return NULL;
@@ -221,28 +232,65 @@ char * strapstr_ex(char * dest, const char * src)
    return result;
 }
 
+char* strinsert_ex(char* dest, size_t index, const char* substr){
+    return strninsert_ex(dest, strlen(dest), index, substr);
+}
+
 char* strninsert_ex(char* dest, size_t dest_size, size_t index, const char* substr)
+{
+    return strninsert_s_ex(dest, dest_size, index, substr, strlen(substr));
+}
+
+char* strninsert_s_ex(char* dest, size_t dest_size, size_t index, const char* substr, size_t ss_len)
 {
     if (!dest || !substr) return NULL;
 
-    size_t old_len = strlen(dest);
-    size_t ss_len = strlen(substr);
+    size_t old_len = dest_size;
 
     char * dp = dest;
 
     size_t new_len = 0x0;
-    if(index > old_len){
-        new_len = old_len + (index - old_len) + ss_len;
+    //appending affter
+    if(index >= old_len){
+        new_len = old_len + (index - old_len) + ss_len + 1;
 
         dp = realloc(dp, new_len);
-        memset(dp + old_len, ' ', 11 - 4);
-        strcpy(dp + old_len + (11 - 4), substr);
-        dp[index + ss_len] = '\0';
+        if (!dp) return NULL;
+        // Fill the gap with spaces
+        memset(dp + old_len, ' ', index - old_len);
+        // Copy substr into the created space
+        memcpy(dp + index, substr, ss_len);
+        strcpy(dp + index, substr);
         size_t d = strlen(dp);
-        d = 0;
-    }else{
-        dp += dest_size - index;
-        new_len = dp + ((size_t)dest + old_len - 1);
+        dp[new_len - 1] = '\0';
+    }
+    //inserting between existing characters
+    else{
+        char *a = strnsub_ex(dest, dest_size, 0, index);
+        char *b = strfastinit_ex(dest + index);
+
+        size_t a_len = a ? strlen(a) : 0;
+        size_t b_len = b ? strlen(b) : 0;
+        size_t total_len = a_len + ss_len + b_len + 1;
+
+        dp = realloc(dp, total_len);
+        if (!dp) {
+            free(a);
+            free(b);
+            return NULL;
+        }
+
+        if (a) {
+            memmove(dp, a, a_len);
+            free(a);
+        }
+
+        memmove(dp + index + ss_len, b, b_len + 1); // +1 to include the null terminator
+        memcpy(dp + index, substr, ss_len);
+
+        if (b) {
+            free(b);
+        }
     }
 
     return dp;
