@@ -3,9 +3,11 @@
 #include <stringex.h>
 int main() 
 {
-	char * temp = strfastinit_ex("string");
-	temp = strninsert_ex(temp, strlen(temp), 7, "my");
-	printf("%s",temp);
-	printf("%zu",strlen(temp));
+	const char * d = "hey";
+	const char * d1 = "fellow";
+	const char * d2 = "bro";
+	const char * c[3] = {d, d1, d2};
+	char * f = strjoin_ex(c, 3, "_");
+	printf(f);
 	return 0;
 }

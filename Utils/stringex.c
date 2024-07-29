@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include <errno.h>
 #include <stringex.h>
 
 char * strmalloc_ex(size_t size)
@@ -408,8 +409,98 @@ char * strrem_ex(char * str, const char * substr)
     memcpy(str, result, 3);
     str[str_len - 1] = '\0';
     free(result);
-    printf("%zu", strlen(str));
     return str;
+}
+
+int strtoi_ex(const char * str)
+{
+    char *endptr;
+    int num = strtol(str, &endptr, 10);
+    // Check for possible errors
+    if (endptr == str) {
+        // No conversion was performed
+        fprintf(stderr, "No digits were found in the input string.\n");
+        return 0.0;
+    } else if (errno == ERANGE) {
+        // Out of range error
+        fprintf(stderr, "The input value is out of range.\n");
+        return num;
+    } else if (*endptr != '\0') {
+        // There are unprocessed characters left in the string
+        fprintf(stderr, "The input string has extra characters: %s\n", endptr);
+        return num;
+    }
+    return num;
+}
+
+double strtod_ex(const char *str)
+{
+    char *endptr;
+    errno = 0; // To distinguish success/failure after call
+    double result = strtod(str, &endptr);
+
+    // Check for possible errors
+    if (endptr == str) {
+        // No conversion was performed
+        fprintf(stderr, "No digits were found in the input string.\n");
+        return 0.0;
+    } else if (errno == ERANGE) {
+        // Out of range error
+        fprintf(stderr, "The input value is out of range.\n");
+        return result;
+    } else if (*endptr != '\0') {
+        // There are unprocessed characters left in the string
+        fprintf(stderr, "The input string has extra characters: %s\n", endptr);
+        return result;
+    }
+
+    return result;
+}
+
+char ** strsplit_ex(const char * str, const char * delimiter, size_t * count) {
+    char * str_copy = strdup(str);
+    char * token;
+    size_t capacity = 10;
+    char ** tokens = malloc(capacity * sizeof(char *));
+    size_t token_count = 0;
+
+    token = strtok(str_copy, delimiter);
+    while (token != NULL) {
+        if (token_count >= capacity) {
+            capacity *= 2;
+            tokens = realloc(tokens, capacity * sizeof(char *));
+        }
+        tokens[token_count++] = strdup(token);
+        token = strtok(NULL, delimiter);
+    }
+
+    *count = token_count;
+    free(str_copy);
+    return tokens;
+}
+
+char * strjoin_ex(char ** str_array, size_t count, const char * delimiter)
+{
+    size_t total_len = 0;
+    size_t delimiter_len = strlen(delimiter);
+    for (size_t i = 0; i < count; ++i) {
+        total_len += strlen(str_array[i]);
+        if (i < count - 1) {
+            total_len += delimiter_len;
+        }
+    }
+
+    char * res = calloc(total_len + 1, 1);
+    res[0] = '\0';
+
+    for (size_t i = 0; i < count; ++i) {
+        strcat(res, str_array[i]);
+        if (i < count - 1) {
+            strcat(res, delimiter);
+        }
+    }
+
+    return res;
 }
 
 void strfree_ex(char * src)
