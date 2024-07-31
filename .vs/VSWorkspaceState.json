@@ -13,8 +13,9 @@
   },
   "ExpandedNodes": [
     "",
-    "\\out"
+    "\\out",
+    "\\test"
   ],
-  "SelectedNode": "\\CMakeLists.txt",
+  "SelectedNode": "\\.gitignore",
   "PreviewInSolutionExplorer": false
 }

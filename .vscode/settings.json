@@ -83,6 +83,15 @@
     "span": "c",
     "optional": "c",
     "stdarg.h": "c",
-    "string": "c"
+    "string": "c",
+    "utility": "cpp",
+    "arrary.decl.h": "c",
+    "array.decl.h": "c",
+    "type_traits": "c",
+    "xtr1common": "c",
+    "xutility": "c",
+    "array.def.h": "c",
+    "shardelib.h": "c",
+    "sharedlibrary.h": "c"
   }
 }
