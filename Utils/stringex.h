@@ -1,4 +1,11 @@
 #pragma once
+
+// TODO file the damn ERROR HANDLING FOR THE STRING FUNCTIONS THAT DO ALLOCATIONS
+// I forgot to do error checking for when our string function calls realloc for strings that are on the stack
+
+//Ah fuck relloc throws for strings on the stack
+    //result = strapn_ex("ddd", 2);
+
 #include <stdbool.h> // for bool type
 
 // for size_t and ssize_t
@@ -29,7 +36,7 @@ char * strcalloc_ex(size_t size);
 char * strfastinit_ex(const char * original);
 
 // Initialize a string using a formatted string (like printf, but does memory allocations)
-char * strfastinit_printf_ex(const char* format, ...);
+char* strfastinit_snprintf_ex(char* __stream, size_t __n, const char* format, ...);
 
 // Create a substring from src between sub_start and sub_end (exclusive)
 char * strsub_ex(const char * src, size_t sub_start, size_t sub_end);

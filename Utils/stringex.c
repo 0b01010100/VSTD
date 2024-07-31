@@ -46,7 +46,7 @@ char * strrealloc_ex(char * str, size_t newsize)
     return newstr;
 }
 
-char* strfastinit_printf_ex(const char* format, ...) 
+char* strfastinit_snprintf_ex(char* __stream, size_t __n, const char* format, ...)
 {
     va_list args1, args2;
     va_start(args1, format);
@@ -71,7 +71,8 @@ char* strfastinit_printf_ex(const char* format, ...)
     //Actually format the string
     vsnprintf(buffer, size + 1, format, args2);
     va_end(args2);
-
+    //instert __stream string
+    buffer = strinsert_ex(buffer, 0, __stream);
     return buffer;
 }
 
