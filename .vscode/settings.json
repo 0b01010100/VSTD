@@ -92,6 +92,13 @@
     "xutility": "c",
     "array.def.h": "c",
     "shardelib.h": "c",
-    "sharedlibrary.h": "c"
+    "sharedlibrary.h": "c",
+    "vector.h": "c",
+    "stack.h": "c",
+    "memory.h": "c",
+    "compare": "c",
+    "new.h": "c",
+    "new_.h": "c",
+    "block.h": "c"
   }
 }

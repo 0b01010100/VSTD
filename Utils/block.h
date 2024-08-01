@@ -39,6 +39,11 @@ typedef void * block_;
 // Returns a pointer to the newly allocated block
 block_ _block_ctor(size_t stride, size_t count);
 
+// Creates a copy of memory the given block 
+// Allocates memory to hold type_size * type_count elements + secret metadata on the block
+// Returns a pointer to the newly allocated block
+block_ _block_cctor(block_ block);
+
 size_t block_meta_get(block_ block, BLOCK_META index);
 
 // Creates a new block of memory with a given type size and count

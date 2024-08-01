@@ -28,6 +28,20 @@ void block_meta_set(block_ block, BLOCK_META index, size_t val)
     meta[index] = val;
 }
 
+block_ _block_cctor(block_ block)
+{
+    // Get the size of the whole memory chunk
+    size_t size_all = block_meta_get(block, BLOCK_SIZE_AND_META_SIZE_FIELD);
+    // Allocate new -> [[META PART] + [BLOCK PART]]  
+    unsigned char* meta_and_block = malloc(size_all);
+    // Copy the formate of bits to the newly memory chunk
+    meta_and_block = memcpy(meta_and_block, ((unsigned char *)block) - META_SIZE,  size_all);
+    // Adjust pointers numeric value so it only points the block part [META PART]------->[BLOCK PART]
+    block_ nblock = meta_and_block + META_SIZE;
+    // Return the block part, skiping the meta data
+    return nblock;
+}
+
 size_t block_meta_get(block_ block, BLOCK_META index)
 {
     // Cast block to an unsigned char pointer to perform byte-wise arithmetic
@@ -87,9 +101,9 @@ block_ block_rector_pb(block_ block, size_t stride, size_t count) {
         // Calculate the size of the gap that needs to be filled with zeros
         size_t gap_size = (new_block_size - old_block_size);
         // Move the existing data to the back of the block buffer
-        memmove((void*)(((unsigned char*)block) + gap_size), block, old_block_size);
+        (void)memmove((void*)(((unsigned char*)block) + gap_size), block, old_block_size);
         // Zero out the newly gaped space in the block
-        memset(block, 0, gap_size);
+        (void)memset(block, 0, gap_size);
     }
 
     // Store the block count and stride in the metadata area
