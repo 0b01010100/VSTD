@@ -1,17 +1,12 @@
-#include <stdarg.h>
+
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <block.h>
+int main() 
+{
+    int* b = block_ctor(int, 2);
 
-#include <stringex.h>
-
-
-int main() {
-    char* initial_buffer = "D"; // String literal, treated as read-only
-    char* result = strfastinit_snprintf_ex(initial_buffer, 2, "%s", "WORD");
-
-
-
-	printf(result);
+    size_t size = block_meta_get(b, BLOCK_SIZE_AND_META_SIZE_FIELD);
+    printf("%zu", size);
+    block_dtor(b);
     return 0;
 }
