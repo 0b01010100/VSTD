@@ -86,9 +86,9 @@ block_ block_rector_pb(block_ block, size_t stride, size_t count) {
     if (new_block_size > old_block_size) {
         // Calculate the size of the gap that needs to be filled with zeros
         size_t gap_size = (new_block_size - old_block_size);
-        // Move the existing data to the new position within the block
-        memmove(block + gap_size, block, old_block_size);
-        // Zero out the newly gap space in the block
+        // Move the existing data to the back of the block buffer
+        memmove((void*)(((unsigned char*)block) + gap_size), block, old_block_size);
+        // Zero out the newly gaped space in the block
         memset(block, 0, gap_size);
     }
 
@@ -102,5 +102,5 @@ block_ block_rector_pb(block_ block, size_t stride, size_t count) {
 
 void block_dtor(block_ block)
 {
-    free((void*)(block - META_SIZE));
+    free((void*)(((unsigned char*)block) - META_SIZE));
 }
