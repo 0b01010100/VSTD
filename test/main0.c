@@ -5,11 +5,14 @@
 int main() 
 {
     vstr s = NULL;
-    vstr_create(&s, "CO.", 3);
-    vstr g;
+    vstr_create(&s, "100", 3);
+    vstr g = NULL;
     vstr_concat(&g, &s, &s);
-    printf(g);
-    vstr_fill(&g, '4');
-    printf(g);
+    vstr_insert(&g, 6, &s);
+
+    int64_t t = 0;
+    vstr_toint(&s, &t);
+
+    printf("%lld", t);
     return 0;
 }

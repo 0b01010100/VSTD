@@ -1,8 +1,9 @@
 #include "vstr.h"
 #include <stdlib.h>
 #include <string.h>
-
-#define FIELD_SIZE (sizeof(bool)+sizeof(size_t))
+#include <stdio.h>
+#include <assert.h>
+#define FIELD_SIZE (sizeof(size_t)+sizeof(size_t))
 
 void vstr_set_field(vstr *ret, size_t field, size_t val)
 {
@@ -12,14 +13,14 @@ void vstr_set_field(vstr *ret, size_t field, size_t val)
     {
         case VSTR_FIELD_IS_VIEW:
             {
-                bool* f_is_view = (bool*)((unsigned char*)ret - FIELD_SIZE);
-                *f_is_view = (bool)val;
+                size_t* f_is_view = (size_t*)((unsigned char*)(*ret) - FIELD_SIZE);
+                *f_is_view = 0;
                 break;
             }
 
         case VSTR_FIELD_LENGTH:
             {
-                size_t* f_length = (size_t*)((unsigned char*)ret - VSTR_FIELD_LENGTH);
+                size_t* f_length = (size_t*)((unsigned char*)(*ret) - VSTR_FIELD_LENGTH);
                 *f_length = val;
                 break;
             }
@@ -43,7 +44,7 @@ bool vstr_create_ex(vstr *ret, const char *str, size_t length, bool allocate) {
         field_and_str = (unsigned char*)malloc(FIELD_SIZE + sizeof(char*));
         if (field_and_str == NULL) return false;
         *ret = (field_and_str + FIELD_SIZE);
-        *ret = str;
+        *ret = (char*)str;
     }
 
     vstr_set_field(ret, VSTR_FIELD_IS_VIEW, !allocate);
@@ -60,14 +61,14 @@ ssize_t vstr_get_field(const vstr *ret, VSTR_FIELD field)
     {
         case VSTR_FIELD_IS_VIEW:
             {
-                bool* f_is_view = (bool*)((unsigned char*)ret - FIELD_SIZE);
+                bool* f_is_view = (bool*)((unsigned char*)(*ret) - FIELD_SIZE);
                 return *f_is_view;
                 break;
             }
 
         case VSTR_FIELD_LENGTH:
             {
-                size_t* f_length = (size_t*)((unsigned char*)ret - VSTR_FIELD_LENGTH);
+                size_t* f_length = (size_t*)((unsigned char*)(*ret) - VSTR_FIELD_LENGTH);
                 return *f_length;
                 break;
             }
@@ -203,9 +204,9 @@ bool vstr_concat(vstr *ret, vstr* a, vstr* b)
 
     unsigned char* field_and_str = (unsigned char*)malloc(FIELD_SIZE + (length_a + length_b + 1) * sizeof(char));
     if (field_and_str == NULL) return false;
-    char * vs = *ret = (field_and_str + FIELD_SIZE);
-    strncpy(vs, *a, length_a);
-    strncpy(vs + length_a, *b, length_b);
+    char* s = *ret = (field_and_str + FIELD_SIZE);
+    strncpy(s , *a, length_a);
+    strncpy(s + length_a, *b, length_b);
     
     (*ret)[length_a + length_b] = '\0';
 
@@ -217,7 +218,7 @@ bool vstr_concat(vstr *ret, vstr* a, vstr* b)
 
 bool vstr_slice(vstr *ret, vstr str, size_t start, size_t end)
 {
-    if (str == NULL || start > end) return false;
+    if (str == NULL || start > end || start == end) return false;
     size_t length = (size_t)vstr_get_field(&str, VSTR_FIELD_LENGTH);
 
     if (start >= length || end > length) return false;
@@ -229,7 +230,7 @@ bool vstr_slice(vstr *ret, vstr str, size_t start, size_t end)
 
 bool vstr_slice_ex(vstr *ret, vstr str, size_t start, size_t end)
 {
-    if (str == NULL || start > end) return false;
+    if (str == NULL || start > end|| start == end) return false;
 
     size_t length = (size_t)vstr_get_field(&str, VSTR_FIELD_LENGTH);
 
@@ -260,64 +261,45 @@ bool vstr_fill(vstr *ret, const char val)
     return true;
 }
 
-// char* vstr_insert(vstr* dest, size_t index, vstr * substr)
-// {
-//     if (!dest || !substr) return NULL;
+bool vstr_insert(vstr* dest, size_t index, vstr * substr) {
+    if (!dest || !substr) return false;
+    bool is_view = (bool)vstr_get_field(dest, VSTR_FIELD_IS_VIEW);
+    if(is_view) return false;
 
-//     size_t old_len = (size_t)vstr_get_field(dest, VSTR_FIELD_LENGTH);
-//     size_t ss_len = (size_t)vstr_get_field(substr, VSTR_FIELD_LENGTH);
-//     char * dp = *dest;
+    size_t dest_len = vstr_get_field(dest, VSTR_FIELD_LENGTH);
+    size_t substr_len = vstr_get_field(substr, VSTR_FIELD_LENGTH);
+    
+    unsigned char* field_and_str = (unsigned char*)(*dest - FIELD_SIZE);
+    size_t total_len = FIELD_SIZE + dest_len + substr_len + 1;
 
-//     size_t new_len = 0x0;
-//     //appending affter
-//     if(index >= old_len){
-//         new_len = old_len + (index - old_len) + ss_len + 1;
 
-//         dp = realloc(dp, new_len);
-//         if (!dp) return NULL;
-//         // Fill the gap with spaces
-//         memset(dp + old_len, ' ', index - old_len);
-//         // Copy substr into the created space
-//         memcpy(dp + index, substr, ss_len);
-//         strcpy(dp + index, substr);
-//         size_t d = strlen(dp);
-//         dp[new_len - 1] = '\0';
-//         vstr_set_field(dest, VSTR_FIELD_LENGTH, new_len - 1);
-//     }
-//     //inserting between existing characters
-//     else{
-//         vstr a, b;
-//         vstr_slice(&a, *dest, 0, index);
-//         vstr_slice(&b, *dest, index, );
-//         strfastinit_ex(dest + index);
+    unsigned char* new_field_and_str = realloc(field_and_str, total_len);
+    if (!new_field_and_str) return false;
 
-//         size_t a_len = a ? strlen(a) : 0;
-//         size_t b_len = b ? strlen(b) : 0;
-//         size_t total_len = a_len + ss_len + b_len + 1;
+    char* new_str = (char*)(new_field_and_str + FIELD_SIZE);
 
-//         dp = realloc(dp, total_len);
-//         if (!dp) {
-//             free(a);
-//             free(b);
-//             return NULL;
-//         }
+    size_t str_len = 0;
 
-//         if (a) {
-//             memmove(dp, a, a_len);
-//             free(a);
-//         }
+    if (index >= dest_len) {
+        // Fill the gap with spaces if index is beyond the current length
+        memset(new_str + dest_len, ' ', index - dest_len);
+        memcpy(new_str + index, *substr, substr_len);
+        new_str[index + substr_len] = '\0';
+        str_len = index + substr_len;
+    } else {
+        memmove(new_str + index + substr_len, new_str + index, (dest_len) - index);
+        memcpy(new_str + index, *substr, substr_len);
+        new_str[dest_len + substr_len] = '\0';
+        str_len = dest_len + substr_len;
+    }
 
-//         memmove(dp + index + ss_len, b, b_len + 1); // +1 to include the null terminator
-//         memcpy(dp + index, substr, ss_len);
+    *dest = new_str;
 
-//         if (b) {
-//             free(b);
-//         }
-//         vstr_set_field(dest, VSTR_FIELD_LENGTH, total_len - 1);
-//     }
+    vstr_set_field(dest, VSTR_FIELD_LENGTH, str_len);
 
-//     return dp;
-// }
+    return true;
+}
+
 
 vstr* vstr_findl(const vstr* src, const vstr* substr) {
     if (!src || !substr) return NULL;
@@ -365,7 +347,6 @@ vstr* vstr_findf(const vstr* src, const vstr* substr) {
         }
         p++;
     }
-    
     return NULL;
 }
 
@@ -407,9 +388,18 @@ vstr* vstr_findf(const vstr* src, const vstr* substr) {
 // }
 
 
-void vstr_destroy(vstr str)
+int64_t vstr_toint(const vstr* src, int64_t* i)
+{
+    assert(i != NULL && "src cannot be null");
+    if(sscanf(*src, "%lld", i) != 1) {
+        return false;
+    }
+    return true;
+}
+
+void vstr_destroy(vstr* str)
 {
     if (str == NULL) return;
 
-    free((unsigned char*)str - FIELD_SIZE);
+     free((unsigned char*)(str) - FIELD_SIZE);
 }

@@ -3,10 +3,9 @@
 #include <BaseTsd.h>
 typedef SSIZE_T ssize_t;
 typedef SIZE_T size_t;
-#else
-#include <stdint.h>
 #endif
 
+#include <stdint.h>
 
 typedef char* vstr;
 
@@ -57,14 +56,17 @@ bool vstr_slice_ex(vstr* ret, vstr str, size_t start, size_t end);
 // Fill a string with a given character
 bool vstr_fill(vstr *ret, const char val);
 
+// Inserts a substring to the string. If index is too big the string will be resized.
+bool vstr_insert(vstr* dest, size_t index, vstr * substr);
+
 // Finds the last Occurance of the substring the src string
 vstr* vstr_findl(const vstr* src, const vstr* substr);
 
 // Finds the first Occurance of the substring the src string
 vstr* vstr_findf(const vstr* src, const vstr* substr);
 
-//char* vstr_insert(vstr* dest, size_t index, vstr * substr);
+int64_t vstr_toint(const vstr* src, int64_t* i);
 
 //can destroy a new string or string view
-void vstr_destroy(vstr str);
+void vstr_destroy(vstr* str);
 
