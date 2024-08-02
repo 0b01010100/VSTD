@@ -1,12 +1,15 @@
 
 #include <stdio.h>
 #include <block.h>
+#include <vstr.h>
 int main() 
 {
-    int* b = block_ctor(int, 2);
-
-    size_t size = block_meta_get(b, BLOCK_SIZE_AND_META_SIZE_FIELD);
-    printf("%zu", size);
-    block_dtor(b);
+    vstr s = NULL;
+    vstr_create(&s, "CO.", 3);
+    vstr g;
+    vstr_concat(&g, &s, &s);
+    printf(g);
+    vstr_fill(&g, '4');
+    printf(g);
     return 0;
 }

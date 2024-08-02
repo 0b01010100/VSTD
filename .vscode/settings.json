@@ -99,6 +99,8 @@
     "compare": "c",
     "new.h": "c",
     "new_.h": "c",
-    "block.h": "c"
+    "block.h": "c",
+    "vstr.h": "c",
+    "malloc.h": "c"
   }
 }
