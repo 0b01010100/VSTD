@@ -3,403 +3,394 @@
 #include <string.h>
 #include <stdio.h>
 #include <assert.h>
-#define FIELD_SIZE (sizeof(size_t)+sizeof(size_t))
+#include <stdarg.h>
+#include <limits.h>
 
-void vstr_set_field(vstr *ret, size_t field, size_t val)
+vstr _VSTR(const char * str)
 {
-    if (ret == NULL) return;
-
-    switch (field)
-    {
-        case VSTR_FIELD_IS_VIEW:
-            {
-                size_t* f_is_view = (size_t*)((unsigned char*)(*ret) - FIELD_SIZE);
-                *f_is_view = 0;
-                break;
-            }
-
-        case VSTR_FIELD_LENGTH:
-            {
-                size_t* f_length = (size_t*)((unsigned char*)(*ret) - VSTR_FIELD_LENGTH);
-                *f_length = val;
-                break;
-            }
-    }
+    return (vstr){(char*)str, strlen(str), 0};
 }
 
 bool vstr_create_ex(vstr *ret, const char *str, size_t length, bool allocate) {
-    if (str == NULL) return false;
-
-    unsigned char* field_and_str;
+    if (!str || !ret) return false;
 
     if (allocate) {
-        // New string
-        field_and_str = (unsigned char*)malloc(FIELD_SIZE + (sizeof(char) * (length + 1)));
-        if (field_and_str == NULL) return false;
-        char * vs = *ret = (field_and_str + FIELD_SIZE);
-        (void)strncpy(vs, str, length);
-        vs[length] = '\0';
+        ret->str = malloc((sizeof(char) * (length + 1)));
+        if (!ret->str) return false; 
+        memcpy(ret->str, str, length);
+        ret->str[length] = '\0';
+        ret->len = length;
+        ret->own = true;
     } else {
-        // String view
-        field_and_str = (unsigned char*)malloc(FIELD_SIZE + sizeof(char*));
-        if (field_and_str == NULL) return false;
-        *ret = (field_and_str + FIELD_SIZE);
-        *ret = (char*)str;
+        ret->str = (char *)str;
+        ret->len = length;
+        ret->own = false;
     }
-
-    vstr_set_field(ret, VSTR_FIELD_IS_VIEW, !allocate);
-    vstr_set_field(ret, VSTR_FIELD_LENGTH, length);
 
     return true;
 }
 
-ssize_t vstr_get_field(const vstr *ret, VSTR_FIELD field)
-{
-    if (ret == NULL) return -1;
+bool vstr_upper(vstr *ret) {
+    if (!ret || !ret->str) return false;
+    if (!ret->own) return false;
 
-    switch (field)
-    {
-        case VSTR_FIELD_IS_VIEW:
-            {
-                bool* f_is_view = (bool*)((unsigned char*)(*ret) - FIELD_SIZE);
-                return *f_is_view;
-                break;
-            }
-
-        case VSTR_FIELD_LENGTH:
-            {
-                size_t* f_length = (size_t*)((unsigned char*)(*ret) - VSTR_FIELD_LENGTH);
-                return *f_length;
-                break;
-            }
-    }
-    return -1;
-}
-
-bool vstr_upper(vstr * ret)
-{
-    if(ret == NULL) return NULL;
-
-    bool is_view = (bool)vstr_get_field(ret, VSTR_FIELD_IS_VIEW);
-    if(is_view) return false;
-
-    char* iter = *ret;
-
+    char *iter = ret->str;
     while (*iter) {
         *iter = (*iter >= 'a' && *iter <= 'z') ? 'A' + (*iter - 'a') : *iter;
-        iter+=1;
+        iter++;
     }
+
     return true;
 }
 
-bool vstr_lower(vstr * ret)
-{
-    if(ret == NULL) return NULL;
+bool vstr_lower(vstr *ret) {
+    if (!ret || !ret->str) return false;
+    if (!ret->own) return false;
 
-    bool is_view = (bool)vstr_get_field(ret, VSTR_FIELD_IS_VIEW);
-    if(is_view) return false;
-
-    char* iter = *ret;
-
+    char *iter = ret->str;
     while (*iter) {
         *iter = (*iter >= 'A' && *iter <= 'Z') ? 'a' + (*iter - 'A') : *iter;
-        iter+=1;
+        iter++;
     }
+
     return true;
 }
 
-bool vstr_rev(vstr * ret)
-{
-    if(ret == NULL) return NULL;
+bool vstr_rev(vstr *ret) {
+    if (!ret || !ret->str) return false;
+    if (!ret->own) return false;
 
-    bool is_view = (bool)vstr_get_field(ret, VSTR_FIELD_IS_VIEW);
-    if(is_view) return false;
-    
-    char* iter = *ret;
-
-    size_t start = 0;
-    size_t end = (size_t)vstr_get_field(ret, VSTR_FIELD_LENGTH) - 1;
+    char *iter = ret->str;
+    size_t start = 0, end = ret->len - 1;
     char temp;
 
     while (start < end) {
-        //Swap characters
         temp = iter[start];
         iter[start] = iter[end];
         iter[end] = temp;
-
-        // Move towards the center
         start++;
         end--;
     }
+
     return true;
 }
 
-char vstr_get(vstr * str, ssize_t index)
-{
-    if(str == NULL) return '\0';
+char vstr_get(const vstr *str, ssize_t index) {
+    if (!str || !str->str || str->len == 0) return '\0';
 
-    size_t length = (size_t)vstr_get_field(str, VSTR_FIELD_LENGTH);
+    if (index < 0) index += str->len;
 
-    if(length == 0) return '\0';
+    if (index >= 0 && (size_t)index < str->len) {
+        return str->str[index];
+    }
 
-    char * iter = *str;
-    //convert negative index to positive
-    index = (index < 0) ? length - index : index;
-
-    if(index >= 0 && index < length)
-    {
-        return iter[index];
-    } 
     return '\0';
 }
 
-bool vstr_set(vstr * ret, ssize_t index, const char val)
-{
-    if(ret == NULL) return NULL;
+bool vstr_set(vstr *ret, ssize_t index, char val) {
+    if (!ret || !ret->str) return false;
+    if (!ret->own) return false;
 
-    bool is_view = (bool)vstr_get_field(ret, VSTR_FIELD_IS_VIEW);
-    if(is_view) return false;
+    if (index < 0) index += ret->len;
 
-    char * iter = *ret;
-    
-    size_t length = (size_t)vstr_get_field(ret, VSTR_FIELD_LENGTH);
-
-    if(length == 0) return false;
-
-    //convert negative index to positive
-    index = (index < 0) ? length + index : index;
-    //check valid index
-    if(index >= 0 && index < length)
-    {
-        iter[index] = val;
+    if (index >= 0 && (size_t)index < ret->len) {
+        ret->str[index] = val;
         return true;
-    } 
+    }
+
     return false;
 }
 
-vstr vstr_copy(vstr* str)
-{
-    if (str == NULL) return NULL;
-
-    size_t length = (size_t)vstr_get_field(str, VSTR_FIELD_LENGTH);
-    bool is_view = (bool)vstr_get_field(str, VSTR_FIELD_IS_VIEW);
-
-    //Make a copy
-    vstr new_str = NULL;
-    if (is_view) {
-        vstr_create_ex(&new_str, *str, length, false);
-    } else {
-        vstr_create_ex(&new_str, *str, length, true);
+vstr vstr_copy(const vstr *str, bool allocate) {
+    vstr new_str = {0};
+    if (str && str->str) {
+        vstr_create_ex(&new_str, str->str, str->len, allocate);
     }
-
     return new_str;
 }
 
-bool vstr_concat(vstr *ret, vstr* a, vstr* b)
-{
-    if (a == NULL || b == NULL) return false;
+bool vstr_concat(vstr *ret, const vstr *a, const vstr *b) {
+    if (!a || !b || !ret) return false;
 
-    size_t length_a = (size_t)vstr_get_field(a, VSTR_FIELD_LENGTH);
-    size_t length_b = (size_t)vstr_get_field(b, VSTR_FIELD_LENGTH);
+    size_t new_len = a->len + b->len;
+    ret->str = malloc(new_len + 1);
+    if (!ret->str) return false; 
 
-    unsigned char* field_and_str = (unsigned char*)malloc(FIELD_SIZE + (length_a + length_b + 1) * sizeof(char));
-    if (field_and_str == NULL) return false;
-    char* s = *ret = (field_and_str + FIELD_SIZE);
-    strncpy(s , *a, length_a);
-    strncpy(s + length_a, *b, length_b);
-    
-    (*ret)[length_a + length_b] = '\0';
-
-    vstr_set_field(ret, VSTR_FIELD_IS_VIEW, false);
-    vstr_set_field(ret, VSTR_FIELD_LENGTH, length_a + length_b);
+    memcpy(ret->str, a->str, a->len);
+    memcpy(ret->str + a->len, b->str, b->len);
+    ret->str[new_len] = '\0';
+    ret->len = new_len;
+    ret->own = true;
 
     return true;
 }
 
-bool vstr_slice(vstr *ret, vstr str, size_t start, size_t end)
-{
-    if (str == NULL || start > end || start == end) return false;
-    size_t length = (size_t)vstr_get_field(&str, VSTR_FIELD_LENGTH);
+bool vstr_slice(vstr *ret, const vstr *str, size_t start, size_t end) {
+    if (!ret || !str || start >= end || start >= str->len || end > str->len) return false;
 
-    if (start >= length || end > length) return false;
-    size_t slice_length = end - start;
-    char * orig_str = (char *)str;
-
-    return vstr_create_ex(ret, orig_str + start, slice_length, false);
+    return vstr_create_ex(ret, str->str + start, end - start, false);
 }
 
-bool vstr_slice_ex(vstr *ret, vstr str, size_t start, size_t end)
-{
-    if (str == NULL || start > end|| start == end) return false;
+bool vstr_slice_ex(vstr *ret, const vstr *str, size_t start, size_t end) {
+    if (!str || start >= end || start >= str->len || end > str->len) return false;
 
-    size_t length = (size_t)vstr_get_field(&str, VSTR_FIELD_LENGTH);
-
-    if (start >= length || end > length) return false;
-
-    size_t slice_length = end - start;
-    char *original_str = (char *)str;
-
-    return vstr_create_ex(ret, original_str + start, slice_length, true);
+    return vstr_create_ex(ret, str->str + start, end - start, true);
 }
 
-bool vstr_fill(vstr *ret, const char val)
-{
-    if (ret == NULL)  return false;  
-    bool is_view = (bool)vstr_get_field(ret, VSTR_FIELD_IS_VIEW);
-    if(is_view) return false;
+bool vstr_fill(vstr *ret, char val) {
+    if (!ret || !ret->str) return false;
+    if (!ret->own) return false;
 
-    char* iter = *ret;
-
-    size_t length = (size_t)vstr_get_field(ret, VSTR_FIELD_LENGTH);
-    if(length == 0) return false;
-    
-    while(*iter)
-    {
-        *iter = val;
-        iter++;
-    }
-    return true;
-}
-
-bool vstr_insert(vstr* dest, size_t index, vstr * substr) {
-    if (!dest || !substr) return false;
-    bool is_view = (bool)vstr_get_field(dest, VSTR_FIELD_IS_VIEW);
-    if(is_view) return false;
-
-    size_t dest_len = vstr_get_field(dest, VSTR_FIELD_LENGTH);
-    size_t substr_len = vstr_get_field(substr, VSTR_FIELD_LENGTH);
-    
-    unsigned char* field_and_str = (unsigned char*)(*dest - FIELD_SIZE);
-    size_t total_len = FIELD_SIZE + dest_len + substr_len + 1;
-
-
-    unsigned char* new_field_and_str = realloc(field_and_str, total_len);
-    if (!new_field_and_str) return false;
-
-    char* new_str = (char*)(new_field_and_str + FIELD_SIZE);
-
-    size_t str_len = 0;
-
-    if (index >= dest_len) {
-        // Fill the gap with spaces if index is beyond the current length
-        memset(new_str + dest_len, ' ', index - dest_len);
-        memcpy(new_str + index, *substr, substr_len);
-        new_str[index + substr_len] = '\0';
-        str_len = index + substr_len;
-    } else {
-        memmove(new_str + index + substr_len, new_str + index, (dest_len) - index);
-        memcpy(new_str + index, *substr, substr_len);
-        new_str[dest_len + substr_len] = '\0';
-        str_len = dest_len + substr_len;
-    }
-
-    *dest = new_str;
-
-    vstr_set_field(dest, VSTR_FIELD_LENGTH, str_len);
+    memset(ret->str, val, ret->len);
+    ret->str[ret->len] = '\0';
 
     return true;
 }
 
+bool vstr_insert(vstr *dest, size_t index, const vstr *substr) {
+    if (!dest || !substr || !dest->str || !substr->str) return false;
+    if (!dest->own) return false;
 
-vstr* vstr_findl(const vstr* src, const vstr* substr) {
-    if (!src || !substr) return NULL;
-    
-    size_t str_len = (size_t)vstr_get_field(src, VSTR_FIELD_LENGTH);
-    size_t substr_len = (size_t)vstr_get_field(substr, VSTR_FIELD_LENGTH);
-    
-    if (substr_len == 0) return NULL;
-    if (substr_len > str_len) return NULL;
+    size_t dest_len = dest->len;
+    size_t substr_len = substr->len;
 
-    const char* p = (*src) + str_len - substr_len;
-    
-    while (p >= (*src)) {
-        if (strncmp(p, *substr, substr_len) == 0) {
-            vstr * view;
-            if(!vstr_create(view, p, substr_len)){
-                return NULL;
-            }
-            return view;
-        }
-        p--;
-    }
-    
-    return NULL;
+    if (index > dest_len) index = dest_len;
+
+    char *new_str = realloc(dest->str, dest_len + substr_len + 1);
+    if (!new_str) return false;
+
+    memmove(new_str + index + substr_len, new_str + index, dest_len - index);
+    memcpy(new_str + index, substr->str, substr_len);
+    new_str[dest_len + substr_len] = '\0';
+
+    dest->str = new_str;
+    dest->len = dest_len + substr_len;
+
+    return true;
 }
 
-vstr* vstr_findf(const vstr* src, const vstr* substr) {
-    if (!src || !substr) return NULL;
-    
-    size_t str_len = (size_t)vstr_get_field(src, VSTR_FIELD_LENGTH);
-    size_t substr_len = (size_t)vstr_get_field(substr, VSTR_FIELD_LENGTH);
-    
-    if (substr_len == 0) return NULL;
-    if (substr_len > str_len) return NULL;
+int vstr_findf(vstr* ret_view ,const vstr* src, const vstr* substr) {
+    if (!src || !substr) return -1;
 
-    const char* p = *src;
-    
-    while (p < (*src) + str_len - 1) {
-        if (strncmp(p, *substr, substr_len) == 0) {
-            vstr * view;
-            if(!vstr_create(view, p, substr_len)){
-                return NULL;
-            }
-            return view;
+    size_t str_len = src->len;
+    size_t substr_len = substr->len;
+
+    if (substr_len == 0 || substr_len > str_len) return 0;
+
+    const char *p = src->str;
+    while (p < src->str + str_len) {
+        if (strncmp(p, substr->str, substr_len) == 0) {
+            vstr_create_ex(ret_view, p, substr_len, false);
+            return 1; // true
         }
         p++;
     }
-    return NULL;
+    return 0;
 }
 
-// char* strtrim_ex(char * str, const char * substr)
-// {
-//     if (str == NULL || substr == NULL) return NULL;
+int vstr_findl(vstr* ret_view ,const vstr* src, const vstr* substr) {
+    if (!src || !substr) return -1;
 
-//     size_t str_len = strlen(str);
-//     size_t substr_len = strlen(substr);
+    size_t str_len = src->len;
+    size_t substr_len = substr->len;
 
-//     if (substr_len == 0) return str;
-//     if (substr_len > str_len) return str;
+    if (substr_len == 0 || substr_len > str_len) return 0;
 
-//     char *result = malloc(str_len + 1);
-//     if (!result) return NULL;
+    const char *p = src->str + str_len - substr_len;
+    while (p >= src->str) {
+        if (strncmp(p, substr->str, substr_len) == 0) {
+            vstr_create_ex(ret_view, p, substr_len, false);
+            return 1; // true
+        }
+        p--;
+    }
+    return 0;
+}
 
-//     const char *p = str;
-//     char *r = result;
+bool str_equals(const vstr* a, const vstr* b) {
+    if (a->len != b->len) {
+        return false;
+    }
+    
+    return strcmp(a->str, b->str) == 0;
+}
 
-//     while (*p)
-//     {
-//         if (strncmp(p, substr, substr_len) == 0)
-//         {
-//             p += substr_len;
-//         }
-//         else
-//         {
-//             *r++ = *p++;
-//         }
-//     }
-//     *r = '\0';
-
-//     size_t result_len = strlen(result);
-//     strcpy(str, result);
-//     free(result);
-//     str = realloc(str, result_len);
-
-//     return str;
-// }
-
-
-int64_t vstr_toint(const vstr* src, int64_t* i)
-{
-    assert(i != NULL && "src cannot be null");
-    if(sscanf(*src, "%lld", i) != 1) {
+bool vstr_toint(const vstr *str, int64_t *ret) {
+    if(ret == NULL) return false;
+    assert(ret != NULL && "vstr_toint: ret cannot be null");
+    if(sscanf(str->str, "%lld", ret) != 1) {
         return false;
     }
     return true;
 }
 
-void vstr_destroy(vstr* str)
+bool vstr_fromint(vstr *ret, int64_t i)
 {
-    if (str == NULL) return;
+    if(ret == NULL) return false;
+    char buf[21];
+    snprintf(buf, 64, "%lld", i);
+    size_t len = strlen(buf);
+    return vstr_create_ex(ret, buf, len, true);
+}
 
-     free((unsigned char*)(str) - FIELD_SIZE);
+bool vstr_tofloat(const vstr *str, double* ret) {
+    if(ret == NULL) return false;
+    assert(ret != NULL && "vstr_toint: ret cannot be null");
+    if(sscanf(str->str, "%lf", ret) != 1) {
+        return false;
+    }
+    return true;
+}
+
+bool vstr_fromfloat(vstr *ret, double f) {
+    if(ret == NULL) return false;
+    char buf[32];
+    snprintf(buf, 64, "%lf", f);
+    size_t len = strlen(buf);
+    return vstr_create_ex(ret, buf, len, true);
+}
+
+vstr **vstr_split(vstr *str, vstr *delimiter, size_t *count) {
+    if (!str || !delimiter || !count || !str->str || !delimiter->str) {
+        return NULL;
+    }
+    vstr str_cpy = {0};
+    vstr_create_ex(&str_cpy, str->str, str->len, true);
+    if (!str_cpy.str) {
+        *count = 0;
+        return NULL;
+    }
+
+    //Tokenize the string using the delimiter
+    char *token;
+    size_t capacity = 10;
+    vstr **tokens = malloc(capacity * sizeof(vstr *));
+    if (!tokens) {
+        free(str_cpy.str);
+        *count = 0;
+        return NULL; 
+    }
+    size_t token_count = 0;
+
+    token = strtok(str_cpy.str, delimiter->str);
+    while (token != NULL) {
+        if (token_count >= capacity) {
+            capacity *= 2;
+            vstr **new_tokens = realloc(tokens, capacity * sizeof(vstr *));
+            if (!new_tokens) {
+                for (size_t i = 0; i < token_count; ++i) {
+                    free(tokens[i]->str);
+                    free(tokens[i]);
+                }
+                free(tokens);
+                free(str_cpy.str);
+                *count = 0;
+                return NULL; 
+            }
+            tokens = new_tokens;
+        }
+        tokens[token_count] = malloc(sizeof(vstr));
+        if (!tokens[token_count]) {
+            for (size_t i = 0; i < token_count; ++i) {
+                free(tokens[i]->str);
+                free(tokens[i]);
+            }
+            free(tokens);
+            free(str_cpy.str);
+            *count = 0;
+            return NULL; 
+        }
+        size_t token_len = strlen(token);
+        char * token_cpy = malloc((token_len + 1) * sizeof(char));
+        token_cpy = memcpy(token_cpy, token, token_len  + 1);
+
+        tokens[token_count]->str = token_cpy;
+        tokens[token_count]->len = token_len;
+        ++token_count;
+        token = strtok(NULL, delimiter->str);
+    }
+
+    free(str_cpy.str);
+    *count = token_count;
+    return tokens;
+}
+
+vstr vstr_join(vstr *delimiter, size_t count, ...) {
+    size_t total_len = 0;
+    size_t delimiter_len = delimiter->len;
+
+    //find needed length 
+    va_list args;
+    va_start(args, count);
+    for (size_t i = 0; i < count; ++i) {
+        vstr *v = va_arg(args, vstr *);
+        total_len += v->len;
+        if (i < count - 1) {
+            total_len += delimiter_len;
+        }
+    }
+    va_end(args);
+
+    vstr res;
+    res.str = (char *)calloc(total_len + 1, sizeof(char));
+    if (!res.str) {
+        return (vstr){NULL, 0};
+    }
+    res.len = total_len;
+
+    va_start(args, count);
+    for (size_t i = 0; i < count; ++i) {
+        vstr *v = va_arg(args, vstr *);
+        strcat(res.str, v->str);
+        if (i < count - 1) {
+            strcat(res.str, delimiter->str);
+        }
+    }
+    va_end(args);
+    res.own = true;
+    return res;
+}
+
+void vstr_trim(vstr* str, const vstr* substr) {
+    if (str == NULL || substr == NULL) return;
+    if (!str->own) return;
+    
+    size_t str_len = str->len;
+    size_t substr_len = substr->len;
+
+    if (substr_len == 0) return;
+    if (substr_len > str_len) return;
+
+    char *result = malloc(str_len + 1);
+    if (!result) return;
+
+    char *p = str->str;
+    char *r = result;
+
+    while (*p)
+    {
+        if (strncmp(p, substr->str, substr_len) == 0)
+        {
+            p += substr_len;
+        }
+        else
+        {
+            *r++ = *p++;
+        }
+    }
+    *r = '\0';
+
+    size_t result_len = strlen(result);
+    strcpy(str->str, result);
+    free(result);
+    str = realloc(str->str, result_len);
+}
+
+void vstr_destroy(vstr *str) {
+    if (str && str->own) {
+        free(str->str);
+        str->str = NULL;
+        str->len = 0;
+        str->own = false;
+    }
 }
