@@ -1,52 +1,35 @@
-#include <string.h>
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
-#include <errno.h>
-#include <stringex.h>
+#include <str.h>
 
-char * strmalloc_ex(size_t size)
+const char * str_create_ex(const char * str, bool allocate)
 {
-    char* n = (char*)malloc((size + 1) * sizeof(char));
-    if(n ==  NULL) return NULL;
-    n[size] = '\0';
-    return n;
+    return strn_create_ex(str, strlen(str), allocate);
 }
 
-char * strcalloc_ex(size_t size)
-{
-    char* n = (char*)calloc((size + 1) * sizeof(char), sizeof(char));
-    if(n ==  NULL) return NULL;
-    n[size] = '\0';//might be already set but just doing just in case 
-    return n;
-}
-
-char * strfastinit_ex(const char * original)
-{
-    if (original == NULL) return NULL;
-    size_t size = strlen(original);
-    if(size == 0) return NULL;
-    char* n = (char*)malloc((size + 1) * sizeof(char));
-    if (n == NULL) return NULL;
-    strcpy(n, original); // copy the original string
-    return n;
-}
-
-char * strrealloc_ex(char * str, size_t newsize)
+const char * strn_create_ex(const char * str, size_t size, bool allocate)
 {
     if (str == NULL) return NULL;
-    size_t size = strlen(str);
-    if (size == 0) return NULL;
 
-    char* newstr = realloc(str, newsize + /*'\0'*/1);
-    if (newstr == NULL) return NULL;
-
-    newstr[newsize] = '\0';
-    return newstr;
+    if(size == 0) return NULL;
+    //copy
+    if(allocate == true)
+    {
+        char* copy = (char*)malloc((size + 1) * sizeof(char));
+        if (copy == NULL) return NULL;
+        strcpy(copy, str); 
+        return copy;
+    }
+    //view
+    else
+    {
+        return str;
+    }
 }
 
-char* strfastinit_snprintf_ex(char* __stream, size_t __n, const char* format, ...)
+char* str_append(char* __stream, size_t __n, const char* format, ...)
 {
     va_list args1, args2;
     va_start(args1, format);
@@ -72,22 +55,22 @@ char* strfastinit_snprintf_ex(char* __stream, size_t __n, const char* format, ..
     vsnprintf(buffer, size + 1, format, args2);
     va_end(args2);
     //instert __stream string
-    buffer = strinsert_ex(buffer, 0, __stream);
+    buffer = str_insert(buffer, 0, __stream);
     return buffer;
 }
 
-char * strsub_ex(const char * src, size_t sub_start, size_t sub_end)
+char * str_sub(const char * src, size_t sub_start, size_t sub_end)
 {
-    return strnsub_ex(src, strlen(src), sub_start, sub_end);
+    return str_nsub(src, strlen(src), sub_start, sub_end);
 }
 
-char * strnsub_ex(const char * src, size_t src_size, size_t sub_start, size_t sub_end)
+char * str_nsub(const char * src, size_t src_size, size_t sub_start, size_t sub_end)
 {
     if(src == NULL || src_size == sub_start || sub_end == 0 || sub_start == src_size) return NULL;
    char * sub = calloc((sub_end - sub_start) + 1, 1);
    sub = strncpy(sub, src + sub_start, sub_end - sub_start);
 }
-char * strupper_ex(char * str)
+char * str_upper(char * str)
 {
     if(str == NULL) return NULL;
 
@@ -100,7 +83,7 @@ char * strupper_ex(char * str)
     return str;
 }
 
-char * strlower_ex(char * str)
+char * str_lower(char * str)
 {
     if(str == NULL) return NULL;
 
@@ -113,7 +96,7 @@ char * strlower_ex(char * str)
     return str;
 }
 
-char * strrev_ex(char * str)
+char * str_rev(char * str)
 {
     if(str == NULL) return NULL;
 
@@ -136,7 +119,7 @@ char * strrev_ex(char * str)
     return str;
 }
 
-char * strfill_ex(char * str, const char val)
+char * str_fill(char * str, const char val)
 {
     if(str == NULL) return NULL;
 
@@ -153,7 +136,7 @@ char * strfill_ex(char * str, const char val)
 
     return str;
 }
-char strget_ex(const char * str, ssize_t index)
+char str_get(const char * str, ssize_t index)
 {
     if(str == NULL) return '\0';
 
@@ -171,7 +154,7 @@ char strget_ex(const char * str, ssize_t index)
     return '\0';
 }
 
-char * strset_ex(char * str, ssize_t index, const char val)
+char * str_set(char * str, ssize_t index, const char val)
 {
     if(str == NULL) return NULL;
 
@@ -192,7 +175,7 @@ char * strset_ex(char * str, ssize_t index, const char val)
     return NULL;
 }
 
-char * strapn_ex(char * str, const double number)
+char * str_apn(char * str, const double number)
 {
     if(str == NULL) return NULL;
     
@@ -212,38 +195,16 @@ char * strapn_ex(char * str, const double number)
     strcat(result, temp);
 }
 
-char * strapstr_ex(char * dest, const char * src)
+char* str_insert(char* dest, size_t index, const char* substr){
+    return str_ninsert(dest, strlen(dest), index, substr);
+}
+
+char* str_ninsert(char* dest, size_t dest_size, size_t index, const char* substr)
 {
-   if(!dest || !src) return NULL;
-
-    char * ptr = dest;
-
-   //append string to back of the string
-   size_t dest_len = strlen(dest);
-   size_t src_len = strlen(src);
-
-   //allocate space for the src string
-   char* result = (char*)realloc(ptr, dest_len + src_len + 1);
-   if(!result){
-        return NULL;
-   }
-
-   strncpy(result, dest, dest_len);
-   strncat(result, src, src_len);
-
-   return result;
+    return str_ninsert_s(dest, dest_size, index, substr, strlen(substr));
 }
 
-char* strinsert_ex(char* dest, size_t index, const char* substr){
-    return strninsert_ex(dest, strlen(dest), index, substr);
-}
-
-char* strninsert_ex(char* dest, size_t dest_size, size_t index, const char* substr)
-{
-    return strninsert_s_ex(dest, dest_size, index, substr, strlen(substr));
-}
-
-char* strninsert_s_ex(char* dest, size_t dest_size, size_t index, const char* substr, size_t ss_len)
+char* str_ninsert_s(char* dest, size_t dest_size, size_t index, const char* substr, size_t ss_len)
 {
     if (!dest || !substr) return NULL;
 
@@ -268,8 +229,8 @@ char* strninsert_s_ex(char* dest, size_t dest_size, size_t index, const char* su
     }
     //inserting between existing characters
     else{
-        char *a = strnsub_ex(dest, dest_size, 0, index);
-        char *b = strfastinit_ex(dest + index);
+        char *a = str_nsub(dest, dest_size, 0, index);
+        char *b = str_create_ex(dest + index, true);
 
         size_t a_len = a ? strlen(a) : 0;
         size_t b_len = b ? strlen(b) : 0;
@@ -287,7 +248,7 @@ char* strninsert_s_ex(char* dest, size_t dest_size, size_t index, const char* su
             free(a);
         }
 
-        memmove(dp + index + ss_len, b, b_len + 1); // +1 to include the null terminator
+        memmove(dp + index + ss_len, b, b_len + 1);
         memcpy(dp + index, substr, ss_len);
 
         if (b) {
@@ -298,7 +259,7 @@ char* strninsert_s_ex(char* dest, size_t dest_size, size_t index, const char* su
     return dp;
 }
 
-char* strfindl_ex(const char* str, const char* substr) {
+char* str_findl(const char* str, const char* substr) {
     if (!str || !substr) return NULL;
     
     size_t str_len = strlen(str);
@@ -319,7 +280,7 @@ char* strfindl_ex(const char* str, const char* substr) {
     return NULL;
 }
 
-char* strfindf_ex(const char* str, const char* substr) {
+char* str_findf(const char* str, const char* substr) {
     if (!str || !substr) return NULL;
     
     size_t str_len = strlen(str);
@@ -340,7 +301,7 @@ char* strfindf_ex(const char* str, const char* substr) {
     return NULL;
 }
 
-char* strtrim_ex(char * str, const char * substr)
+char* str_trim(char * str, const char * substr)
 {
     if (str == NULL || substr == NULL) return NULL;
 
@@ -377,88 +338,7 @@ char* strtrim_ex(char * str, const char * substr)
     return str;
 }
 
-char * strrem_ex(char * str, const char * substr)
-{
-    if (str == NULL || substr == NULL) return NULL;
-
-    size_t str_len = strlen(str);
-    size_t substr_len = strlen(substr);
-
-    if (substr_len == 0) return str;
-    if (substr_len > str_len) return str;
-
-    char *result = calloc(str_len + 1, 1); // +1 for the null terminator
-    if (!result) return NULL;
-
-    const char *p = str;
-    char *r = result;
-
-    while (*p)
-    {
-        if (strncmp(p, substr, substr_len) == 0)
-        {
-            p += substr_len;
-        }
-        else
-        {
-            *r++ = *p++;
-        }
-    }
-    *r = '\0';
-
-    str = memset(str, ' ', str_len);
-    memcpy(str, result, 3);
-    str[str_len - 1] = '\0';
-    free(result);
-    return str;
-}
-
-int strtoi_ex(const char * str)
-{
-    char *endptr;
-    int num = strtol(str, &endptr, 10);
-    // Check for possible errors
-    if (endptr == str) {
-        // No conversion was performed
-        fprintf(stderr, "No digits were found in the input string.\n");
-        return 0.0;
-    } else if (errno == ERANGE) {
-        // Out of range error
-        fprintf(stderr, "The input value is out of range.\n");
-        return num;
-    } else if (*endptr != '\0') {
-        // There are unprocessed characters left in the string
-        fprintf(stderr, "The input string has extra characters: %s\n", endptr);
-        return num;
-    }
-    return num;
-}
-
-double strtod_ex(const char *str)
-{
-    char *endptr;
-    errno = 0; // To distinguish success/failure after call
-    double result = strtod(str, &endptr);
-
-    // Check for possible errors
-    if (endptr == str) {
-        // No conversion was performed
-        fprintf(stderr, "No digits were found in the input string.\n");
-        return 0.0;
-    } else if (errno == ERANGE) {
-        // Out of range error
-        fprintf(stderr, "The input value is out of range.\n");
-        return result;
-    } else if (*endptr != '\0') {
-        // There are unprocessed characters left in the string
-        fprintf(stderr, "The input string has extra characters: %s\n", endptr);
-        return result;
-    }
-
-    return result;
-}
-
-char ** strsplit_ex(const char * str, const char * delimiter, size_t * count) {
+char ** str_split(const char * str, const char * delimiter, size_t * count) {
     char * str_copy = strdup(str);
     char * token;
     size_t capacity = 10;
@@ -480,7 +360,7 @@ char ** strsplit_ex(const char * str, const char * delimiter, size_t * count) {
     return tokens;
 }
 
-char * strjoin_ex(char ** str_array, size_t count, const char * delimiter)
+char * str_join(char ** str_array, size_t count, const char * delimiter)
 {
     size_t total_len = 0;
     size_t delimiter_len = strlen(delimiter);
@@ -504,7 +384,7 @@ char * strjoin_ex(char ** str_array, size_t count, const char * delimiter)
     return res;
 }
 
-void strfree_ex(char * src)
+void str_free(char * src)
 {
     if(src != NULL) free(src);
 }

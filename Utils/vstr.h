@@ -8,18 +8,14 @@ typedef SSIZE_T ssize_t;
 typedef SIZE_T size_t;
 #endif
 
+#define vstr_end (-1)
+#define vstr_start (0)
+
 typedef struct vstr {
     char* str;
     size_t len;
     bool own;
 }vstr;
-
-typedef enum VSTR_FIELD
-{
-    VSTR_FIELD_IS_VIEW = 0,
-    VSTR_FIELD_LENGTH = sizeof(size_t)
-}VSTR_FIELD;
-
 
 #ifdef __cplusplus
 /**
@@ -71,6 +67,20 @@ bool vstr_create_ex(vstr* ret, const char* str, size_t length, bool allocate);
  * @return True on success, false on failure.
  */
 bool vstr_upper(vstr * ret);
+
+/**
+ * @brief Macro to check if a string does own the memory.
+ * @param str The string struct.
+ * @return True if the string does own the memory, false otherwise.
+ */
+#define vstr_owns(str) (str.own)
+
+/**
+ * @brief Macro to get the length of a string.
+ * @param str The string struct.
+ * @return The length of the string.
+ */
+#define vstr_len(str) (str.len)
 
 /**
  * Converts all characters in a vstr object to lowercase.
@@ -258,10 +268,6 @@ void vstr_trim(vstr * str, const vstr * substr);
  * @param str Pointer to the vstr object to destroy. If the pointer is NULL, the function does nothing.
  */
 void vstr_destroy(vstr* str);
-
-
-
-
 
 #ifdef __cplusplus
 }
