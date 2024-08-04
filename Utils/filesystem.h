@@ -1,12 +1,13 @@
 #include <stdbool.h>
 #include <stdint.h>
-// #if defined(U_WINDOWS)
-// #include <BaseTsd.h>
-// typedef SSIZE_T ssize_t;
-// #endif
-// Reprsents the file 
+
 typedef const char* Path;
 
+#define _PATH(str) str
+
+#ifdef __cplusplus
+extern "C"{
+#endif
 /**
  * Gets the absolute file path.
  *
@@ -38,3 +39,7 @@ bool FS_exist(Path path);
  * @return The size of the file in bytes, or -1 if there is an error.
  */
 long FS_FileSize(Path path);
+
+#ifdef __cplusplus
+}
+#endif

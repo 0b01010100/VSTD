@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#if defined (U_WINDOWS)
+#if defined(WIN32) || defined(_WIN32) || defined(WIN64) || defined(_WIN64)
 #include <Windows.h>
 
 char* FS_abs(Path rel) {
@@ -37,13 +37,10 @@ int FS_is_folder(Path path) {
 // bruh why unix. I FUCKING LOVE WINDOWS NOW
 
  // Apple or Unix
-#elif defined(U_APPLE) || defined(U_UNIX) || defined(__MINGW32__) || defined(__MINGW64__)
+#elif defined(U_APPLE) || defined(U_UNIX)
 #include <limits.h>
 #include <sys/stat.h>
 #include <unistd.h>
-#if defined(__MINGW32__) || defined(__MINGW64__)
-#include <fileapi.h>
-#endif
 // Gets the absolute file path
 char* FS_abs(Path rel) {
     if (rel == NULL) return NULL;
@@ -53,22 +50,12 @@ char* FS_abs(Path rel) {
         perror("abs_path->calloc");
         return NULL;
     }
-
-    #if defined(__MINGW32__) || defined(__MINGW64__)
-    // Use GetFullPathName for MinGW
-    if (GetFullPathName(rel, PATH_MAX, absolute_path, NULL) == 0) {
-        perror("abs_path->GetFullPathName");
-        free(absolute_path);
-        return NULL;
-    }
-    #else
     // Use realpath for Unix-like systems
     if (realpath(rel, absolute_path) == NULL) {
         perror("abs_path->realpath");
         free(absolute_path);
         return NULL;
     }
-    #endif
 
     return absolute_path;
 }
