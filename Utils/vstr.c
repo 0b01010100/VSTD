@@ -113,14 +113,27 @@ bool vstr_concat(vstr *ret, const vstr *a, const vstr *b) {
     if (!a || !b || !ret) return false;
 
     size_t new_len = a->len + b->len;
-    ret->str = malloc(new_len + 1);
-    if (!ret->str) return false; 
+    //if ret->str is already allocated resize it
+    char *new_str;
+    if (ret->str && ret->own) {
+        new_str = realloc(ret->str, new_len + 1);
+        if (!new_str) return false;
+    } 
+    //otherwise, allocate new memory
+    else {
+        new_str = malloc(new_len + 1);
+        if (!new_str) return false;
+        memcpy(new_str, a->str, a->len);
+        ret->own = true;
+    }
 
-    memcpy(ret->str, a->str, a->len);
-    memcpy(ret->str + a->len, b->str, b->len);
-    ret->str[new_len] = '\0';
+    memcpy(new_str + a->len, b->str, b->len);
+
+    new_str[new_len] = '\0';
+
+    ret->str = new_str;
     ret->len = new_len;
-    ret->own = true;
+    
 
     return true;
 }

@@ -106,6 +106,8 @@
     "limits.h": "c",
     "errno.h": "c",
     "str.h": "c",
-    "slib.h": "c"
+    "slib.h": "c",
+    "direct.h": "c",
+    "io.h": "c"
   }
 }

@@ -14,7 +14,7 @@ slib slib_Load(slib_path libraryName, bool add_prefix, bool add_suffix)
     if(!libraryName) 
     {
         fprintf(stderr, "slib.c: NameLess library: \n");
-        
+        return (slib){0};
     }
     slib lib = { 0 };
     char * temp = NULL;
@@ -64,7 +64,7 @@ slib slib_Load(slib_path libraryName, bool add_prefix, bool add_suffix)
     return lib;
 }
 
-void* slib_Getpfn(slib* lib, slib_pfnname functionName){
+slib_pfn slib_Getpfn(slib* lib, slib_pfnname functionName){
     if (!lib || !lib->handle || !functionName) {
         fprintf(stderr, "slib.c: Invalid arguments: lib or functionName is NULL\n");
         return NULL;

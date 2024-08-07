@@ -2,7 +2,7 @@
  * @brief Provides extended functionality for the standard `<string.h>`.
  *
  * This API extends `<string.h>` with additional methods for convenience.
- * @note that this is not part of the C standard library but a separate extension.
+ * @note that this is not part of the C standard library but a separate extension. Have Fun
 */
 
 #pragma once

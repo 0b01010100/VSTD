@@ -7,7 +7,9 @@ int main()
     vstr s = {0};
     vstr_create_ex(&s, "100", 3, 1);
 
-
+    vstr l;
+    vstr_concat(&l,&s, &s);
+    printf(l.str);
     int x = 8, y = 7;
 
     vstr t = VSTR("__");
