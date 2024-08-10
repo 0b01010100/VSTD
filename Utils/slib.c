@@ -21,8 +21,8 @@ slib slib_Load(slib_path libraryName, bool add_prefix, bool add_suffix)
     if(add_prefix || add_suffix){
 
         size_t temp_len = strlen(libraryName);
-        size_t prefix_len = ((slib_prefix == NULL)? 0 : strlen(slib_prefix));
-        size_t suffix_len = ((slib_suffix == NULL)? 0 : strlen(slib_suffix));
+        size_t prefix_len = ((SLIB_PREFIX == NULL)? 0 : strlen(SLIB_PREFIX));
+        size_t suffix_len = ((SLIB_SUFFIX == NULL)? 0 : strlen(SLIB_SUFFIX));
 
         temp = malloc((prefix_len + temp_len + suffix_len + 1) * sizeof(char));
         if(!temp) 
@@ -33,13 +33,13 @@ slib slib_Load(slib_path libraryName, bool add_prefix, bool add_suffix)
         temp[prefix_len + temp_len + suffix_len] = '\0';
 
         if(add_prefix){
-            strncpy(temp, slib_prefix, prefix_len);
+            strncpy(temp, SLIB_PREFIX, prefix_len);
         }
 
         strncpy(temp + prefix_len, libraryName, temp_len);
 
         if(add_suffix){
-            strncpy(temp + prefix_len + temp_len, slib_suffix, suffix_len);
+            strncpy(temp + prefix_len + temp_len, SLIB_SUFFIX, suffix_len);
         }
         
         
@@ -71,9 +71,9 @@ slib_pfn slib_Getpfn(slib* lib, slib_pfnname functionName){
     }
 
 #ifdef _WIN32
-    void *funcPtr = (void *)GetProcAddress((HMODULE)lib->handle, functionName);
+    slib_pfn funcPtr = (slib_pfn)GetProcAddress((HMODULE)lib->handle, functionName);
 #else
-    void *funcPtr = dlsym(lib->handle, functionName);
+    slib_pfn funcPtr = (slib_pfn)dlsym(lib->handle, functionName);
 #endif
 
     if (!funcPtr) {

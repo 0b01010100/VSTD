@@ -1,7 +1,7 @@
 #include <filesystem.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
+#include <errno.h>
 
 #if defined(WIN32) || defined(_WIN32) || defined(WIN64) || defined(_WIN64)
 #include <Windows.h>
@@ -122,7 +122,8 @@ bool FS_exist(FS_Path  path) {
 
 long FS_FileSize(FS_Path  path) {
     if (!path) return -1;
-    FILE *file = fopen(path, "r");
+
+    FILE *file = fopen(path, "rb");
     if (file == NULL) return -1;
 
     if (fseek(file, 0, SEEK_END) != 0) {
@@ -136,8 +137,69 @@ long FS_FileSize(FS_Path  path) {
         return -1;
     }
 
+    //rewind start pointer back to zero
     fseek(file, 0, SEEK_SET);
     fclose(file);
 
     return file_size;
+}
+
+ssize_t FS_read(FS_Path path, void* buffer, size_t size)
+{
+    if (!path || !buffer) return -1;
+
+    FILE *file = fopen(path, "rb");
+    if (file == NULL) return -1;
+
+    //read the file data
+    size_t readbytes = fread(buffer, 1, size, file);
+
+    //checks for any read errors
+    if(ferror(file)){
+        fclose(file);
+        return -1;
+    }
+
+    fclose(file);
+    return (ssize_t)readbytes;
+}
+
+ssize_t FS_text_to_str(FS_Path path, char** buffer)
+{
+    if (!path || !buffer) return -1;
+
+    FILE *file = fopen(path, "rb");
+    if (file == NULL) return -1;
+
+    if (fseek(file, 0, SEEK_END) != 0) {
+        fclose(file);
+        return -1;
+    }
+
+    long file_size = ftell(file);
+    if (file_size == -1L) {
+        fclose(file);
+        return -1;
+    }
+    fseek(file, 0, SEEK_SET);
+
+    char* temp_buffer = (char*)malloc(file_size + 1);
+    if (temp_buffer == NULL) {
+        fclose(file);
+        return -1;
+    }
+
+    size_t bytes_read = fread(temp_buffer, 1, file_size, file);
+    if (ferror(file)) {
+        free(temp_buffer);
+        fclose(file);
+        return -1;
+    }
+
+    temp_buffer[bytes_read] = '\0';
+
+    fclose(file);
+
+    *buffer = temp_buffer;
+    return bytes_read;
 }

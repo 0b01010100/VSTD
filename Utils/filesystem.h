@@ -1,6 +1,11 @@
 #include <stdbool.h>
 #include <stdint.h>
-
+//WHY WINDOWS :=(
+#if defined(WIN32) || defined(_WIN32) || defined(WIN64) || defined(_WIN64)
+#include <BaseTsd.h>
+typedef SSIZE_T ssize_t;
+typedef SIZE_T size_t;
+#endif
 typedef const char* FS_Path;
 
 #define FS_PATH(str) str
@@ -62,6 +67,26 @@ bool FS_exist(FS_Path path);
  * @return The size of the file in bytes, or -1 if there is an error.
  */
 long FS_FileSize(FS_Path path);
+
+
+/**
+ * Reads the contents of a file into a buffer.
+ *
+ * @param path The file path.
+ * @param buffer A pointer to the buffer where the contents will be stored.
+ * @param size The size of the buffer.
+ * @return The number of bytes read, or -1 if there is an error.
+ */
+ssize_t FS_read(FS_Path path, void* buffer, size_t size);
+
+/**
+ * Reads all of the contents of a file into a buffer.
+ *
+ * @param path The file path.
+ * @param buffer A pointer to the buffer where the contents will be stored.
+ * @return The number of bytes read, or -1 if there is an error.
+ */
+ssize_t FS_text_to_str(FS_Path path, char** buffer);
 
 #ifdef __cplusplus
 }

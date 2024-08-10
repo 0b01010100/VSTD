@@ -3,6 +3,17 @@
   "WorkspaceRootPath": "C:\\Users\\josdd\\repos\\p\\VUtilities\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\test\\main0.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:test\\main0.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\Utils\\except.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Utils\\except.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\include\\stdexcept||{3B902123-F8A7-4915-9F01-361F908088D0}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\test\\main0.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:test\\main0.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -66,11 +77,50 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "stdexcept",
+              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\include\\stdexcept",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\include\\stdexcept",
+              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\include\\stdexcept",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\include\\stdexcept",
+              "ViewState": "AQIAAJ8AAAAAAAAAAAAAAKQAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-08-07T17:55:34.802Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "except.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\Utils\\except.h",
+              "RelativeDocumentMoniker": "Utils\\except.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\Utils\\except.h",
+              "RelativeToolTip": "Utils\\except.h",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAywBwAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-08-07T17:51:41.469Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main0.cpp",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\test\\main0.cpp",
+              "RelativeDocumentMoniker": "test\\main0.cpp",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\test\\main0.cpp",
+              "RelativeToolTip": "test\\main0.cpp",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAAAAYAAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-08-07T17:51:08.227Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "array.decl.h",
               "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\Utils\\array.decl.h",
               "RelativeDocumentMoniker": "Utils\\array.decl.h",
@@ -78,25 +128,22 @@
               "RelativeToolTip": "Utils\\array.decl.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-07-31T13:34:34.014Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-31T13:34:34.014Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "main0.c",
               "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\test\\main0.c",
               "RelativeDocumentMoniker": "test\\main0.c",
               "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\test\\main0.c",
               "RelativeToolTip": "test\\main0.c",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-07-24T19:23:56.716Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-24T19:23:56.716Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "CppProperties.json",
               "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\CppProperties.json",
               "RelativeDocumentMoniker": "CppProperties.json",
@@ -104,12 +151,11 @@
               "RelativeToolTip": "CppProperties.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-07-31T13:35:10.59Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-31T13:35:10.59Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "CMakeLists.txt",
               "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\CMakeLists.txt",
               "RelativeDocumentMoniker": "CMakeLists.txt",
@@ -117,12 +163,11 @@
               "RelativeToolTip": "CMakeLists.txt",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2024-07-24T19:26:48.54Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-24T19:26:48.54Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": ".gitignore",
               "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\.gitignore",
               "RelativeDocumentMoniker": ".gitignore",
@@ -134,7 +179,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "cstring.c",
               "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\Utils\\cstring.c",
               "RelativeDocumentMoniker": "Utils\\cstring.c",
@@ -146,7 +191,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "CMakePresets.json",
               "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\CMakePresets.json",
               "RelativeDocumentMoniker": "CMakePresets.json",
@@ -154,12 +199,11 @@
               "RelativeToolTip": "CMakePresets.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-07-24T16:02:13.224Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-24T16:02:13.224Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "CMakeLists.txt",
               "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\Utils\\CMakeLists.txt",
               "RelativeDocumentMoniker": "Utils\\CMakeLists.txt",
@@ -171,7 +215,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "cstring.h",
               "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\Utils\\cstring.h",
               "RelativeDocumentMoniker": "Utils\\cstring.h",
@@ -183,20 +227,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "main.c",
               "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\test\\main.c",
               "RelativeDocumentMoniker": "test\\main.c",
-              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\test\\main.c*",
-              "RelativeToolTip": "test\\main.c*",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\test\\main.c",
+              "RelativeToolTip": "test\\main.c",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-07-24T15:49:04.865Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-24T15:49:04.865Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "cstringt.h",
               "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\atlmfc\\include\\cstringt.h",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\atlmfc\\include\\cstringt.h",
@@ -208,7 +251,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "stdlib.h",
               "DocumentMoniker": "C:\\msys64\\ucrt64\\include\\stdlib.h",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\msys64\\ucrt64\\include\\stdlib.h",
@@ -220,7 +263,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 15,
               "Title": "exe_common.inl",
               "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\crt\\src\\vcruntime\\exe_common.inl",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\crt\\src\\vcruntime\\exe_common.inl",
@@ -232,7 +275,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "ht.h",
               "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\Utils\\ht.h",
               "RelativeDocumentMoniker": "Utils\\ht.h",
@@ -244,7 +287,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "CMake Overview Pages",
               "DocumentMoniker": "CMake Overview Pages",
               "ToolTip": "CMake Overview Pages",

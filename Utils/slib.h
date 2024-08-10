@@ -13,17 +13,21 @@ extern "C" {
 #endif
 
 // Define shared library suffix based on the platform
-#if defined(WIN32) || defined(_WIN32) || defined(WIN64) || defined(_WIN64)
-    #define slib_suffix ".dll"
+#if defined(_MSC_VER)
+    #define SLIB_SUFFIX ".dll"
+#elif defined(__APPLE__)
+    #define SLIB_SUFFIX ".dylib"
+#elif defined(__unix__) || defined(__unix)
+    #define SLIB_SUFFIX ".so"
 #else
-    #define slib_suffix ".so"
+    #error "Unsupported platform"
 #endif
 
 // Define shared library prefix based on the compiler
 #if defined(__MINGW32__) || defined(__MINGW64__) || defined(__GNUC__) || defined(__GNUG__)
-    #define slib_prefix "lib"
-#else
-    #define slib_prefix ""
+    #define SLIB_PREFIX "lib"
+#else//clang and others
+    #define SLIB_PREFIX ""
 #endif
 
 // Pointer to a shared library function

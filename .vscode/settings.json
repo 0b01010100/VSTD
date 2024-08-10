@@ -108,6 +108,7 @@
     "str.h": "c",
     "slib.h": "c",
     "direct.h": "c",
-    "io.h": "c"
+    "io.h": "c",
+    "stdexcept": "cpp"
   }
 }
