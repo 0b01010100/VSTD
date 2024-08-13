@@ -4,8 +4,8 @@
  * @note that this is not part of the C standard library but a separate extension. Have Fun
 */
 
-#ifndef __VFS__
-#define __VFS__
+#ifndef __vfs__
+#define __vfs__
 #include <stdbool.h>
 #include <stdint.h>
 //WHY WINDOWS :=(
@@ -70,7 +70,7 @@ int vfs_rmdir(vfs_Path dir_name);
  * @param path The file path.
  * @return 0 if the path is a text file, 1 if it is a folder, -1 if there is an error.
  */
-int vfs_is_dir(vfs_Path path);
+int vfs_isdir(vfs_Path path);
 
 /**
  * Tells you whether a file exists and if it is a folder or a text file.
@@ -86,7 +86,7 @@ bool vfs_exist(vfs_Path path);
  * @param path The file path.
  * @return The size of the file in bytes, or -1 if there is an error.
  */
-long vfs_FileSize(vfs_Path path);
+long vfs_fileSize(vfs_Path path);
 
 
 /**
@@ -106,7 +106,7 @@ ssize_t vfs_read(vfs_Path path, void* buffer, size_t size);
  * @param buffer A pointer to the buffer where the contents will be stored.
  * @return The number of bytes read, or -1 if there is an error.
  */
-ssize_t vfs_text_to_str(vfs_Path path, char** out);
+ssize_t vfs_readAll(vfs_Path path, char** out);
 
 /**
  * Concatenates the src string to the out path or appends text to a file.
