@@ -13,7 +13,7 @@ extern "C" {
 #endif
 
 // Define shared library suffix based on the platform
-#if defined(_MSC_VER)
+#if defined(WIN32) || defined(_WIN32) || defined(WIN64) || defined(_WIN64)
     #define SLIB_SUFFIX ".dll"
 #elif defined(__APPLE__)
     #define SLIB_SUFFIX ".dylib"
@@ -24,9 +24,9 @@ extern "C" {
 #endif
 
 // Define shared library prefix based on the compiler
-#if defined(__MINGW32__) || defined(__MINGW64__) || defined(__GNUC__) || defined(__GNUG__)
+#if defined(__MINGW32__) || defined(__MINGW64__) || defined(__GNUC__) || defined(__GNUG__) || defined(__clang__)
     #define SLIB_PREFIX "lib"
-#else//clang and others
+#else//others
     #define SLIB_PREFIX ""
 #endif
 

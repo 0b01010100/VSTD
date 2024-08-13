@@ -89,8 +89,7 @@
               "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\include\\stdexcept",
               "ViewState": "AQIAAJ8AAAAAAAAAAAAAAKQAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-08-07T17:55:34.802Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-07T17:55:34.802Z"
             },
             {
               "$type": "Document",
@@ -102,8 +101,7 @@
               "RelativeToolTip": "Utils\\except.h",
               "ViewState": "AQIAAA0AAAAAAAAAAAAywBwAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-08-07T17:51:41.469Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-07T17:51:41.469Z"
             },
             {
               "$type": "Document",
@@ -113,7 +111,7 @@
               "RelativeDocumentMoniker": "test\\main0.cpp",
               "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\test\\main0.cpp",
               "RelativeToolTip": "test\\main0.cpp",
-              "ViewState": "AQIAAAIAAAAAAAAAAAAAAAYAAAALAAAA",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAAAAUAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-08-07T17:51:08.227Z",
               "EditorCaption": ""
