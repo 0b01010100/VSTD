@@ -57,7 +57,7 @@ int vfs_rmdir(vfs_Path  dir_name) {
     return 0; 
 }
 
-int vfs_is_dir(vfs_Path  path) {
+int vfs_isdir(vfs_Path  path) {
     if (!path) return -1;
     DWORD attributes = GetFileAttributes(path);
     if (attributes == INVALID_FILE_ATTRIBUTES) {
@@ -109,7 +109,7 @@ int vfs_rmdir(vfs_Path  dir_name) {
     return 0; 
 }
 
-int vfs_is_dir(vfs_Path  path) {
+int vfs_isdir(vfs_Path  path) {
     if (!path) return -1;
     struct stat path_stat;
     if (stat(path, &path_stat) != 0) {
@@ -133,7 +133,7 @@ bool vfs_exist(vfs_Path  path) {
     return false;
 }
 
-long vfs_FileSize(vfs_Path  path) {
+long vfs_fileSize(vfs_Path  path) {
     if (!path) return -1;
 
     FILE *file = fopen(path, "rb");
@@ -177,7 +177,7 @@ ssize_t vfs_read(vfs_Path path, void* buffer, size_t size)
     return (ssize_t)readbytes;
 }
 
-ssize_t vfs_text_to_str(vfs_Path path, char** out)
+ssize_t vfs_readAll(vfs_Path path, char** out)
 {
     if (!path || !out) return -1;
 
