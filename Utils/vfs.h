@@ -70,7 +70,7 @@ int vfs_rmdir(vfs_Path dir_name);
  * @param path The file path.
  * @return 0 if the path is a text file, 1 if it is a folder, -1 if there is an error.
  */
-int vfs_is_dir(vfs_Path path);
+int vfs_isdir(vfs_Path path);
 
 /**
  * Tells you whether a file exists and if it is a folder or a text file.
@@ -106,7 +106,7 @@ ssize_t vfs_read(vfs_Path path, void* buffer, size_t size);
  * @param buffer A pointer to the buffer where the contents will be stored.
  * @return The number of bytes read, or -1 if there is an error.
  */
-ssize_t vfs_text_to_str(vfs_Path path, char** out);
+ssize_t vfs_readAll(vfs_Path path, char** out);
 
 /**
  * Concatenates the src string to the out path or appends text to a file.
@@ -123,4 +123,4 @@ ssize_t vfs_cat(vfs_Path* out, const char* src, bool file);
 #ifdef __cplusplus
 } // __cplusplus
 #endif
-#endif // __vfs__
+#endif

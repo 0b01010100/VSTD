@@ -109,7 +109,11 @@ int vfs_rmdir(vfs_Path  dir_name) {
     return 0; 
 }
 
+<<<<<<< HEAD
 int vfs_is_dir(vfs_Path  path) {
+=======
+int vfs_isdir(vfs_Path  path) {
+>>>>>>> f4e8d49498e2f2f057efeacc4e20021a780291b6
     if (!path) return -1;
     struct stat path_stat;
     if (stat(path, &path_stat) != 0) {
@@ -177,7 +181,11 @@ ssize_t vfs_read(vfs_Path path, void* buffer, size_t size)
     return (ssize_t)readbytes;
 }
 
+<<<<<<< HEAD
 ssize_t vfs_text_to_str(vfs_Path path, char** out)
+=======
+ssize_t vfs_readAll(vfs_Path path, char** out)
+>>>>>>> f4e8d49498e2f2f057efeacc4e20021a780291b6
 {
     if (!path || !out) return -1;
 
