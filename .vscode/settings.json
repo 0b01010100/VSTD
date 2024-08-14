@@ -109,6 +109,8 @@
     "slib.h": "c",
     "direct.h": "c",
     "io.h": "c",
-    "stdexcept": "cpp"
+    "stdexcept": "cpp",
+    "vstring.h": "c",
+    "vdef.h": "c"
   }
 }

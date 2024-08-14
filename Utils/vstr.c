@@ -161,8 +161,7 @@ bool vstr_fill(vstr *ret, char val) {
 }
 
 bool vstr_insert(vstr *dest, size_t index, const vstr *substr) {
-    if (!dest || !substr || !dest->str || !substr->str) return false;
-    if (!dest->own) return false;
+    if (!dest || !substr || !dest->str || !substr->str || !dest->own) return false;
 
     size_t dest_len = dest->len;
     size_t substr_len = substr->len;
@@ -264,7 +263,7 @@ bool vstr_fromfloat(vstr *ret, double f) {
 }
 
 vstr **vstr_split(vstr *str, vstr *delimiter, size_t *count) {
-    if (!str || !delimiter || !count || !str->str || !delimiter->str) {
+    if (!str || !delimiter || !count || !str->str || !delimiter->str || !str->own) {
         return NULL;
     }
     vstr str_cpy = {0};
@@ -365,8 +364,7 @@ vstr vstr_join(vstr *delimiter, size_t count, ...) {
 }
 
 void vstr_trim(vstr* str, const vstr* substr) {
-    if (str == NULL || substr == NULL) return;
-    if (!str->own) return;
+    if (str == NULL || substr == NULL || !str->own) return;
     
     size_t str_len = str->len;
     size_t substr_len = substr->len;
@@ -397,6 +395,55 @@ void vstr_trim(vstr* str, const vstr* substr) {
     strcpy(str->str, result);
     free(result);
     str = realloc(str->str, result_len);
+}
+
+bool vstr_remove(vstr* str, size_t pos, size_t len, bool __realloc)
+{
+    if (!str || pos >= str->len || len == 0 || !str->own) return false;
+
+    if (pos + len > str->len) len = str->len - pos;
+
+    memmove(str->str + pos, str->str + pos + len, str->len - (pos + len));
+
+    if(__realloc){
+
+        char * __new = (char*)realloc(str->str, (len + 1) * sizeof(char));
+        if(!__new) return false;
+
+        str->len -= len;
+
+        str->str[str->len] = '\0';
+    }
+    return true;
+}
+
+void vstr_replace(vstr* str, const vstr* old_substr, const vstr* new_substr, bool force)
+{
+    if(!str || !old_substr || !new_substr || !str->own || strcmp(str->str, new_substr->str) == 0) return;
+
+    size_t str_len = str->len;
+    size_t old_substr_len = old_substr->len;
+    size_t new_substr_len = new_substr->len;
+
+    //if false we will realloc and instert even though new_substr_len > old_substr_len 
+    if(new_substr_len > old_substr_len && !force) return;
+
+
+    vstr view;
+    vstr_findf(&view, str, old_substr);
+    
+    size_t pos = 0;
+    while ((pos = vstr_findf(&view, str, old_substr)) != -1) {
+        
+        //remove old substring
+        vstr_remove(str, pos, old_substr_len, true);
+
+        //insert new substring
+        vstr_insert(str, pos, new_substr);
+        
+        //adjust position to continue searching
+        pos += new_substr_len;
+    }
 }
 
 void vstr_destroy(vstr *str) {

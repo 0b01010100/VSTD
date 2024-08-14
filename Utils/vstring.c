@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
-#include <str.h>
+#include <vstring.h>
 
-const char * str_create_ex(const char * str, bool allocate)
+char * str_create_ex(const char * str, bool allocate)
 {
     return strn_create_ex(str, strlen(str), allocate);
 }
@@ -301,43 +301,6 @@ char* str_findf(const char* str, const char* substr) {
     return NULL;
 }
 
-char* str_trim(char * str, const char * substr)
-{
-    if (str == NULL || substr == NULL) return NULL;
-
-    size_t str_len = strlen(str);
-    size_t substr_len = strlen(substr);
-
-    if (substr_len == 0) return str;
-    if (substr_len > str_len) return str;
-
-    char *result = malloc(str_len + 1);
-    if (!result) return NULL;
-
-    const char *p = str;
-    char *r = result;
-
-    while (*p)
-    {
-        if (strncmp(p, substr, substr_len) == 0)
-        {
-            p += substr_len;
-        }
-        else
-        {
-            *r++ = *p++;
-        }
-    }
-    *r = '\0';
-
-    size_t result_len = strlen(result);
-    strcpy(str, result);
-    free(result);
-    str = realloc(str, result_len);
-
-    return str;
-}
-
 char ** str_split(const char * str, const char * delimiter, size_t * count) {
     char * str_copy = strdup(str);
     char * token;
@@ -382,6 +345,96 @@ char * str_join(char ** str_array, size_t count, const char * delimiter)
     }
 
     return res;
+}
+
+char* str_trim(char * str, const char * substr)
+{
+    if (str == NULL || substr == NULL) return NULL;
+
+    size_t str_len = strlen(str);
+    size_t substr_len = strlen(substr);
+
+    if (substr_len == 0) return str;
+    if (substr_len > str_len) return str;
+
+    char *result = malloc(str_len + 1);
+    if (!result) return NULL;
+
+    const char *p = str;
+    char *r = result;
+
+    while (*p)
+    {
+        if (strncmp(p, substr, substr_len) == 0)
+        {
+            p += substr_len;
+        }
+        else
+        {
+            *r++ = *p++;
+        }
+    }
+    *r = '\0';
+
+    size_t result_len = strlen(result);
+    strcpy(str, result);
+    free(result);
+    str = realloc(str, result_len);
+
+    return str;
+}
+
+bool strn_remove(char* *str, size_t *len, size_t pos, size_t end, bool __realloc)
+{
+    if (!str || !*str || pos >= *len || end == 0) return false;
+
+    if (pos + end > *len) return false;
+
+    
+    memmove(*str + pos, *str + pos + end, *len - (pos + end) + 1);
+
+    if (__realloc) {
+        char * __new = (char*)realloc(str, (*len + 1) * sizeof(char));
+        if (!__new) return false;
+
+        *str = __new;
+        *len -= end; 
+        str[*len] = '\0';
+    }
+
+    return true;
+}
+
+#include <vdef.h>
+void strn_replace_s(char** str, size_t len, const char * old_substr, size_t len1, const char * new_substr, size_t len2, bool force)
+{
+   
+    vTODO("Finish: strn_replace_s, but add more strn and _s functions first");
+    // if(!str || !old_substr || !new_substr || strcmp(str, new_substr) == 0) return;
+
+    // size_t str_len = len;
+    // size_t old_substr_len = len1;
+    // size_t new_substr_len = len2;
+
+    // //if false we will realloc and instert even though new_substr_len > old_substr_len 
+    // if(new_substr_len > old_substr_len && !force) return;
+
+
+    // char* view;
+    // str_findf(&view, str, old_substr);
+    
+    // size_t pos = 0;
+    // while ((pos = str_findf(str, old_substr)) != -1) {
+        
+    //     //remove old substring
+    //     strn_remove(&str, &pos, old_substr_len, true);
+
+    //     //insert new substring
+    //     vstr_insert(str, pos, new_substr);
+        
+    //     //adjust position to continue searching
+    //     pos += new_substr_len;
+    // }
 }
 
 void str_free(char * src)

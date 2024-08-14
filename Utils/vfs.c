@@ -20,7 +20,7 @@ int vfs_touch(vfs_Path path)
 #include <Windows.h>
 #include <direct.h> // For _mkdir 
 
-char* FS_abs(vfs_Path  rel) {
+char* vfs_abs(vfs_Path  rel) {
     if (rel == NULL) return NULL;
     
     char *absolute_path = calloc(MAX_PATH, sizeof(char));
@@ -38,7 +38,7 @@ char* FS_abs(vfs_Path  rel) {
     return absolute_path;
 }
 
-int FS_mkdir(vfs_Path  dir_name) {
+int vfs_mkdir(vfs_Path  dir_name) {
     if (!dir_name) return -1;
     if (_mkdir(dir_name) == -1) {
         perror("Error creating directory");
@@ -47,7 +47,7 @@ int FS_mkdir(vfs_Path  dir_name) {
     return 0; 
 }
 
-int FS_rmdir(vfs_Path  dir_name) {
+int vfs_rmdir(vfs_Path  dir_name) {
     if (!dir_name) return -1;
     if (!RemoveDirectory(dir_name)) {
         DWORD error = GetLastError();
@@ -57,7 +57,7 @@ int FS_rmdir(vfs_Path  dir_name) {
     return 0; 
 }
 
-int FS_is_dir(vfs_Path  path) {
+int vfs_isdir(vfs_Path  path) {
     if (!path) return -1;
     DWORD attributes = GetFileAttributes(path);
     if (attributes == INVALID_FILE_ATTRIBUTES) {
@@ -72,7 +72,7 @@ int FS_is_dir(vfs_Path  path) {
 #include <sys/stat.h>
 #include <unistd.h>
 
-char* FS_abs(vfs_Path  rel) {
+char* vfs_abs(vfs_Path  rel) {
     if (rel == NULL) return NULL;
 
     char *absolute_path = calloc(PATH_MAX, sizeof(char));
@@ -91,7 +91,7 @@ char* FS_abs(vfs_Path  rel) {
     return absolute_path;
 }
 
-int FS_mkdir(vfs_Path  dir_name) {
+int vfs_mkdir(vfs_Path  dir_name) {
     if (!dir_name) return -1;
     if (mkdir(dir_name, 0777) == -1) {
         perror("Error creating directory");
@@ -100,7 +100,7 @@ int FS_mkdir(vfs_Path  dir_name) {
     return 0;
 }
 
-int FS_rmdir(vfs_Path  dir_name) {
+int vfs_rmdir(vfs_Path  dir_name) {
     if (!dir_name) return -1;
     if (rmdir(dir_name) != 0) {
         perror("Error deleting directory");
@@ -109,7 +109,7 @@ int FS_rmdir(vfs_Path  dir_name) {
     return 0; 
 }
 
-int FS_is_dir(vfs_Path  path) {
+int vfs_is_dir(vfs_Path  path) {
     if (!path) return -1;
     struct stat path_stat;
     if (stat(path, &path_stat) != 0) {
@@ -123,7 +123,7 @@ int FS_is_dir(vfs_Path  path) {
 #error "Platform not supported"
 #endif
 
-bool FS_exist(vfs_Path  path) {
+bool vfs_exist(vfs_Path  path) {
     if (!path) return false;
     FILE *file = fopen(path, "r");
     if (file != NULL) {
@@ -133,7 +133,7 @@ bool FS_exist(vfs_Path  path) {
     return false;
 }
 
-long FS_FileSize(vfs_Path  path) {
+long vfs_fileSize(vfs_Path  path) {
     if (!path) return -1;
 
     FILE *file = fopen(path, "rb");
@@ -157,7 +157,7 @@ long FS_FileSize(vfs_Path  path) {
     return file_size;
 }
 
-ssize_t FS_read(vfs_Path path, void* buffer, size_t size)
+ssize_t vfs_read(vfs_Path path, void* buffer, size_t size)
 {
     if (!path || !buffer) return -1;
 
@@ -177,7 +177,7 @@ ssize_t FS_read(vfs_Path path, void* buffer, size_t size)
     return (ssize_t)readbytes;
 }
 
-ssize_t FS_text_to_str(vfs_Path path, char** out)
+ssize_t vfs_text_to_str(vfs_Path path, char** out)
 {
     if (!path || !out) return -1;
 
@@ -233,7 +233,7 @@ ssize_t vfs_cat(vfs_Path* path_OR_str, const char* src, bool file)
             return -1; 
         }
 
-        return (size_t)FS_FileSize(*path_OR_str) == -1;
+        return (size_t)vfs_fileSize(*path_OR_str);
     }
     else
     {

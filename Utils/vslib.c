@@ -1,4 +1,4 @@
-#include "slib.h"
+#include "vslib.h"
 #include <string.h>
 #include <stdlib.h>
 #include <string.h>
@@ -9,37 +9,37 @@
 #include <dlfcn.h>
 #endif
 
-slib slib_Load(slib_path libraryName, bool add_prefix, bool add_suffix)
+vslib vslib_Load(vslib_path libraryName, bool add_prefix, bool add_suffix)
 {
     if(!libraryName) 
     {
-        fprintf(stderr, "slib.c: NameLess library: \n");
-        return (slib){0};
+        fprintf(stderr, "vslib.c: NameLess library: \n");
+        return (vslib){0};
     }
-    slib lib = { 0 };
+    vslib lib = { 0 };
     char * temp = NULL;
     if(add_prefix || add_suffix){
 
         size_t temp_len = strlen(libraryName);
-        size_t prefix_len = ((SLIB_PREFIX == NULL)? 0 : strlen(SLIB_PREFIX));
-        size_t suffix_len = ((SLIB_SUFFIX == NULL)? 0 : strlen(SLIB_SUFFIX));
+        size_t prefix_len = ((vslib_PREFIX == NULL)? 0 : strlen(vslib_PREFIX));
+        size_t suffix_len = ((vslib_SUFFIX == NULL)? 0 : strlen(vslib_SUFFIX));
 
         temp = malloc((prefix_len + temp_len + suffix_len + 1) * sizeof(char));
         if(!temp) 
         {
-            fprintf(stderr, "slib.c: Failed malloc: \n");
+            fprintf(stderr, "vslib.c: Failed malloc: \n");
             return lib;
         }
         temp[prefix_len + temp_len + suffix_len] = '\0';
 
         if(add_prefix){
-            strncpy(temp, SLIB_PREFIX, prefix_len);
+            strncpy(temp, vslib_PREFIX, prefix_len);
         }
 
         strncpy(temp + prefix_len, libraryName, temp_len);
 
         if(add_suffix){
-            strncpy(temp + prefix_len + temp_len, SLIB_SUFFIX, suffix_len);
+            strncpy(temp + prefix_len + temp_len, vslib_SUFFIX, suffix_len);
         }
         
         
@@ -50,12 +50,12 @@ slib slib_Load(slib_path libraryName, bool add_prefix, bool add_suffix)
 #if defined(WIN32) || defined(_WIN32) || defined(WIN64) || defined(_WIN64)
     lib.handle = LoadLibrary(temp);
     if (!lib.handle) {
-        fprintf(stderr, "slib.c: Failed to load shared library: %s\n", temp);
+        fprintf(stderr, "vslib.c: Failed to load shared library: %s\n", temp);
     }
 #else
     lib.handle = dlopen(temp, RTLD_LAZY);
     if (!lib.handle) {
-        fprintf(stderr, "slib.c: Failed to load shared library: %s\n", temp);
+        fprintf(stderr, "vslib.c: Failed to load shared library: %s\n", temp);
         fprintf(stderr, "Error: %s\n", dlerror());
     }
 #endif
@@ -64,34 +64,34 @@ slib slib_Load(slib_path libraryName, bool add_prefix, bool add_suffix)
     return lib;
 }
 
-slib_pfn slib_Getpfn(slib* lib, slib_pfnname functionName){
+vslib_pfn vslib_Getpfn(vslib* lib, vslib_pfnname functionName){
     if (!lib || !lib->handle || !functionName) {
-        fprintf(stderr, "slib.c: Invalid arguments: lib or functionName is NULL\n");
+        fprintf(stderr, "vslib.c: Invalid arguments: lib or functionName is NULL\n");
         return NULL;
     }
 
 #ifdef _WIN32
-    slib_pfn funcPtr = (slib_pfn)GetProcAddress((HMODULE)lib->handle, functionName);
+    vslib_pfn funcPtr = (vslib_pfn)GetProcAddress((HMODULE)lib->handle, functionName);
 #else
-    slib_pfn funcPtr = (slib_pfn)dlsym(lib->handle, functionName);
+    vslib_pfn funcPtr = (vslib_pfn)dlsym(lib->handle, functionName);
 #endif
 
     if (!funcPtr) {
-        fprintf(stderr, "slib.c: Failed to load function pointer: %s\n", functionName);
+        fprintf(stderr, "vslib.c: Failed to load function pointer: %s\n", functionName);
     }
 
     return funcPtr;
 }
 
-void slib_Unload(slib *lib) {
+void vslib_Unload(vslib *lib) {
     if (lib && lib->handle) {
 #ifdef _WIN32
         if (!FreeLibrary((HMODULE)lib->handle)) {
-            fprintf(stderr, "slib.c: Failed to unload library: error code %lu\n", GetLastError());
+            fprintf(stderr, "vslib.c: Failed to unload library: error code %lu\n", GetLastError());
         }
 #else
         if (dlclose(lib->handle) != 0) {
-            fprintf(stderr, "slib.c: Failed to unload library: %s\n", dlerror());
+            fprintf(stderr, "vslib.c: Failed to unload library: %s\n", dlerror());
         }
 #endif
         lib->handle = NULL;

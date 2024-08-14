@@ -4,8 +4,8 @@
  * This API extends `<string.h>` with additional methods for convenience.
  * @note that this is not part of the C standard library but a separate extension. Have Fun
 */
-
-#pragma once
+#ifndef __vstring__
+#define __vstring__
 #include <stdbool.h> // for bool type
 #include <string.h>
 #include <stdint.h>
@@ -20,7 +20,10 @@ typedef SIZE_T size_t;
 #define strstart (0)
 
 typedef char * str;
-
+#ifdef __cplusplus
+extern "C" {
+#define STR_(string) string;
+#endif
 // Create a string with a copy of the original string, without allocating new memory
 #define str_create(str) str_create_ex(str, false)
 
@@ -30,7 +33,7 @@ typedef char * str;
  * @param allocate If true, allocate new memory; otherwise, use existing memory.
  * @return A pointer to the initialized string.
  */
-const char * str_create_ex(const char * str, bool allocate);
+char * str_create_ex(const char * str, bool allocate);
 
 /**
  * @brief Initialize a string with a copy of a portion of the original string, up to a specified size; allocation behavior controlled by the boolean parameter.
@@ -155,25 +158,6 @@ char * str_set(char * str, ssize_t index, const char val);
 char * str_apn(char * str, const double number);
 
 /**
- * @brief Insert a substring into a destination string at the specified index; does not check for destination size limits (duplicate of the earlier str_insert function).
- * @param dest The destination string.
- * @param index The index at which to insert the substring.
- * @param substr The substring to insert.
- * @return A pointer to the resulting string.
- */
-char* str_insert(char* dest, size_t index, const char* substr);
-
-/**
- * @brief Insert a substring into a destination string at the specified index with a size limit for the destination string; (duplicate of the earlier str_ninsert function).
- * @param dest The destination string.
- * @param dest_size The size of the destination string.
- * @param index The index at which to insert the substring.
- * @param substr The substring to insert.
- * @return A pointer to the resulting string.
- */
-char * str_ninsert(char * dest, size_t dest_size, size_t index, const char * substr);
-
-/**
  * @brief Find the last occurrence of a substring in a string.
  * @param str The string to search.
  * @param substr The substring to find.
@@ -190,20 +174,20 @@ char * str_findl(const char* str, const char* substr);
 char * str_findf(const char* str, const char* substr);
 
 /**
+ * @brief A Macro to find the first occurrence of a substring in a string. Same as str_findf
+ * @param str The string to search.
+ * @param substr The substring to find.
+ * @return A pointer to the first occurrence of the substring, or NULL if not found.
+ */
+#define str_find str_findf
+
+/**
  * @brief Macro to check if a substring is contained within a string.
  * @param str The string to search.
  * @param substr The substring to find.
  * @return True if the substring is contained within the string, false otherwise.
  */
 #define str_contains(str, substr) (str_findf(str, substr) != NULL)
-
-/**
- * @brief Trim occurrences of a substring from both ends of a string.
- * @param str The string to trim.
- * @param substr The substring to remove.
- * @return A pointer to the trimmed string.
- */
-char * str_trim(char * str, const char * substr);
 
 /**
  * @brief Split a string into an array of tokens based on a delimiter; sets the count of tokens.
@@ -224,7 +208,31 @@ char ** str_split(const char * str, const char * delimiter, size_t * count);
 char * str_join(char ** str_array, size_t count, const char * delimiter);
 
 /**
+ * @brief Trim occurrences of a substring from both ends of a string.
+ * @param str The string to trim.
+ * @param substr The substring to remove.
+ * @return A pointer to the trimmed string.
+ */
+char * str_trim(char * str, const char * substr);
+
+/**
+ * @brief Removes a portion of the string starting from a specific position.
+ *
+ * @param str The main string from which a portion will be removed. The content will be modified.
+ * @param len The lenght of the soruce string
+ * @param pos The starting position in the main string to begin removing characters.
+ * @param end The number of characters to remove starting from the position `pos`.
+ * @param __realloc If true, the memory for the string will be reallocated to free unused space.
+ * @return Returns true if the removal was successful, false otherwise.
+ */
+bool strn_remove(char* *str, size_t *len, size_t pos, size_t end, bool __realloc);
+
+/**
  * @brief Free memory allocated for a string.
  * @param src The string to free.
  */
 void str_free(char * src);
+#ifdef __cplusplus
+}
+#endif
+#endif

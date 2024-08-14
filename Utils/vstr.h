@@ -189,7 +189,16 @@ int vstr_findl(vstr* ret_view ,const vstr* src, const vstr* substr);
  * @param substr Pointer to the vstr object containing the substring to find.
  * @return The index of the first occurrence, or -1 if not found.
  */
-int vstr_findf(vstr* ret_view ,const vstr* src, const vstr* substr);
+int vstr_findf(vstr* ret_view, const vstr* src, const vstr* substr);
+
+/**
+ * Macro that Finds the first occurrence of a substring within a vstr object. Same thing as vstr_findf
+ * @param ret_view Pointer to the vstr object to store the view of the found substring (can be NULL).
+ * @param src Pointer to the source vstr object.
+ * @param substr Pointer to the vstr object containing the substring to find.
+ * @return The index of the first occurrence, or -1 if not found.
+ */
+#define vstr_find vstr_findf
 
 /**
  * Macro to check if a substring is contained within a string.
@@ -263,10 +272,34 @@ vstr ** vstr_split(vstr * str, vstr * delimiter, size_t * count);
  */
 vstr vstr_join(vstr *delimiter, size_t count, ...);
 
+/**
+ * @brief Trims the given substring from the start and end of the main string.
+ *
+ * @param str The main string to be trimmed. The content will be modified.
+ * @param substr The substring to trim from the main string. The content will not be modified.
+ */
 void vstr_trim(vstr * str, const vstr * substr);
 
-//TODO MYBE ADD THIS LATER 
-//void vstr_rep(vstr* str, const vstr* old_substr, const vstr* new_substr);
+/**
+ * @brief Removes a portion of the string starting from a specific position.
+ *
+ * @param str The main string from which a portion will be removed. The content will be modified.
+ * @param pos The starting position in the main string to begin removing characters.
+ * @param len The number of characters to remove starting from the position `pos`.
+ * @param __realloc If true, the memory for the string will be reallocated to free unused space.
+ * @return Returns true if the removal was successful, false otherwise.
+ */
+bool vstr_remove(vstr* str, size_t pos, size_t len, bool __realloc);
+
+/**
+ * @brief Replaces occurrences of a substring within the main string with a new substring.
+ *
+ * @param str The main string where the replacement will occur. The content will be modified.
+ * @param old_substr The substring to be replaced. The content will not be modified.
+ * @param new_substr The substring to replace the old substring. The content will not be modified.
+ * @param force If true, forces the replacement even if the new substring is greater in size compared to the old one.
+ */
+void vstr_replace(vstr* str, const vstr* old_substr, const vstr* new_substr, bool force);
 
 /**
  * Destroys a vstr object, freeing any allocated memory for its string data.

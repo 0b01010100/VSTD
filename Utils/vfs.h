@@ -4,8 +4,8 @@
  * @note that this is not part of the C standard library but a separate extension. Have Fun
 */
 
-#ifndef __VFS__
-#define __VFS__
+#ifndef __vfs__
+#define __vfs__
 #include <stdbool.h>
 #include <stdint.h>
 //WHY WINDOWS :=(
@@ -86,7 +86,7 @@ bool vfs_exist(vfs_Path path);
  * @param path The file path.
  * @return The size of the file in bytes, or -1 if there is an error.
  */
-long vfs_FileSize(vfs_Path path);
+long vfs_fileSize(vfs_Path path);
 
 
 /**
@@ -121,6 +121,6 @@ ssize_t vfs_cat(vfs_Path* out, const char* src, bool file);
 
 
 #ifdef __cplusplus
-}
+} // __cplusplus
 #endif
-#endif
+#endif // __vfs__
