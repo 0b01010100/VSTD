@@ -2,6 +2,67 @@
     "version": 3,
     "configurePresets": [
         {
+            "name": "clang-base",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "installDir": "${sourceDir}/out/install/${presetName}",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "clang.exe",
+                "CMAKE_CXX_COMPILER": "clang++.exe"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        },
+        
+        {
+            "name": "clang-x64-debug",
+            "displayName": "Clang x64 Debug",
+            "inherits": "clang-base",
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        
+        {
+            "name": "clang-x64-release",
+            "displayName": "Clang x64 Release",
+            "inherits": "clang-x64-debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        
+        {
+            "name": "clang-x86-debug",
+            "displayName": "Clang x86 Debug",
+            "inherits": "clang-base",
+            "architecture": {
+                "value": "x86",
+                "strategy": "external"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        
+        {
+            "name": "clang-x86-release",
+            "displayName": "Clang x86 Release",
+            "inherits": "clang-x86-debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+
+        {
             "name": "mingw-base",
             "hidden": true,
             "generator": "Ninja",
