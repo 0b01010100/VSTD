@@ -111,6 +111,8 @@
     "io.h": "c",
     "stdexcept": "cpp",
     "vstring.h": "c",
-    "vdef.h": "c"
+    "vdef.h": "c",
+    "stdint-gcc.h": "c",
+    "cstdint": "c"
   }
 }

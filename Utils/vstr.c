@@ -364,7 +364,7 @@ vstr vstr_join(vstr *delimiter, size_t count, ...) {
 }
 
 void vstr_trim(vstr* str, const vstr* substr) {
-    if (str == NULL || substr == NULL || !str->own) return;
+    if (str == NULL || !str->own) return;
     
     size_t str_len = str->len;
     size_t substr_len = substr->len;
@@ -430,7 +430,6 @@ void vstr_replace(vstr* str, const vstr* old_substr, const vstr* new_substr, boo
 
 
     vstr view;
-    vstr_findf(&view, str, old_substr);
     
     size_t pos = 0;
     while ((pos = vstr_findf(&view, str, old_substr)) != -1) {

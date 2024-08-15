@@ -8,27 +8,44 @@
 #define __vstring__
 #include <stdbool.h> // for bool type
 #include <string.h>
-#include <stdint.h>
+#include <stdint.h> // for size_t and ssize_t(For Unix)
 //WHY WINDOWS :=(
 #if defined(WIN32) || defined(_WIN32) || defined(WIN64) || defined(_WIN64)
-#include <BaseTsd.h>
+#include <BaseTsd.h> //for size_t and ssize_t(For Windows)
 typedef SSIZE_T ssize_t;
 typedef SIZE_T size_t;
 #endif
 
+/**
+ * @brief Represents the end of a string
+ * @return -1
+ */
 #define strend (-1)
+
+/**
+ * @brief Represents the start of a string
+ * @return 0
+ */
 #define strstart (0)
 
+/**
+ * @brief Represents a char * or string
+ */
 typedef char * str;
+
 #ifdef __cplusplus
 extern "C" {
-#define STR_(string) string;
+#define STR_(string) string
 #endif
-// Create a string with a copy of the original string, without allocating new memory
+/**
+ * @brief Creates a string view
+ * @param str The original string.
+ * @return A pointer to the string or view
+ */
 #define str_create(str) str_create_ex(str, false)
 
 /**
- * @brief Initialize a string with a copy of the original string; allocation behavior controlled by the boolean parameter.
+ * @brief Creates a string or view; allocation behavior controlled by the boolean parameter.
  * @param str The original string.
  * @param allocate If true, allocate new memory; otherwise, use existing memory.
  * @return A pointer to the initialized string.
@@ -42,7 +59,30 @@ char * str_create_ex(const char * str, bool allocate);
  * @param allocate If true, allocate new memory; otherwise, use existing memory.
  * @return A pointer to the initialized string.
  */
-const char * strn_create_ex(const char * str, size_t size, bool allocate);
+char * strn_create_ex(const char * str, size_t size, bool allocate);
+
+/**
+ * @brief Create a substring from the original string, from sub_start to sub_end (exclusive); allocates memory for the new substring.
+ * @param src The original string.
+ * @param sub_start The start index of the substring.
+ * @param sub_end The end index of the substring (exclusive).
+ * @param allocate Whether to create a view or a new string (true for new string, view otherwise).
+ * @note sub_end will not stop at where you want it when creating a view (the end will be the same as the original string).
+ * @return A pointer to the newly created substring.
+ */
+#define strn_sub_ex(src, sub_start, sub_end, allocate) \
+    (char*)strn_create_ex(src, (sub_end - sub_start), allocate)
+
+/**
+ * @brief Create a substring from the original string, from sub_start to sub_end (exclusive); allocates memory for the new substring.
+ * @param src The original string.
+ * @param sub_start The start index of the substring.
+ * @param sub_end The end index of the substring (exclusive).
+ * @note sub_end will not stop at where you want it when creating a view (the end will be the same as the original string).
+ * @return A pointer to the newly created substring.
+ */
+#define strn_sub(src, sub_start, sub_end) \
+    (char*)strn_sub_ex(src, sub_start, sub_end, false)
 
 /**
  * @brief Append a formatted string (using printf-style formatting) to the end of an existing string; allocates memory as needed.
@@ -53,25 +93,6 @@ const char * strn_create_ex(const char * str, size_t size, bool allocate);
  * @return A pointer to the resulting string.
  */
 char* str_append(char* __stream, size_t __n, const char* format, ...);
-
-/**
- * @brief Create a substring from the original string, from sub_start to sub_end (exclusive); allocates memory for the new substring.
- * @param src The original string.
- * @param sub_start The start index of the substring.
- * @param sub_end The end index of the substring (exclusive).
- * @return A pointer to the newly created substring.
- */
-char * str_sub(const char * src, size_t sub_start, size_t sub_end);
-
-/**
- * @brief Create a substring from the original string with a given size, from sub_start to sub_end (exclusive); allocates memory for the new substring.
- * @param src The original string.
- * @param src_size The size of the original string.
- * @param sub_start The start index of the substring.
- * @param sub_end The end index of the substring (exclusive).
- * @return A pointer to the newly created substring.
- */
-char * str_nsub(const char * src, size_t src_size, size_t sub_start, size_t sub_end);
 
 /**
  * @brief Insert a substring into a destination string at the specified index; does not check for destination size limits.
@@ -90,7 +111,7 @@ char* str_insert(char* dest, size_t index, const char* substr);
  * @param substr The substring to insert.
  * @return A pointer to the resulting string.
  */
-char* str_ninsert(char* dest, size_t dest_size, size_t index, const char* substr);
+char* strn_insert(char* dest, size_t dest_size, size_t index, const char* substr);
 
 /**
  * @brief Insert a substring into a destination string at the specified index with a size limit for both the destination and the substring.
@@ -101,7 +122,7 @@ char* str_ninsert(char* dest, size_t dest_size, size_t index, const char* substr
  * @param ss_len The length of the substring to insert.
  * @return A pointer to the resulting string.
  */
-char* str_ninsert_s(char* dest, size_t dest_size, size_t index, const char* substr, size_t ss_len);
+char* strn_insert_s(char* dest, size_t dest_size, size_t index, const char* substr, size_t ss_len);
 
 /**
  * @brief Convert a string to uppercase; modifies the original string.
@@ -168,10 +189,19 @@ char * str_findl(const char* str, const char* substr);
 /**
  * @brief Find the first occurrence of a substring in a string.
  * @param str The string to search.
+ * @param len The lenght of the string
  * @param substr The substring to find.
  * @return A pointer to the first occurrence of the substring, or NULL if not found.
  */
-char * str_findf(const char* str, const char* substr);
+char* strn_findf(const char* str, size_t len, const char* substr);
+
+/**
+ * @brief A Macro to find the first occurrence of a substring in a string.
+ * @param str The string to search.
+ * @param substr The substring to find.
+ * @return A pointer to the first occurrence of the substring, or NULL if not found.
+ */
+#define str_findf(str, substr) (char*)strn_findf(const char* str, strlen(str), const char* substr);
 
 /**
  * @brief A Macro to find the first occurrence of a substring in a string. Same as str_findf
@@ -210,10 +240,20 @@ char * str_join(char ** str_array, size_t count, const char * delimiter);
 /**
  * @brief Trim occurrences of a substring from both ends of a string.
  * @param str The string to trim.
+ * @param len The lenght of the string to trim.
  * @param substr The substring to remove.
  * @return A pointer to the trimmed string.
  */
-char * str_trim(char * str, const char * substr);
+char* strn_trim(char * str, size_t len, const char * substr);
+
+/**
+ * @brief A Macro to trim occurrences of a substring from both ends of a string.
+ * @param str The string to trim.
+ * @param len The lenght of the string to trim.
+ * @param substr The substring to remove.
+ * @return A pointer to the trimmed string.
+ */
+#define str_trim(str, substr) (char*)strn_trim(str, strlen(str), substr);
 
 /**
  * @brief Removes a portion of the string starting from a specific position.
@@ -223,9 +263,62 @@ char * str_trim(char * str, const char * substr);
  * @param pos The starting position in the main string to begin removing characters.
  * @param end The number of characters to remove starting from the position `pos`.
  * @param __realloc If true, the memory for the string will be reallocated to free unused space.
- * @return Returns true if the removal was successful, false otherwise.
+ * @return Returns the size of the string if the removal was successful, -1 otherwise.
  */
-bool strn_remove(char* *str, size_t *len, size_t pos, size_t end, bool __realloc);
+ssize_t strn_remove(char* str, size_t len, size_t pos, size_t end, bool __realloc);
+
+/**
+ * @brief A Macro that removes a portion of the string starting from a specific position.
+ *
+ * @param str The main string from which a portion will be removed. The content will be modified.
+ * @param pos The starting position in the main string to begin removing characters.
+ * @param end The number of characters to remove starting from the position `pos`.
+ * @param __realloc If true, the memory for the string will be reallocated to free unused space.
+ * @return Returns the size of the string if the removal was successful, -1 otherwise.
+ */
+#define str_remove(str, pos, end, __realloc) (ssize_t)strn_remove(str, strlen(str), old_substr, new_substr, force)
+
+/**
+ * @brief Replaces all occurrences of a substring within a string with another substring.
+ * 
+ * This function searches for all instances of `old_substr` within `str` and replaces them with `new_substr`. 
+ * If `new_substr` is an empty string, the function will reallocate the memory for `str` to remove unused space if `force` is true.
+ * 
+ * @param str Pointer to the string where the replacement will occur. The content of this string will be modified.
+ * @param len The length of the string `str`. This parameter allows specifying the maximum length to consider in the string.
+ * @param old_substr The substring that will be replaced.
+ * @param new_substr The substring that will replace `old_substr`. If this is an empty string, memory reallocation may occur based on `force`.
+ * @param force If true, the memory for `str` will be reallocated to free any unused space. If false, the memory will not be reallocated.
+ * 
+ * @return Returns the size of the modified string if the operation was successful, or -1 if an error occurred.
+ */
+void strn_replace(char* str, size_t len, const char * old_substr, const char * new_substr, bool force);
+
+/**
+ * @brief Macro for replacing a portion of a string with another substring.
+ * 
+ * This macro calls `strn_replace` with the full length of the string `str`. It provides a convenient way to replace substrings 
+ * without needing to specify the length of the string explicitly.
+ * 
+ * @param str The main string where replacements will be made. This string will be modified.
+ * @param old_substr The substring to be replaced.
+ * @param new_substr The substring that will replace `old_substr`. If this is an empty string, `force` determines if reallocation occurs.
+ * @param force If true, the memory for `str` will be reallocated to remove any unused space after replacement.
+ * 
+ * @return The result of the `strn_replace` function call. Note that this macro does not return a value directly.
+ */
+#define str_replace(str, old_substr, new_substr, force) (void)strn_replace(str, strlen(str), old_substr, new_substr, force)
+
+// This macro compares the first `maxCount` characters of two strings `str` and `str1`.
+// It uses `strncmp`, which returns 0 if the first `maxCount` characters of both strings are equal.
+// The macro expands to `strncmp(str, str1, maxCount)`, effectively performing the comparison.
+#define strn_equal(str, str1, maxCount) strncmp(str, str1, maxCount)
+
+// This macro compares two strings `str` and `str1` using `strcmp`.
+// It checks if the entire strings are equal, returning 0 if they are.
+// It should be `strcmp(str, str1)` without the `maxCount` parameter.
+#define str_equal(str, str1) strcmp(str, str1)
+
 
 /**
  * @brief Free memory allocated for a string.

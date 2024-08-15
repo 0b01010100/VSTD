@@ -9,7 +9,7 @@ char * str_create_ex(const char * str, bool allocate)
     return strn_create_ex(str, strlen(str), allocate);
 }
 
-const char * strn_create_ex(const char * str, size_t size, bool allocate)
+char * strn_create_ex(const char * str, size_t size, bool allocate)
 {
     if (str == NULL) return NULL;
 
@@ -25,7 +25,7 @@ const char * strn_create_ex(const char * str, size_t size, bool allocate)
     //view
     else
     {
-        return str;
+        return (char*)str;
     }
 }
 
@@ -59,17 +59,6 @@ char* str_append(char* __stream, size_t __n, const char* format, ...)
     return buffer;
 }
 
-char * str_sub(const char * src, size_t sub_start, size_t sub_end)
-{
-    return str_nsub(src, strlen(src), sub_start, sub_end);
-}
-
-char * str_nsub(const char * src, size_t src_size, size_t sub_start, size_t sub_end)
-{
-    if(src == NULL || src_size == sub_start || sub_end == 0 || sub_start == src_size) return NULL;
-   char * sub = calloc((sub_end - sub_start) + 1, 1);
-   sub = strncpy(sub, src + sub_start, sub_end - sub_start);
-}
 char * str_upper(char * str)
 {
     if(str == NULL) return NULL;
@@ -196,15 +185,15 @@ char * str_apn(char * str, const double number)
 }
 
 char* str_insert(char* dest, size_t index, const char* substr){
-    return str_ninsert(dest, strlen(dest), index, substr);
+    return strn_insert(dest, strlen(dest), index, substr);
 }
 
-char* str_ninsert(char* dest, size_t dest_size, size_t index, const char* substr)
+char* strn_insert(char* dest, size_t dest_size, size_t index, const char* substr)
 {
-    return str_ninsert_s(dest, dest_size, index, substr, strlen(substr));
+    return strn_insert_s(dest, dest_size, index, substr, strlen(substr));
 }
 
-char* str_ninsert_s(char* dest, size_t dest_size, size_t index, const char* substr, size_t ss_len)
+char* strn_insert_s(char* dest, size_t dest_size, size_t index, const char* substr, size_t ss_len)
 {
     if (!dest || !substr) return NULL;
 
@@ -229,7 +218,7 @@ char* str_ninsert_s(char* dest, size_t dest_size, size_t index, const char* subs
     }
     //inserting between existing characters
     else{
-        char *a = str_nsub(dest, dest_size, 0, index);
+        char *a = strn_create_ex(dest + 0,index, false);
         char *b = str_create_ex(dest + index, true);
 
         size_t a_len = a ? strlen(a) : 0;
@@ -280,10 +269,11 @@ char* str_findl(const char* str, const char* substr) {
     return NULL;
 }
 
-char* str_findf(const char* str, const char* substr) {
-    if (!str || !substr) return NULL;
+char* strn_findf(const char* str, size_t len, const char* substr) 
+{
+    if (!str || len == 0 || !substr) return NULL;
     
-    size_t str_len = strlen(str);
+    size_t str_len = len;
     size_t substr_len = strlen(substr);
     
     if (substr_len == 0) return (char*)str + str_len;
@@ -335,8 +325,7 @@ char * str_join(char ** str_array, size_t count, const char * delimiter)
     }
 
     char * res = calloc(total_len + 1, 1);
-    res[0] = '\0';
-
+    
     for (size_t i = 0; i < count; ++i) {
         strcat(res, str_array[i]);
         if (i < count - 1) {
@@ -344,14 +333,16 @@ char * str_join(char ** str_array, size_t count, const char * delimiter)
         }
     }
 
+    res[total_len] = '\0';
+
     return res;
 }
 
-char* str_trim(char * str, const char * substr)
+char* strn_trim(char * str, size_t len, const char * substr)
 {
-    if (str == NULL || substr == NULL) return NULL;
+    if (str == NULL || len == 0 || substr == NULL) return NULL;
 
-    size_t str_len = strlen(str);
+    size_t str_len = len;
     size_t substr_len = strlen(substr);
 
     if (substr_len == 0) return str;
@@ -384,57 +375,59 @@ char* str_trim(char * str, const char * substr)
     return str;
 }
 
-bool strn_remove(char* *str, size_t *len, size_t pos, size_t end, bool __realloc)
+ssize_t strn_remove(char* str, size_t len, size_t pos, size_t end, bool __realloc)
 {
-    if (!str || !*str || pos >= *len || end == 0) return false;
+    if (!str || !str || pos >= len || end == 0) return -1;
 
-    if (pos + end > *len) return false;
+    if (pos + end > len) return -1;
 
+    memmove(str + pos, str + pos + end, len - (pos + end) + 1);
     
-    memmove(*str + pos, *str + pos + end, *len - (pos + end) + 1);
-
+    //if true realloc to close gaps. Ex: ("\b" or " " or '32') to ("")
     if (__realloc) {
-        char * __new = (char*)realloc(str, (*len + 1) * sizeof(char));
-        if (!__new) return false;
+        //checks if the data need to be reallocated for me
+        char * __new = (char*)realloc(str, (len + 1) * sizeof(char));
+        if (!__new) return -1;
 
-        *str = __new;
-        *len -= end; 
-        str[*len] = '\0';
+        str = __new;
+        len -= end; 
+        str[len] = '\0';
+        return len;
     }
 
-    return true;
+    return len;
 }
 
-#include <vdef.h>
-void strn_replace_s(char** str, size_t len, const char * old_substr, size_t len1, const char * new_substr, size_t len2, bool force)
+void strn_replace(char* str, size_t len, const char * old_substr, const char * new_substr, bool force)
 {
-   
-    vTODO("Finish: strn_replace_s, but add more strn and _s functions first");
-    // if(!str || !old_substr || !new_substr || strcmp(str, new_substr) == 0) return;
+    if(!str || !old_substr || !new_substr || strcmp(str, new_substr) == 0) return;
 
-    // size_t str_len = len;
-    // size_t old_substr_len = len1;
-    // size_t new_substr_len = len2;
+    size_t str_len = len;
+    size_t old_substr_len = strlen(old_substr); 
+    size_t new_substr_len = strlen(new_substr); 
 
-    // //if false we will realloc and instert even though new_substr_len > old_substr_len 
-    // if(new_substr_len > old_substr_len && !force) return;
-
-
-    // char* view;
-    // str_findf(&view, str, old_substr);
+    //if false we will realloc and instert even though new_substr_len > old_substr_len 
+    if(new_substr_len > old_substr_len && !force) return;
     
-    // size_t pos = 0;
-    // while ((pos = str_findf(str, old_substr)) != -1) {
+    char *found_ptr = NULL;
+    while ((found_ptr = strn_findf(str, len, old_substr)) != NULL) {
         
-    //     //remove old substring
-    //     strn_remove(&str, &pos, old_substr_len, true);
+        // pointer to index
+        size_t pos = found_ptr - str;
 
-    //     //insert new substring
-    //     vstr_insert(str, pos, new_substr);
+        //remove old substring
+        strn_remove(str, len, pos, old_substr_len, true);
+        len -= old_substr_len;
+
+        //insert new substring(even if the substring is too big)
+        str_insert(str, pos, new_substr);
         
-    //     //adjust position to continue searching
-    //     pos += new_substr_len;
-    // }
+        //adjust position to continue searching
+        pos += new_substr_len;
+
+        //update the length after insertion
+        len += new_substr_len;
+    }
 }
 
 void str_free(char * src)

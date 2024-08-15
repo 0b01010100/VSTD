@@ -6,17 +6,23 @@
 
 #ifndef __vfs__
 #define __vfs__
-#include <stdbool.h>
-#include <stdint.h>
+#include <stdbool.h> //for bool
+#include <stdint.h> // for size_t and ssize_t
 //WHY WINDOWS :=(
 #if defined(WIN32) || defined(_WIN32) || defined(WIN64) || defined(_WIN64)
 #include <BaseTsd.h>
 typedef SSIZE_T ssize_t;
 typedef SIZE_T size_t;
 #endif
-typedef const char* vfs_Path;
 
+// Represents that path of a file
+typedef char* vfs_Path;
+
+// Represents something like a constructor to make code understandable 
 #define vfs_PATH(str) str
+
+// Represents something like a constructor to make code understandable 
+#define vfs_TEXT(string) string
 
 #ifdef __cplusplus
 extern "C"{
