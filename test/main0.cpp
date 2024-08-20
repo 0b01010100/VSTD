@@ -3,13 +3,23 @@
 #include <vstr.h>
 #include <vstring.h>
 #include <vfs.h>
-int main() 
-{
+#include <vstack.h>
 
-    vstr s;
-    vstr_create_ex(&s, STR_("ssd"), strlen("ssd"), true);
-    vstr bias = VSTR(" ");
-    vstr_remove(&s, 0, 1, 1);
-    printf("%d", s.len);
+int main() 
+{   
+    vstack * s = vstack_create(int, 2, .75, NULL);
+    
+    int d = 2;
+    
+    vstack_push(s, &d);
+    vstack_push(s, &d);
+    vstack_push(s, &d);
+    vstack_push(s, &d);
+    vstack_pop(s, 0);
+ 
+    int * e = (int*)vstack_peek(s, 0);
+    printf("%d",  *e);
+    e = (int*)vstack_peek(s, 1);
+    printf("%d",  *e);//won't work right
     return 0;
 }

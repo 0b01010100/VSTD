@@ -113,6 +113,13 @@
     "vstring.h": "c",
     "vdef.h": "c",
     "stdint-gcc.h": "c",
-    "cstdint": "c"
+    "cstdint": "c",
+    "pthread.h": "c",
+    "pthread_compat.h": "c",
+    "pthread_unistd.h": "c",
+    "vstack.h": "c",
+    "vector": "c",
+    "sstream": "c",
+    "threads.h": "c"
   }
 }

@@ -182,6 +182,8 @@ char * str_apn(char * str, const double number)
     char* result = (char*)realloc(ptr,  str_len + temp_len + 1);
     //append number to back of the string
     strcat(result, temp);
+
+    return result;
 }
 
 char* str_insert(char* dest, size_t index, const char* substr){
