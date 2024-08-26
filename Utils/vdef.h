@@ -3,6 +3,58 @@
 #include <stddef.h>
 #include <assert.h>
 
+//bool
+typedef int vbool;
+#define vtrue (1)
+#define vfalse (0)
+
+//versions
+
+#ifdef __STDC_VERSION__
+    #if __STDC_VERSION__ >= 202311L
+        //C23
+        #define vC23 1
+    #elif __STDC_VERSION__ >= 202000L
+        //C20
+        #define vC20 1
+    #elif __STDC_VERSION__ >= 201710L
+        //C17
+        #define vC17 1
+    #elif __STDC_VERSION__ >= 201112L
+        //C11
+        #define vC11 1
+    #elif __STDC_VERSION__ >= 199901L
+        //C98/C99
+        #define vC99 1
+    #endif
+#endif
+
+
+//generics
+
+//oddly MSVC can supports __typeof__ but as an extenstion, so it is supported 
+//in all C version even though the ideal of typeof was introduced in C23.
+//define vForce to force the defining of __typeof__
+#if defined(_MSC_VER) && defined(vC23) || defined(vForce)
+    // Returns the type of an expression during compile time
+    // https://learn.microsoft.com/en-us/cpp/c-language/typeof-c?view=msvc-170
+    // @ note on MSVC intellisense will lie to you
+        #define vtypeof __typeof__ 
+#elif defined(vC23) && defined(__clang__) || defined(__GNUC__)
+    // Returns the type of an expression during compile time
+    // https://learn.microsoft.com/en-us/cpp/c-language/typeof-c?view=msvc-170
+        #define vtypeof typeof
+    #endif
+
+
+#if defined(vC11)
+    // Maps a type with a string
+    // Like key value pairs(key = type, value = str)
+    // https://learn.microsoft.com/en-us/cpp/c-language/generic-selection?view=msvc-170
+    #define vTypeName _Generic 
+#endif
+
+
 /**
  * @brief Macro to mark TODO items in the code.
  * 
@@ -22,7 +74,7 @@
 #define vTODO(msg) assert(false && "TODO: " #msg)
 
 
-#ifdef _WIN32
+#if defined(WIN32) || defined(_WIN32) || defined(WIN64) || defined(_WIN64)
   #ifdef _MSC_VER
     /**
      * @brief Marks a symbol for export from a DLL when using Microsoft Visual C++.
@@ -37,7 +89,7 @@
      * @endcode
      */
     #define VEXPORT __declspec(dllexport)
-  #else
+  #else//g++/gcc and other
     /**
      * @brief Marks a symbol for export from a DLL when using non-MSVC compilers on Windows.
      * 
@@ -130,6 +182,16 @@
 #define VSET_SYMBOL
 #endif
 
+#if defined(_MSC_VER)
+
+// LIKE alignas(N) in C++
+#define Valign(N) __declspec(align(N))
+
+#else
+// LIKE alignas(N) in C++
+#define Valign(N) __attribute__((aligned(N)))
+
+#endif
 
 #ifdef __cplusplus
 /**

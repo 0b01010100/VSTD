@@ -2,6 +2,18 @@ cmake_minimum_required(VERSION 3.22)
 
 project(VUTLlS_TEST LANGUAGES C CXX)
 
+
+if(MSVC)
+  add_compile_options(/std:c11) # Or /std:c++20 for C++20
+else()
+# Set the C standard to C23
+set(CMAKE_C_STANDARD 23)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+set(CMAKE_C_EXTENSIONS OFF) # To disable compiler-specific extensions
+endif()
+
+
+
 #check Platform
 if(WIN32 OR _WIN32 OR WIN64 OR _WIN64)
     # Windows-specific setup
@@ -25,7 +37,7 @@ endif()
 
 add_subdirectory(Utils)
 
-add_executable(VUTLlS_TEST test/main0.cpp)
+add_executable(VUTLlS_TEST test/main0.c)
 
 target_link_libraries(VUTLlS_TEST PUBLIC VUtils)
 
