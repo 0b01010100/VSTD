@@ -15,7 +15,8 @@ typedef enum VSTACK_FIELD
     VSTACK_FIELD_STRIDE          = 1,  /**< Size of each element in the stack */
     VSTACK_FIELD_LENGTH          = 2,  /**< Current number of elements in the stack */
     VSTACK_FIELD_CAPACITY        = 3,  /**< Maximum number of elements the stack can hold */
-    VSTACK_FIELD_SCALE_PERCENT   = 4   /**< Scale factor for dynamic resizing, in percentage */
+    VSTACK_FIELD_SCALE_PERCENT   = 4,   /**< Scale factor for dynamic resizing, in percentage */
+    VSTACK_FIELD_DTOR            = 5   /**< Destructor function for each element */
 } VSTACK_FIELD;
 
 /**
@@ -56,33 +57,25 @@ vstack* _vstack_create(size_t stride, size_t initial_capacity, double scale_fact
  * @param field Field to retrieve, specified by the VSTACK_FIELD enum.
  * @return Value of the requested field.
  */
-size_t vstack_get_field(vstack* sk, VSTACK_FIELD field);
+const void* vstack_get_field(vstack* sk, VSTACK_FIELD field);
 
 /**
- * @brief Resizes the vstack to a new capacity.
+ * @brief Retrieves a specific field's value from the vstack.
  *
  * @param sk Pointer to the vstack.
- * @param capacity New capacity for the stack.
- * @return 0 on success, or -1 on failure.
+ * @param field Field to retrieve, specified by the VSTACK_FIELD enum.
+ * @note only VSTACK_FIELD_SCALE_PERCENT && VSTACK_FIELD_DTOR are set able
+ * @return Value of the requested field.
  */
-int vstack_resize(vstack* sk, size_t capacity);
-
-/**
- * @brief Returns a pointer to the raw data in the vstack.
- *
- * @param sk Pointer to the vstack.
- * @return Pointer to the raw data.
- */
-const void * vstack_data(vstack* sk);
+void vstack_set_field(vstack* sk, VSTACK_FIELD field, void* value);
 
 /**
  * @brief Returns a pointer to the element at the specified index in the vstack.
  *
  * @param sk Pointer to the vstack.
- * @param index Index of the element to retrieve.
- * @return Pointer to the element at the specified index, or NULL if the index is out of range.
+ * @return Pointer to the top element of the stack.
  */
-void * vstack_peek(vstack* sk, size_t index);
+void * vstack_peek(vstack* sk);
 
 /**
  * @brief Pushes a new item onto the vstack.
@@ -97,9 +90,8 @@ int vstack_push(vstack* sk, const void* item);
  * @brief Pops the item at the specified index from the vstack.
  *
  * @param sk Pointer to the vstack.
- * @param index Index of the item to pop.
  */
-void vstack_pop(vstack* sk, size_t index);
+void vstack_pop(vstack* sk);
 
 /**
  * @brief Destroys the vstack and frees associated memory.

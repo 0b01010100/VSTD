@@ -3,11 +3,6 @@
 #include <stddef.h>
 #include <assert.h>
 
-//bool
-typedef int vbool;
-#define vtrue (1)
-#define vfalse (0)
-
 //versions
 
 #ifdef __STDC_VERSION__
@@ -47,11 +42,59 @@ typedef int vbool;
     #endif
 
 
-#if defined(vC11)
+#if defined(vC11) || defined(vC17) || defined(vC20) || defined(vC23)
     // Maps a type with a string
     // Like key value pairs(key = type, value = str)
     // https://learn.microsoft.com/en-us/cpp/c-language/generic-selection?view=msvc-170
-    #define vTypeName _Generic 
+    #define vtypename _Generic
+
+    //get the typeof an variable as a string
+    //@ref at https://stackoverflow.com/questions/9804371/syntax-and-sample-usage-of-generic-in-c11
+    // Get the typename of a variable as a string
+    #define vtypename_(x) vtypename((x),       \
+        _Bool: "_Bool",                        \
+        \
+        char: "char",                          \
+        unsigned char: "unsigned char",        \
+        signed char: "char",                    \
+        \
+        short: "short",                        \
+        unsigned short: "unsigned short",      \
+        \
+        int: "int",                            \
+        unsigned int: "unsigned int",          \
+        \
+        long: "long",                          \
+        unsigned long: "unsigned long",        \
+        \
+        long long: "long long",                \
+        unsigned long long: "unsigned long long", \
+        \
+        float: "float",                        \
+        double: "double",                      \
+        long double: "long double",            \
+        \
+        _Bool *: "_Bool*",          \
+        \
+        char *: "char*",              \
+        signed char *: "char*",\
+        unsigned char *: "unsigned char*", \
+        \
+        short *: "short*",               \
+        unsigned short *: "unsigned short*",\
+        \
+        int *: "int*",               \
+        unsigned int *: "unsigned int*",\
+        \
+        long *: "long*",\
+        unsigned long *: "unsigned long*",\
+        \
+        float *: "float*",               \
+        double *: "double*",               \
+        long double *: "long double*",            \
+        \
+        void *: "void*",             \
+        default: "unknown")
 #endif
 
 

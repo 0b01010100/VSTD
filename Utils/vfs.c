@@ -14,6 +14,7 @@ int vfs_touch(vfs_Path path)
     }
 
     fclose(file);
+    return 0;
 }
 
 #if defined(WIN32) || defined(_WIN32) || defined(WIN64) || defined(_WIN64)
@@ -221,7 +222,7 @@ ssize_t vfs_cat(vfs_Path* path_OR_str, const char* src, bool file)
 {
     if(!path_OR_str || !src) return -1;
 
-    size_t out_len;
+    size_t out_len = 0;
     size_t src_len = strlen(src);
     char * str = NULL;
     if(file == true)

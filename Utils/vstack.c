@@ -5,15 +5,15 @@
 
 typedef struct vstack
 {
-    size_t stride;  // Size of each item
-    size_t size;    // Number of items
-    size_t capacity; // Current capacity
-    double scale;   // Resize scale factor
-    unsigned char* data; // Stack data
+    size_t stride;       // Size of each item
+    size_t size;         // Number of items
+    size_t capacity;     // Current capacity
+    double scale;        // Resize scale factor
+    unsigned char* data; // Stack data(has to be an uchar* becuase cl(msvc) is wierd with pointer math)
     vstack_el_dtor dtor; // Element Destructor
 } vstack;
 
-void vstack_defdtor(void * element, size_t size)
+void __def_vstack_dtor(void * element, size_t size)
 {
     if (element) {
         memset(element, '\0', size);
@@ -30,7 +30,7 @@ vstack* _vstack_create(size_t stride, size_t initial_capacity, double scale_fact
     sk->capacity = initial_capacity;
     sk->scale = scale_factor;
     sk->data = (unsigned char*)malloc(initial_capacity * stride);
-    sk->dtor = (dtor)? dtor : vstack_defdtor;
+    sk->dtor = (dtor)? dtor : __def_vstack_dtor;
     if (!sk->data) {
         free(sk);
         return NULL;
@@ -39,21 +39,34 @@ vstack* _vstack_create(size_t stride, size_t initial_capacity, double scale_fact
     return sk;
 }
 
-size_t vstack_get_field(vstack* sk, VSTACK_FIELD field)
+const void* vstack_get_field(vstack* sk, VSTACK_FIELD field)
 {
     if (!sk) return 0;
 
     switch (field)
     {
-        case VSTACK_FIELD_STRIDE: return sk->stride;
-        case VSTACK_FIELD_LENGTH: return sk->size;
-        case VSTACK_FIELD_CAPACITY: return sk->capacity;
-        case VSTACK_FIELD_SCALE_PERCENT: return (size_t)(sk->scale * 100);
+        case VSTACK_FIELD_STRIDE:       return &sk->stride;
+        case VSTACK_FIELD_LENGTH:       return &sk->size;
+        case VSTACK_FIELD_CAPACITY:     return &sk->capacity;
+        case VSTACK_FIELD_SCALE_PERCENT:return &sk->scale;
+        case VSTACK_FIELD_DTOR:         return &sk->dtor;
         default: return 0;
     }
 }
 
-int vstack_diolate(vstack* sk)
+void vstack_set_field(vstack* sk, VSTACK_FIELD field, void* value)
+{
+    if (!sk) return;
+
+    switch (field)
+    {
+        case VSTACK_FIELD_SCALE_PERCENT:sk->scale    = *((double*)value);
+        case VSTACK_FIELD_DTOR:         sk->dtor     = *((vstack_el_dtor)value);
+        default: return;
+    }
+}
+
+int vstack_scale(vstack* sk)
 {
     if (!sk) return -1;
 
@@ -72,35 +85,9 @@ int vstack_diolate(vstack* sk)
     return 0;
 }
 
-int vstack_resize(vstack* sk, size_t capacity)
-{
-    if (!sk) return -1;
-    if(capacity < sk->size)
-    {
-        for (size_t i = 0; i < sk->size - capacity; i++)
-        {
-            sk->dtor((sk->data+(sk->stride * i)), sk->stride);
-            //memset((sk->data+(sk->stride * i)), 0, sk->stride);
-            sk->size--;
-        }
-    }
-    unsigned char* new_data = (unsigned char*)realloc(sk->data, capacity * sk->stride);
-    if (!new_data) return -1;
-
-    sk->data = new_data;
-    sk->capacity = capacity;
-
-    return 0;
-}
-
-const void* vstack_data(vstack* sk)
-{
-    return sk->data;
-}
-
-void* vstack_peek(vstack* sk, size_t index)
-{
-    return (index >= sk->size) ? NULL : sk->data + ((sk->size - 1 - index) * sk->stride);
+void* vstack_peek(vstack* sk)
+{   
+    return (sk)? (void*)(sk->data[(sk->size - 1) * sk->stride]) : NULL;
 }
 
 int vstack_push(vstack* sk, const void* item)
@@ -109,7 +96,7 @@ int vstack_push(vstack* sk, const void* item)
 
     if (sk->size >= sk->capacity)
     {
-        if (vstack_diolate(sk) != 0) return -1;
+        if (vstack_scale(sk) == -1) return -1;
     }
 
     memcpy((sk->data) + sk->size * sk->stride, item, sk->stride);
@@ -118,13 +105,11 @@ int vstack_push(vstack* sk, const void* item)
     return 0;
 }
 
-void vstack_pop(vstack* sk, size_t index)
+void vstack_pop(vstack* sk)
 {
-    if (!sk || index >= sk->size) return;
+    if (!sk) return;
     
-    sk->dtor(sk->data + ((sk->size - 1 - index) * sk->stride), sk->stride);
-    
-    memmove(sk->data + index * sk->stride, sk->data + (index + 1) * sk->stride, (sk->size - index - 1) * sk->stride);
+    sk->dtor(sk->data + ((sk->size - 1) * sk->stride), sk->stride);
 
     sk->size--;
     sk->capacity++;
@@ -134,6 +119,9 @@ void vstack_destroy(vstack** sk)
 {
     if (sk && *sk)
     {
+        while((*sk)->size != 0){
+            vstack_pop(*sk);
+        }
         free((*sk)->data);
         free(*sk);
         *sk = NULL;

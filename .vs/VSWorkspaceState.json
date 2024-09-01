@@ -14,8 +14,8 @@
   "ExpandedNodes": [
     "",
     "\\out",
-    "\\test"
+    "\\test",
+    "\\Utils"
   ],
-  "SelectedNode": "\\test\\main0.cpp",
   "PreviewInSolutionExplorer": false
 }
