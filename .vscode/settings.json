@@ -95,6 +95,10 @@
     "span": "c",
     "xiosbase": "c",
     "xstring": "c",
-    "vfs.h": "c"
+    "vfs.h": "c",
+    "vvector.h": "c",
+    "stdlib.h": "c",
+    "vstack.h": "c",
+    "stdio.h": "c"
   }
 }

@@ -37,7 +37,7 @@ endif()
 
 add_subdirectory(Utils)
 
-add_executable(VUTLlS_TEST test/array_test.c)
+add_executable(VUTLlS_TEST test/stack_test.c)
 
 target_link_libraries(VUTLlS_TEST PUBLIC VUtils)
 

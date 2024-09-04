@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <block.h>
+#include <vblock.h>
 #include <vstr.h>
 #include <vstring.h>
 #include <vfs.h>

@@ -1,4 +1,9 @@
 #include <stdint.h>
+/**
+ * @brief Provides extended functionality for manipulating memory
+ * tracks memory in a user frienly way unlike malloc
+ * @note does have memory allocation ovderhead, so only use this if you need better memory tracking
+*/
 
 /*
    block_ structure:
