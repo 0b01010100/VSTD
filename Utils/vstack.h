@@ -8,11 +8,11 @@
 extern "C" {
 #endif
 
-enum VSTACK_VER
+typedef enum VSTACK_VER /* : int*/
 {
     VSTACK_VER_0_0 = 0x0,
     VSTACK_VER_1_0 = 0x1
-};
+}VSTACK_VER;
 
 /**
  * @brief Enum for specifying which field to query from a vstack.
@@ -113,14 +113,15 @@ vstack1* _vstack1_create(size_t stride, size_t initial_capacity, double scale_fa
  * @param field Field to retrieve, specified by the VSTACK_FIELD enum.
  * @return Value of the requested field.
  */
-const void* vstack_get_field(vstack* sk, VSTACK_FIELD field);
+size_t vstack_get_field(vstack* sk, VSTACK_FIELD field);
 
 /**
  * @brief Retrieves a specific field's value from the vstack.
  *
  * @param sk Pointer to the vstack.
  * @param field Field to retrieve, specified by the VSTACK_FIELD enum.
- * @note Only VSTACK_FIELD_SCALE_PERCENT && VSTACK_FIELD_DTOR are set able
+ * @param value New value of a field.
+ * @note VSTACK_FIELD_STRIDE is not setable.
  * @return Value of the requested field.
  */
 void vstack_set_field(vstack* sk, VSTACK_FIELD field, void* value);

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-
+#include <math.h>
 typedef struct vstack
 {
     size_t ver;
@@ -77,6 +77,9 @@ vstack1* _vstack1_create(size_t stride, size_t initial_capacity, double scale_fa
     sk->capacity = initial_capacity;
     sk->scale = scale_factor;
     sk->data = (unsigned char*)malloc(initial_capacity * stride);
+
+    // version 1.0 stuff
+
     sk->ctor = (ctor)? ctor : __def_vstack_ctor;
     sk->cctor = (cctor)? cctor : __def_vstack_cctor;
     sk->dtor = (dtor)? dtor : __def_vstack_dtor;
@@ -88,28 +91,60 @@ vstack1* _vstack1_create(size_t stride, size_t initial_capacity, double scale_fa
     return (vstack1*)sk;
 }
 
-const void* vstack_get_field(vstack* sk, VSTACK_FIELD field)
+size_t vstack_get_field(vstack* sk, VSTACK_FIELD field)
 {
     if (!sk) return 0;
-
     switch (field)
     {
-        case VSTACK_FIELD_VER:          return &sk->ver;
-        case VSTACK_FIELD_STRIDE:       return &sk->stride;
-        case VSTACK_FIELD_LENGTH:       return &sk->size;
-        case VSTACK_FIELD_CAPACITY:     return &sk->capacity;
-        case VSTACK_FIELD_SCALE_PERCENT:return &sk->scale;
+        case VSTACK_FIELD_VER:          sk->ver;
+        case VSTACK_FIELD_STRIDE:       sk->stride;
+        case VSTACK_FIELD_LENGTH:       sk->size;
+        case VSTACK_FIELD_CAPACITY:     sk->capacity;
+        case VSTACK_FIELD_SCALE_PERCENT:sk->scale;
         default:                        break;
     }
-    if(sk->ver == VSTACK_VER_0_0) return NULL;
+    if(sk->ver == VSTACK_VER_0_0) return 0;
     // version 1.0 stuff
     switch (field)
     {
-        case VSTACK1_FIELD_CTOR:        return &((_vstack1*)sk)->ctor;
-        case VSTACK1_FIELD_CCTOR:       return &((_vstack1*)sk)->cctor;
-        case VSTACK1_FIELD_DTOR:        return &((_vstack1*)sk)->dtor;
+        case VSTACK1_FIELD_CTOR:        return (size_t)((_vstack1*)sk)->ctor;
+        case VSTACK1_FIELD_CCTOR:       return (size_t)((_vstack1*)sk)->cctor;
+        case VSTACK1_FIELD_DTOR:        return (size_t)((_vstack1*)sk)->dtor;
         default:                        return 0;
     }
+}
+
+inline int vstack_to_ver(vstack* sk, size_t ver){
+    if(ver == VSTACK_VER_1_0){
+        _vstack1 * new_data = (_vstack1 *)realloc(sk, sizeof(vstack) + (sizeof(vstack) + sizeof(_vstack1)));
+        new_data->ctor = __def_vstack_ctor;
+        new_data->cctor = __def_vstack_cctor;
+        new_data->dtor = __def_vstack_dtor;
+        if(!new_data) return -1;
+    }else{//VSTACK_VER_0_0
+        vstack * new_data = (vstack*)realloc(sk, sizeof(vstack));
+        if(!new_data) return -1;
+    }
+    return 0;
+}
+
+inline int vstack_resize(vstack* sk, size_t new_size) {
+    if (new_size > sk->capacity) {
+        
+        void* new_data = realloc(sk->data, new_size * sk->stride);
+        if (!new_data) return -1; 
+
+        sk->data = new_data;
+        sk->capacity = new_size; 
+    } else if (new_size < sk->size) {
+        
+        for (size_t i = sk->size; i != new_size; i--) {
+            vstack_pop(sk);
+        }
+    }
+
+    sk->size = new_size; 
+    return 0;
 }
 
 void vstack_set_field(vstack* sk, VSTACK_FIELD field, void* value)
@@ -118,6 +153,9 @@ void vstack_set_field(vstack* sk, VSTACK_FIELD field, void* value)
 
     switch (field)
     {
+        case VSTACK_FIELD_VER:           {vstack_to_ver(sk, *((size_t*)value)); return;}
+        case VSTACK_FIELD_CAPACITY:
+        case VSTACK_FIELD_LENGTH:        {(vstack_resize(sk, *((size_t*)value))); return;}
         case VSTACK_FIELD_SCALE_PERCENT: {(sk->scale = *((double*)value)); return;};
         default: break;
     }
@@ -125,9 +163,9 @@ void vstack_set_field(vstack* sk, VSTACK_FIELD field, void* value)
     // version 1.0 stuff
     switch (field)
     {
-        case VSTACK1_FIELD_CTOR:        { &((_vstack1*)sk)->ctor; return;}
-        case VSTACK1_FIELD_CCTOR:       { &((_vstack1*)sk)->cctor; return;}
-        case VSTACK1_FIELD_DTOR:        { &((_vstack1*)sk)->dtor; return;}
+        case VSTACK1_FIELD_CTOR:        {((_vstack1*)sk)->ctor; return;}
+        case VSTACK1_FIELD_CCTOR:       {((_vstack1*)sk)->cctor; return;}
+        case VSTACK1_FIELD_DTOR:        {((_vstack1*)sk)->dtor; return;}
         default:                        return;
     }
 }
