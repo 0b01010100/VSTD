@@ -199,11 +199,6 @@ int vvector_scale(vvector* vec)
     return 0;
 }
 
-void* vvector_peek(vvector* vec)
-{   
-    return (vec)? &vec->data[(vec->size - 1) * vec->stride] : NULL;
-}
-
 int vvector_insert(vvector* vec, VVECTOR_SSIZE_T index, const void* original)
 {
     if (!vec || !original) return -1;
@@ -251,11 +246,11 @@ int vvector_push_back(vvector* vec, const void* original)
 
     int ret = 0;
     if (vec->ver == VVECTOR_VER_0_0){ 
-        ret = __def_vvector_cctor(vec->data + (vec->size), original, vec->stride);
+        ret = __def_vvector_cctor(vec->data + (vec->size * vec->stride), original, vec->stride);
     } 
     else 
     {
-        ret = ((_vvector1*)vec)->cctor(vec->data + (vec->size), original, vec->stride);
+        ret = ((_vvector1*)vec)->cctor(vec->data + (vec->size * vec->stride), original, vec->stride);
     }
 
     if(ret == -1) return -1;
@@ -321,11 +316,11 @@ int vvector_emplace_back(vvector* vec, size_t arg_count, ...)
 
     int ret = 0x0;
     if (vec->ver == VVECTOR_VER_0_0){ 
-        ret = __def_vvector_ctor(vec->data + (vec->size), vec->stride, &args, arg_count);
+        ret = __def_vvector_ctor(vec->data + (vec->size * vec->stride), vec->stride, &args, arg_count);
     } 
     else 
     {
-        ret = ((_vvector1*)vec)->ctor(vec->data + (vec->size), vec->stride, &args, arg_count);
+        ret = ((_vvector1*)vec)->ctor(vec->data + (vec->size * vec->stride), vec->stride, &args, arg_count);
     } 
 
     va_end(args);
@@ -356,6 +351,14 @@ static void _vvector_pop_at(vvector* vec, VVECTOR_SSIZE_T index)
         ((_vvector1*)vec)->dtor(vec->data + (nindex * vec->stride), vec->stride);
     }
 
+    // only shift if it's not the last element
+    if (nindex < vec->size - 1) 
+    {
+        memmove(vec->data + (nindex * vec->stride),
+                vec->data + ((nindex + 1) * vec->stride),
+               (vec->size - nindex - 1) * vec->stride);
+    }
+
     vec->size--;
     vec->capacity++;
 }
@@ -368,11 +371,21 @@ void vvector_pop_at(vvector* vec, VVECTOR_SSIZE_T index)
 
 void vvector_erase(vvector* vec, VVECTOR_SIZE_T first, VVECTOR_SIZE_T last)
 {
-    if (!vec || vec->size == 0 || first == last) return;
-    for (size_t i = first; i < last; i++)
+    if (!vec || vec->size == 0 || first >= last || last > vec->size) return;
+    for (VVECTOR_SIZE_T i = first; i < last + 1; i++)
     {
-        _vvector_pop_at(vec, i);
+        if (vec->ver == VVECTOR_VER_0_0) {
+            __def_vvector_dtor(vec->data + (i * vec->stride), vec->stride);
+        } else {
+            ((_vvector1*)vec)->dtor(vec->data + (i * vec->stride), vec->stride);
+        }
     }
+    if (last < vec->size) {
+        memmove(vec->data + (first * vec->stride), 
+                vec->data + (last * vec->stride), 
+                (vec->size - last) * vec->stride);
+    }
+    vec->size -= (last - first + 1);
 }
 
 void vvector_clear(vvector* vec)
@@ -382,6 +395,7 @@ void vvector_clear(vvector* vec)
     {
         _vvector_pop_at(vec, i);
     }
+    vec->size = 0x0;
 }
 
 void vvector_swap(vvector* lhs, vvector* rhs)

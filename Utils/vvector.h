@@ -2,17 +2,24 @@
 #define __vvector__
 //@ref at: https://en.cppreference.com/w/cpp/container/vector
 #include <stdint.h>
+//same as size_t
 typedef uint64_t VVECTOR_SIZE_T;
+//same as ssize_t
 typedef int64_t VVECTOR_SSIZE_T;
-#include <stdarg.h>
+#include <stdarg.h> // <---- will be useful for the emplace functions
 
+//Represents the front index of a vector
 #define VVECTOR_FRONT (0)
+//Represents the back index of a vector
 #define VVECTOR_BACK (-1)
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+/**
+ * @brief Version of the vvector type
+*/
 typedef enum VVECTOR_VER /* : int*/
 {
     VVECTOR_VER_0_0 = 0x0,
@@ -22,7 +29,7 @@ typedef enum VVECTOR_VER /* : int*/
 /**
  * @brief Enum for specifying which field to query from a vvector.
 */
-typedef enum VVECTOR_FIELD
+typedef enum VVECTOR_FIELD /* : int*/
 {
 
     VVECTOR_FIELD_VER             = 0,  /**< version of the vvector structure */
