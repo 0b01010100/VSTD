@@ -99,6 +99,9 @@
     "vvector.h": "c",
     "stdlib.h": "c",
     "vstack.h": "c",
-    "stdio.h": "c"
+    "stdio.h": "c",
+    "stdint.h": "c",
+    "stdarg.h": "c",
+    "basetsd.h": "c"
   }
 }
