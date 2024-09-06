@@ -24,6 +24,18 @@
     #endif
 #endif
 
+//https://learn.microsoft.com/en-us/cpp/cpp/extension-restrict?view=msvc-170
+
+#if defined(_MSC_VER)
+    /*Making sure there is no overlapping memory regions.*/
+    #define VRESTRICT __restrict
+#elif defined(__GNUC__) || defined(__clang__)
+    /*Making sure there is no overlapping memory regions.*/
+    #define VRESTRICT __restrict__
+#else
+    /*Making sure there is no overlapping memory regions.*/
+    #define VRESTRICT restrict
+#endif
 
 //generics
 
