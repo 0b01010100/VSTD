@@ -96,11 +96,11 @@ size_t vstack_get_field(vstack* sk, VSTACK_FIELD field)
     if (!sk) return 0;
     switch (field)
     {
-        case VSTACK_FIELD_VER:          sk->ver;
-        case VSTACK_FIELD_STRIDE:       sk->stride;
-        case VSTACK_FIELD_LENGTH:       sk->size;
-        case VSTACK_FIELD_CAPACITY:     sk->capacity;
-        case VSTACK_FIELD_SCALE_PERCENT:sk->scale;
+        case VSTACK_FIELD_VER:          return sk->ver;
+        case VSTACK_FIELD_STRIDE:       return sk->stride;
+        case VSTACK_FIELD_LENGTH:       return sk->size;
+        case VSTACK_FIELD_CAPACITY:     return sk->capacity;
+        case VSTACK_FIELD_SCALE_PERCENT:return sk->scale;
         default:                        break;
     }
     if(sk->ver == VSTACK_VER_0_0) return 0;
@@ -262,6 +262,16 @@ void vstack_pop(vstack* sk)
 
     sk->size--;
     sk->capacity++;
+}
+
+void vstack_clear(vstack* sk)
+{
+    if (!sk || sk->size == 0) return;
+    for (size_t i = 0; i < sk->size; i++)
+    {
+        vstack_pop(sk, i);
+    }
+    sk->size = 0x0;
 }
 
 void vstack_destroy(vstack** sk)

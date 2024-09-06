@@ -127,6 +127,14 @@ size_t vstack_get_field(vstack* sk, VSTACK_FIELD field);
 void vstack_set_field(vstack* sk, VSTACK_FIELD field, void* value);
 
 /**
+ * @brief checks whether the container is empty.
+ *
+ * @param vec Pointer to the vstack.
+ * @return 0 = FALSE, 1 = TRUE, -1 = ERROR
+*/
+#define vstack_empty(vec) (vstack_get_field(vec, VSTACK_FIELD_LENGTH) == 0X0)
+
+/**
  * @brief Returns a pointer to the element at the specified index in the vstack.
  *
  * @param sk Pointer to the vstack.
