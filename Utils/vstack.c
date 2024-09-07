@@ -269,7 +269,7 @@ void vstack_clear(vstack* sk)
     if (!sk || sk->size == 0) return;
     for (size_t i = 0; i < sk->size; i++)
     {
-        vstack_pop(sk, i);
+        vstack_pop(sk);
     }
     sk->size = 0x0;
 }

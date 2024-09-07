@@ -8,6 +8,18 @@ typedef uint64_t VVECTOR_SIZE_T;
 typedef int64_t VVECTOR_SSIZE_T;
 #include <stdarg.h> // <---- will be useful for the emplace functions
 
+
+#if defined(_MSC_VER)
+    /*Making sure there is no overlapping memory regions.*/
+    #define VVECTOR_FTN_RESTRICT __restrict
+#elif defined(__GNUC__) || defined(__clang__)
+    /*Making sure there is no overlapping memory regions.*/
+    #define VVECTOR_FTN_RESTRICT __restrict__
+#else
+    /*Making sure there is no overlapping memory regions.*/
+    #define VVECTOR_FTN_RESTRICT restrict
+#endif
+
 //Represents the front index of a vector
 #define VVECTOR_FRONT (0)
 //Represents the back index of a vector
@@ -267,11 +279,12 @@ void vvector_erase(vvector* vec, VVECTOR_SIZE_T first, VVECTOR_SIZE_T last);
 void vvector_clear(vvector* vec);
 
 /**
- * @brief Erases all elements from the container.
- *
- * @param vec Pointer to the vvector.
+ * @brief Exchanges the contents and capacity of the container with those of `rhs`.
+ * Does not invoke any move, copy, or swap operations on individual elements.
+ * @param lhs Pointer ONE vvector.
+ * @param rhs Pointer ANOTHER vvector.
 */
-void vvector_swap(vvector* lhs, vvector* rhs);
+void vvector_swap(vvector* VVECTOR_FTN_RESTRICT lhs, vvector* VVECTOR_FTN_RESTRICT rhs);
 
 /**
  * @brief Requests the removal of unused capacity.
@@ -283,9 +296,15 @@ void vvector_shrink_to_fit(vvector* vec);
 /**
  * @brief Destroys the vvector and frees associated memory.
  *
- * @param vec Pointer to a pointer to the vvector. The pointer will be set to NULL after destruction.
 */
 void vvector_destroy(vvector** vec);
+
+#define vvector_foreach(vec, it, func) \
+    while (vec)\
+    {\
+       \
+    }\
+    
 
 #ifdef __cplusplus
 }
