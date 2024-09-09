@@ -8,18 +8,6 @@ typedef uint64_t VVECTOR_SIZE_T;
 typedef int64_t VVECTOR_SSIZE_T;
 #include <stdarg.h> // <---- will be useful for the emplace functions
 
-
-#if defined(_MSC_VER)
-    /*Making sure there is no overlapping memory regions.*/
-    #define VVECTOR_FTN_RESTRICT __restrict
-#elif defined(__GNUC__) || defined(__clang__)
-    /*Making sure there is no overlapping memory regions.*/
-    #define VVECTOR_FTN_RESTRICT __restrict__
-#else
-    /*Making sure there is no overlapping memory regions.*/
-    #define VVECTOR_FTN_RESTRICT restrict
-#endif
-
 //Represents the front index of a vector
 #define VVECTOR_FRONT (0)
 //Represents the back index of a vector
@@ -284,7 +272,7 @@ void vvector_clear(vvector* vec);
  * @param lhs Pointer ONE vvector.
  * @param rhs Pointer ANOTHER vvector.
 */
-void vvector_swap(vvector* VVECTOR_FTN_RESTRICT lhs, vvector* VVECTOR_FTN_RESTRICT rhs);
+void vvector_swap(vvector* lhs, vvector* rhs);
 
 /**
  * @brief Requests the removal of unused capacity.

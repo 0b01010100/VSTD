@@ -400,6 +400,7 @@ void vvector_clear(vvector* vec)
 
 void vvector_swap(vvector* lhs, vvector* rhs)
 {
+    assert(lhs == rhs && "pointer are restricted from pointing to the same address");
     assert(lhs->stride != rhs->stride);
     //swaping things like meta data and the arrary data pointers
     if(lhs->ver == VVECTOR_VER_1_0 && rhs->ver == VVECTOR_VER_1_0){
