@@ -57,6 +57,12 @@
   "C_Cpp_Runner.useLinkTimeOptimization": false,
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "files.associations": {
-    "windowsx.h": "c"
+    "windowsx.h": "c",
+    "windows.h": "c",
+    "threadpoollegacyapiset.h": "c",
+    "apiset.h": "c",
+    "_mingw.h": "c",
+    "pthread.h": "c",
+    "strsafe.h": "c"
   },
 }

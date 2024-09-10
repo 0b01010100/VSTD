@@ -315,6 +315,7 @@ typedef unsigned short vdword;      // Unsigned 16-bit integer
 typedef unsigned long long vqword;  // Unsigned 64-bit integer
 
 typedef char vchar;                 // Signed 8-bit integer
+typedef wchar_t vwchar;             // Signed 16-bit integer
 typedef short vshort;               // Signed 16-bit integer
 typedef long long vlong;            // Signed 64-bit integer
 #endif

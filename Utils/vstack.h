@@ -58,7 +58,7 @@ typedef int (*vstack1_el_cctor)(void * location, const void * original, size_t s
 /**
  * @brief Represents a destructor function to be called for each element when the stack is destroyed,
 */
-typedef void (*vstack1_el_dtor)(void  * location, size_t size);
+typedef void (*vstack1_el_dtor)(void * location, size_t size);
 
 /**
  * @brief Creates a vstack with the specified element stride, initial capacity, and scale factor.

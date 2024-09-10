@@ -41,12 +41,11 @@ int __def_vvector_cctor(void * location, const void * original, size_t size)
     return 0;
 }
 
-int __def_vvector_dtor(void * location, size_t size)
+void __def_vvector_dtor(void * location, size_t size)
 {
     if (location) {
         memset(location, '\0', size);
     }
-    return 0;
 }
 
 vvector* _vvector_create(size_t stride, size_t initial_capacity, double scale_factor)
