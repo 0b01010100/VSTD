@@ -22,3 +22,28 @@
 // @param new_count The new number of objects.
 // @return A pointer to the reallocated memory block, or NULL if the allocation fails.
 #define vresize(ptr, type, new_count) (type*)realloc(ptr, (new_count) * sizeof(type))
+
+// Macro to safely allocate memory
+// @param ptr Pointer to the previously allocated memory block.
+// @param type The type of object, used to compute the new size.
+// @param size The size of the object.
+// @param onfaild any other code you would want to run if the malloc fails
+// @return A pointer to the reallocated memory block, or NULL if the allocation fails.
+#define vsafe_malloc(ptr, type, size, onfaild) \
+    do { \
+        ptr = (type*)malloc(size * sizeof(type)); \
+        if (!ptr) { \
+            fprintf(stderr, "Memory allocation failed for %s at %s:%d\n", #ptr, __FILE__, __LINE__); \
+            onfaild; \
+        } \
+    } while (0)
+
+// Checks if the pointer is vailed and this frees frees memory
+// @param ptr Pointer to the previously allocated memory block.
+#define safe_free(ptr) \
+    do { \
+        if (ptr) { \
+            free(ptr); \
+            ptr = NULL; \
+        } \
+    } while (0)

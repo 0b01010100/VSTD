@@ -3,7 +3,7 @@
 
 #include <stddef.h>
 #include <assert.h>
-#include <windowsx.h>
+
 // Compiler-specific macros
 #if defined(__GNUC__)
     #define VCOMPILER_GNU 1
@@ -185,6 +185,13 @@
         default: "unknown")
 #endif
 
+//cross compiler assert
+#define VSTATIC_ASSERT(cond, msg) typedef char vstatic_assert_##msg[(cond) ? 1 : -1]
+
+//Gets elment count of a static array
+#define VARRAY_SIZE(arr) (sizeof(arr) / sizeof((arr)[0]))
+
+//Marks sections of the code that need to be implemented (TODO). Will assert.
 #define vTODO(msg) assert(false && "TODO: " #msg)
 
 #ifdef __cplusplus

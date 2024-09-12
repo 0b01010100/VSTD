@@ -26,7 +26,7 @@ endif()
 
 add_subdirectory(Utils)
 
-add_executable(VUTLlS_TEST test/threads.c)
+add_executable(VUTLlS_TEST test/other.c)
 
 target_link_libraries(VUTLlS_TEST PUBLIC VUtils)
 
