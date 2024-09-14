@@ -319,12 +319,41 @@ void strn_replace(char* str, size_t len, const char * old_substr, const char * n
 // It should be `strcmp(str, str1)` without the `maxCount` parameter.
 #define str_equal(str, str1) strcmp(str, str1)
 
-
 /**
  * @brief Free memory allocated for a string.
  * @param src The string to free.
  */
 void str_free(char * src);
+
+/**
+ * Macro to iterate over a arrary of chars 
+ * @param item A variable of type T that will be assigned each element of the vector
+ * @param str_ The string to iterate over
+ * @param len The lenght of the string
+ * @param action The action to perform on each iteration(if any) -> Optional
+*/
+#define strn_foreach(item, str_, len, action) { \
+    size_t __len = len; \
+    if (__len != 0) { \
+        char* __data = str; \
+        size_t __stride = sizeof(char);\
+        for (size_t __i = 0; __i < __len; __i++) { \
+            item = *(char*)(__data + __stride * __i);\
+            action; \
+        } \
+    } \
+}
+
+/**
+ * Macro to iterate over a arrary of chars 
+ * @param item A copy of an item in array
+ * @param str_ The string to iterate over
+ * @param action The action to perform on each iteration(if any) -> Optional
+*/
+#define str_foreach(item, str_, len, action) \
+    strn_foreach(item, str_, strlen(str_), action)
+
+
 #ifdef __cplusplus
 }
 #endif

@@ -1,6 +1,6 @@
 
 #include <vvector.h>
-
+#include <stdio.h>
 int main() 
 {   
     vvector1* v = vvector1_create(int, 2, 0.75, NULL, NULL, NULL);
@@ -31,9 +31,17 @@ int main()
     vvector_push_back(v, &a);
     vvector_push_back(v, &a);
     vvector_push_back(v, &a);
+
+    int it =3;
+    vvector_foreach(int, it, v, 
+    
+        printf("%d\n", it);
+    
+    )
+
     vvector_erase(v, 0, 2);
 
-    printf("size is = %d\n", vvector_get_field(v, VVECTOR_FIELD_LENGTH));
+    printf("size is = %llu\n", vvector_get_field(v, VVECTOR_FIELD_LENGTH));
     vvector_reserve(v, 2);
 
     printf("is_empty = %d \n", vvector_empty(v));

@@ -308,6 +308,24 @@ void vstr_replace(vstr* str, const vstr* old_substr, const vstr* new_substr, boo
  */
 void vstr_destroy(vstr* str);
 
+/**
+ * Macro to iterate over a arrary of chars 
+ * @param item A variable of type T that will be assigned each element of the vector
+ * @param str_ The string to iterate over
+ * @param action The action to perform on each iteration(if any) -> Optional
+*/
+#define vstr_foreach(item, vstr_, action) { \
+    size_t __len = vstr_.len; \
+    if (__len != 0) { \
+        char* __data = vstr_.str; \
+        size_t __stride = sizeof(char);\
+        for (size_t __i = 0; __i < __len; __i++) { \
+            item = *(char*)(__data + __stride * __i);\
+            action; \
+        } \
+    } \
+}
+
 #ifdef __cplusplus
 }
 #endif

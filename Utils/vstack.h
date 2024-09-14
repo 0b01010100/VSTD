@@ -2,6 +2,10 @@
 #define __vstack__
 
 #include <stdint.h>
+//same as size_t
+typedef uint64_t VSTACK_SIZE_T;
+//same as ssize_t
+typedef int64_t VSTACK_SSIZE_T;
 #include <stdarg.h>
 
 #ifdef __cplusplus
@@ -48,17 +52,17 @@ typedef vstack vstack1;
 /**
  * @brief Represents a constructor function to be called for each element when the stack is destroyed,
 */
-typedef int (*vstack1_el_ctor)(void *location, size_t size, va_list* args, size_t count);
+typedef int (*vstack1_el_ctor)(void *location, VSTACK_SIZE_T size, va_list* args, VSTACK_SIZE_T count);
 
 /**
  * @brief Represents a copy constructor function to be called for each element when the stack is destroyed,
 */
-typedef int (*vstack1_el_cctor)(void * location, const void * original, size_t size);
+typedef int (*vstack1_el_cctor)(void * location, const void * original, VSTACK_SIZE_T size);
 
 /**
  * @brief Represents a destructor function to be called for each element when the stack is destroyed,
 */
-typedef void (*vstack1_el_dtor)(void * location, size_t size);
+typedef void (*vstack1_el_dtor)(void * location, VSTACK_SIZE_T size);
 
 /**
  * @brief Creates a vstack with the specified element stride, initial capacity, and scale factor.
@@ -68,7 +72,7 @@ typedef void (*vstack1_el_dtor)(void * location, size_t size);
  * @param scale_factor Scale factor for dynamic resizing, in percentage.
  * @return Pointer to the newly created vstack, or NULL if creation fails.
  */
-vstack* _vstack_create(size_t stride, size_t initial_capacity, double scale_factor);
+vstack* _vstack_create(VSTACK_SIZE_T stride, VSTACK_SIZE_T initial_capacity, double scale_factor);
 
 /**
  * @brief Creates a vstack with the specified element type, initial capacity, and scale factor.
@@ -91,7 +95,7 @@ vstack* _vstack_create(size_t stride, size_t initial_capacity, double scale_fact
  * @param dtor Destructor function to be called for each element when the stack is destroyed, or NULL if default.
  * @return Pointer to the newly created vstack, or NULL if creation fails.
  */
-vstack1* _vstack1_create(size_t stride, size_t initial_capacity, double scale_factor, vstack1_el_ctor ctor, vstack1_el_cctor cctor, vstack1_el_dtor dtor);
+vstack1* _vstack1_create(VSTACK_SIZE_T stride, VSTACK_SIZE_T initial_capacity, double scale_factor, vstack1_el_ctor ctor, vstack1_el_cctor cctor, vstack1_el_dtor dtor);
 
 /**
  * @brief Creates a vstack with the specified element stride, initial capacity, and scale factor.
@@ -113,7 +117,7 @@ vstack1* _vstack1_create(size_t stride, size_t initial_capacity, double scale_fa
  * @param field Field to retrieve, specified by the VSTACK_FIELD enum.
  * @return Value of the requested field.
  */
-size_t vstack_get_field(vstack* sk, VSTACK_FIELD field);
+VSTACK_SIZE_T vstack_get_field(vstack* sk, VSTACK_FIELD field);
 
 /**
  * @brief Retrieves a specific field's value from the vstack.
@@ -133,6 +137,14 @@ void vstack_set_field(vstack* sk, VSTACK_FIELD field, void* value);
  * @return 0 = FALSE, 1 = TRUE, -1 = ERROR
 */
 #define vstack_empty(sk) (vstack_get_field(sk, VSTACK_FIELD_LENGTH) == 0X0)
+
+/**
+ * @brief Direct access to the underlying contiguous storage
+ *
+ * @param vec Pointer to the vstack.
+ * @return Pointer to the first element in the array
+*/
+#define vstack_data(vec) vstack_peek(vec)
 
 /**
  * @brief Returns a pointer to the element at the specified index in the vstack.
@@ -159,7 +171,7 @@ int vstack_push(vstack* sk, const void* item);
  * @param va Arguments to pass in
  * @return 0 on success, or -1 on failure.
  */
-int vstack_emplace(vstack* sk, size_t count, ...);
+int vstack_emplace(vstack* sk, VSTACK_SIZE_T count, ...);
 
 /**
  * @brief Pops the item at the specified index from the vstack.
@@ -169,12 +181,54 @@ int vstack_emplace(vstack* sk, size_t count, ...);
 void vstack_pop(vstack* sk);
 
 /**
+ * @brief Exchanges the contents and capacity of the container with those of `rhs`.
+ * Does not invoke any move, copy, or swap operations on individual elements.
+ * @param lhs Pointer ONE vstack.
+ * @param rhs Pointer ANOTHER vstack.
+*/
+void vstack_swap(vstack* lhs, vstack* rhs);
+
+/**
+ * @brief Removes the elements in the range [`first`,`last`).
+ *
+ * @param vec Pointer to the vvector.
+ * @note Iterator start is the top of the stack
+ * @param last Iterator end
+*/
+void vvector_erase(vstack* vec, VSTACK_SIZE_T last);
+
+/**
+ * @brief Erases all elements from the container.
+ *
+ * @param vec Pointer to the vstack.
+*/
+void vstack_clear(vstack* sk);
+
+/**
  * @brief Destroys the vstack and frees associated memory.
  *
  * @param sk Pointer to a pointer to the vstack. The pointer will be set to NULL after destruction.
  */
 void vstack_destroy(vstack** sk);
 
+/**
+ * Macro to iterate over a stack
+ * @param T Type of the item to iterate over
+ * @param item A variable of type T that will be assigned each element of the stack
+ * @param sk The stack to iterate over
+ * @param action The action to perform on each iteration(if any) -> Optional
+*/
+#define vstack_foreach(T, item, sk, action) {\
+    VSTACK_SIZE_T __len = vstack_get_field(sk, VSTACK_FIELD_LENGTH);\
+    if(__len != 0) {\
+        unsigned char* __data = vstack_data(sk);\
+        VSTACK_SIZE_T __stride = vstack_get_field(sk, VSTACK_FIELD_STRIDE);\
+        for (VSTACK_SIZE_T __i = 0; __i < __len; __i++) {\
+            item = *(int *)(__data - __stride * __i);\
+            action\
+        }\
+    }\
+}
 #ifdef __cplusplus
 }
 #endif

@@ -19,8 +19,20 @@ int main()
     vstack_push(sk, &item);
     vstack_push(sk, &item);
     vstack_push(sk, &item);
+    vstack_push(sk, &item);
+    item = 6;
+    vstack_push(sk, &item);
     d = vstack_peek(sk);
     printf("top is %d\n", *d);
+
+    int it = 0x0;
+    vstack_foreach(int, it, sk, 
+
+        printf("cur index is: %d\n", it);
+        
+    );
+    
+
     vstack_destroy(&sk);
     d = vstack_peek(sk);
     printf("top is %d\n", *d);

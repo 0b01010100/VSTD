@@ -117,7 +117,7 @@ size_t vvector_get_field(vvector* vec, VVECTOR_FIELD field)
     }
 }
 
-inline int vvector_to_ver(vvector* vec, size_t ver){
+int vvector_to_ver(vvector* vec, size_t ver){
     if(ver == VVECTOR_VER_1_0){
         _vvector1 * new_data = (_vvector1 *)realloc(vec, sizeof(vvector) + (sizeof(vvector) + sizeof(_vvector1)));
         new_data->ctor = __def_vvector_ctor;
@@ -400,7 +400,7 @@ void vvector_clear(vvector* vec)
 void vvector_swap(vvector* lhs, vvector* rhs)
 {
     assert(lhs == rhs && "pointer are restricted from pointing to the same address");
-    assert(lhs->stride != rhs->stride);
+    if(lhs->stride != rhs->stride) printf("vstack Warning: stride is not the same size for {lhs} and {rhs} in file: %s line: %d", __FILE__, __LINE__);
     //swaping things like meta data and the arrary data pointers
     if(lhs->ver == VVECTOR_VER_1_0 && rhs->ver == VVECTOR_VER_1_0){
         vvector1 temp = *lhs;
@@ -411,7 +411,6 @@ void vvector_swap(vvector* lhs, vvector* rhs)
     vvector temp = *lhs;
     *lhs = *rhs;
     *rhs = temp;
-    
 }
 
 void vvector_shrink_to_fit(vvector* vec)

@@ -32,7 +32,7 @@ typedef enum VVECTOR_VER /* : int*/
 typedef enum VVECTOR_FIELD /* : int*/
 {
 
-    VVECTOR_FIELD_VER             = 0,  /**< version of the vvector structure */
+    VVECTOR_FIELD_VER             = 0,  /**< Version of the vvector structure */
 
     //vvector version 0.0
 
@@ -169,7 +169,7 @@ void vvector_reserve(vvector* vec, VVECTOR_SIZE_T reserves);
  * @param vec Pointer to the vvector.
  * @return Pointer to the first element in the array
 */
-#define vvector_data(vec) vvector_at(vec, VVECTOR_FRONT);
+#define vvector_data(vec) vvector_at(vec, VVECTOR_FRONT)
 
 /**
  * @brief Access the first element
@@ -177,7 +177,7 @@ void vvector_reserve(vvector* vec, VVECTOR_SIZE_T reserves);
  * @param vec Pointer to the vvector.
  * @return Pointer to the front element.
 */
-#define vvector_front(vec) vvector_at(vec, VVECTOR_FRONT);
+#define vvector_front(vec) vvector_at(vec, VVECTOR_FRONT)
 
 /**
  * @brief Access the last element
@@ -185,7 +185,7 @@ void vvector_reserve(vvector* vec, VVECTOR_SIZE_T reserves);
  * @param vec Pointer to the vvector.
  * @return Pointer to the last element.
 */
-#define vvector_back(vec) vvector_at(vec, VVECTOR_BACK);
+#define vvector_back(vec) vvector_at(vec, VVECTOR_BACK)
 
 /**
  * @brief Copies a object onto the vector.
@@ -287,12 +287,24 @@ void vvector_shrink_to_fit(vvector* vec);
 */
 void vvector_destroy(vvector** vec);
 
-#define vvector_foreach(vec, it, func) \
-    while (vec)\
-    {\
-       \
+/**
+ * Macro to iterate over a vvector
+ * @param T Type of the item to iterate over
+ * @param item A variable of type T that will be assigned each element of the vector
+ * @param vec The vvector to iterate over
+ * @param action The action to perform on each iteration(if any) -> Optional
+*/
+#define vvector_foreach(T, item, vec, action) {\
+    size_t __len = vvector_get_field(vec, VVECTOR_FIELD_LENGTH);\
+    if(__len != 0) {\
+        unsigned char* __data = vvector_data(vec);\
+        size_t __stride = vvector_get_field(vec, VVECTOR_FIELD_STRIDE);\
+        for (size_t __i = 0; __i < __len; __i++) {\
+            item = *(T *)(&__data[__stride * __i]);\
+            action\
+        }\
     }\
-    
+}
 
 #ifdef __cplusplus
 }
