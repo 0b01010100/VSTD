@@ -300,7 +300,7 @@ void vvector_destroy(vvector** vec);
         unsigned char* __data = vvector_data(vec);\
         size_t __stride = vvector_get_field(vec, VVECTOR_FIELD_STRIDE);\
         for (size_t __i = 0; __i < __len; __i++) {\
-            item = *(T *)(&__data[__stride * __i]);\
+            item = *(T *)(__data + __stride * __i);\
             action\
         }\
     }\
