@@ -116,7 +116,7 @@ VSTACK_SIZE_T vstack_get_field(vstack* sk, VSTACK_FIELD field)
 
 inline int vstack_to_ver(vstack* sk, VSTACK_SIZE_T ver){
     if(ver == VSTACK_VER_1_0){
-        _vstack1 * new_data = (_vstack1 *)realloc(sk, sizeof(vstack) + (sizeof(vstack) + sizeof(_vstack1)));
+        _vstack1 * new_data = (_vstack1 *)realloc(sk, sizeof(_vstack1));
         new_data->ctor = __def_vstack_ctor;
         new_data->cctor = __def_vstack_cctor;
         new_data->dtor = __def_vstack_dtor;

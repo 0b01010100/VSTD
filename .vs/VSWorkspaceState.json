@@ -1,21 +1,35 @@
 {
   "OutputFoldersPerTargetSystem": {
     "Local Machine": [
-      "out\\build\\x64-debug",
-      "out\\install\\x64-debug",
-      "out\\build\\x64-release",
-      "out\\install\\x64-release",
-      "out\\build\\x86-debug",
-      "out\\install\\x86-debug",
-      "out\\build\\x86-release",
-      "out\\install\\x86-release"
+      "out\\build\\clang-x64-debug",
+      "out\\install\\clang-x64-debug",
+      "out\\build\\clang-x64-release",
+      "out\\install\\clang-x64-release",
+      "out\\build\\clang-x86-debug",
+      "out\\install\\clang-x86-debug",
+      "out\\build\\clang-x86-release",
+      "out\\install\\clang-x86-release",
+      "out\\build\\mingw-x64-debug",
+      "out\\install\\mingw-x64-debug",
+      "out\\build\\mingw-x64-release",
+      "out\\install\\mingw-x64-release",
+      "out\\build\\mingw-x86-debug",
+      "out\\install\\mingw-x86-debug",
+      "out\\build\\mingw-x86-release",
+      "out\\install\\mingw-x86-release",
+      "out\\build\\mscl-x64-debug",
+      "out\\install\\mscl-x64-debug",
+      "out\\build\\mscl-x64-release",
+      "out\\install\\mscl-x64-release",
+      "out\\build\\mscl-x86-debug",
+      "out\\install\\mscl-x86-debug",
+      "out\\build\\mscl-x86-release",
+      "out\\install\\mscl-x86-release"
     ]
   },
   "ExpandedNodes": [
-    "",
-    "\\out",
-    "\\test",
-    "\\Utils"
+    ""
   ],
+  "SelectedNode": "\\C:\\Users\\josdd\\repos\\p\\VUtilities\\CMakeLists.txt\\VUTLlS_TEST.exe (bin\\VUTLlS_TEST.exe)\\C:\\Users\\josdd\\repos\\p\\VUtilities\\test\\console.c",
   "PreviewInSolutionExplorer": false
 }

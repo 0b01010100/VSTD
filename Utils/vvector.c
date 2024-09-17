@@ -10,7 +10,7 @@ typedef struct vvector
     size_t size;         // Number of items
     size_t capacity;     // Current capacity
     double scale;        // Resize scale factor
-    unsigned char* data; // Stack data(has to be an uchar* becuase cl(msvc) is wierd with pointer math)
+    unsigned char* data; // vector data(has to be an uchar* becuase cl(msvc) is wierd with pointer math)
 } vvector;
 
 typedef struct _vvector1
@@ -20,7 +20,7 @@ typedef struct _vvector1
     size_t size;            // Number of items
     size_t capacity;        // Current capacity
     double scale;           // Resize scale factor
-    unsigned char* data;    // Stack data(has to be an uchar* becuase cl(msvc) is wierd with pointer math)
+    unsigned char* data;    // vector data(has to be an uchar* becuase cl(msvc) is wierd with pointer math)
 
     // version 1.0 stuff
 
@@ -119,7 +119,7 @@ size_t vvector_get_field(vvector* vec, VVECTOR_FIELD field)
 
 int vvector_to_ver(vvector* vec, size_t ver){
     if(ver == VVECTOR_VER_1_0){
-        _vvector1 * new_data = (_vvector1 *)realloc(vec, sizeof(vvector) + (sizeof(vvector) + sizeof(_vvector1)));
+        _vvector1 * new_data = (_vvector1 *)realloc(vec, sizeof(_vvector1));
         new_data->ctor = __def_vvector_ctor;
         new_data->cctor = __def_vvector_cctor;
         new_data->dtor = __def_vvector_dtor;
@@ -400,7 +400,7 @@ void vvector_clear(vvector* vec)
 void vvector_swap(vvector* lhs, vvector* rhs)
 {
     assert(lhs == rhs && "pointer are restricted from pointing to the same address");
-    if(lhs->stride != rhs->stride) printf("vstack Warning: stride is not the same size for {lhs} and {rhs} in file: %s line: %d", __FILE__, __LINE__);
+    if(lhs->stride != rhs->stride) printf("vvector Warning: stride is not the same size for {lhs} and {rhs} in file: %s line: %d", __FILE__, __LINE__);
     //swaping things like meta data and the arrary data pointers
     if(lhs->ver == VVECTOR_VER_1_0 && rhs->ver == VVECTOR_VER_1_0){
         vvector1 temp = *lhs;
