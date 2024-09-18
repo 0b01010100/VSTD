@@ -40,7 +40,7 @@
 
 // Checks if the pointer is vailed and this frees frees memory
 // @param ptr Pointer to the previously allocated memory block.
-#define safe_free(ptr) \
+#define vsafe_free(ptr) \
     do { \
         if (ptr) { \
             free(ptr); \

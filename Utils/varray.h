@@ -1,3 +1,5 @@
+#ifndef __varray__
+#define __varray__
 /**
  * @file varray.h
  * @brief A set of macros for managing and manipulating fixed-size arrays in C and C++.
@@ -34,20 +36,7 @@
  * @endcode
  */
 
-#ifndef __varray__
-#define __varray__
-
-#if __cplusplus
-#include <cstdlib>
-#include <iostream>
-#define __vErr_varray_Err(msg)  std::cerr << msg
-#define __vSTD_varray_ std::
-#else
-#include <stdlib.h>
-#include <stdio.h>
-#define __vErr_varray_Err(msg)  fprintf(stderr, "%s", msg)
-#define __vSTD_varray_
-#endif
+#include <assert.h>
 
 // Create an array with a fixed maximum size
 #define varray_create(T, name, size_max, ...) \
@@ -59,11 +48,11 @@
 
 // Access an element in the array
 #define varray_get(name, index) \
-    ((index) >= varray_size(name)) ? (__vErr_varray_Err("Index out of range\n"), __vSTD_varray_ exit(EXIT_FAILURE), (name)[0]) : (name)[index]
+    ((index) >= varray_size(name)) ? (assert(0 && "Index out of range\n"), -1) : ((name)[index])
 
 // Set an element in the array
 #define varray_set(name, index, value) \
-    ((index) >= sizeof(name)/sizeof((name)[0])) ? (__vErr_varray_Err("Index out of range\n"), __vSTD_varray_ exit(EXIT_FAILURE)) : ((name)[index] = (value))
+    ((index) >= sizeof(name)/sizeof((name)[0])) ? (assert(0 && "Index out of range\n")) : ((name)[index] = (value))
 
 // Fill the array with a specific value
 #define varray_fill(name, value) \
@@ -120,8 +109,5 @@
             } \
         } \
     } while (0)
-
-#undef __vErr_varray_Err
-#undef __vSTD_varray_
 
 #endif // __varray__

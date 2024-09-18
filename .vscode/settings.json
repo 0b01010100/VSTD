@@ -57,6 +57,11 @@
   "C_Cpp_Runner.useLinkTimeOptimization": false,
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "files.associations": {
-
+    "vconsole.h": "c",
+    "stdio.h": "c",
+    "assert.h": "c",
+    "chrono": "c",
+    "variant": "c",
+    "varray.h": "c"
   },
 }

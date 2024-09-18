@@ -5,7 +5,7 @@
  */
 typedef enum VCONSOLE_COLOR {
     VCONSOLE_COLOR_BLACK,        /**< Black color. */
-    VCONSOLE_COLOR_BlUE,         /**< Blue color. */
+    VCONSOLE_COLOR_BLUE,         /**< Blue color. */
     VCONSOLE_COLOR_GREEN,        /**< Green color. */
     VCONSOLE_COLOR_CYAN,         /**< Cyan color. */
     VCONSOLE_COLOR_RED,          /**< Red color. */

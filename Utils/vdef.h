@@ -41,9 +41,14 @@
     #define VCOMPILER_GHS 1
 #elif defined(__MVS__) || defined(__HOS_MVS__)
     #define VCOMPILER_IBM_Z 1
+#elif defined(__EMSCRIPTEN__)
+    #define VCOMPILER_EMSCRIPTEN 1
+#elif defined(__WATCOMC__)
+    #define VCOMPILER_WATCOM 1
 #else
     #define VCOMPILER_UNKNOWN 1
 #endif
+
 
 // C standard versions
 #ifdef __STDC_VERSION__
@@ -117,28 +122,31 @@
 #elif defined(VCOMPILER_IAR)
     #define VSET_SYMBOL(symbol)
     #define vpacked __packed
+    //if not supported might have to fall back to a newer version of the compiler
     #define valign(x) _Pragma("data_alignment=" #x)
     #define vinline __inline
     #define vnoreturn __noreturn
     #define vrestrict __restrict
     #define vexport
 
-/*
-#elif defined(VCOMPILER_TINYC) || 
-      defined(VCOMPILER_DMC) || 
-      defined(VCOMPILER_PELLES) || 
-      defined(VCOMPILER_BORLAND) || 
-      defined(VCOMPILER_ZIG) || 
-      defined(VCOMPILER_GHS) || 
-      defined(VCOMPILER_IBM_Z)
+#elif defined(VCOMPILER_ZIG) || defined(VCOMPILER_TINYC) || defined(VCOMPILER_BORLAND) || defined(VCOMPILER_DMC) || defined(VCOMPILER_PELLES) || defined(VCOMPILER_GHS) || defined(VCOMPILER_IBM_Z)
     #define VSET_SYMBOL(symbol)
-    #define packed
-    #define align(x)
-    #define inline
-    #define noreturn
-    #define restrict
-    #define vexport
-*/
+    #define vpacked __attribute__((packed))
+    #define valign(x) __attribute__((aligned(x)))
+    #define vinline __inline__
+    #define vnoreturn __attribute__((noreturn))
+    #define vrestrict __restrict
+    #define vexport __attribute__((visibility("default")))
+
+#elif defined(VCOMPILER_WATCOM) || defined(VCOMPILER_EMSCRIPTEN)
+    #define VSET_SYMBOL(symbol)
+    #define vpacked __attribute__((packed))
+    #define valign(x) __attribute__((aligned(x)))
+    #define vinline __inline__
+    #define vnoreturn __attribute__((noreturn))
+    #define vrestrict __restrict
+    #define vexport __attribute__((visibility("default")))
+
 #else
     #define VSET_SYMBOL(symbol)
     #define vpacked
@@ -149,8 +157,14 @@
     #define vexport
 #endif
 
-//might not work in msvc
-#if defined(vC11) || defined(vC17) || defined(vC20) || defined(vC23)
+
+// might not work in MSVC (since MSVC doesn't fully support _Generic until C11 or later)
+#if defined(vC11) && defined(VCOMPILER_GNU) || defined(VCOMPILER_CLANG) || defined(VCOMPILER_INTEL) || \
+    defined(VCOMPILER_SUN) || defined(VCOMPILER_ARM) || defined(VCOMPILER_PGI) || \
+    defined(VCOMPILER_IBM_XL) || defined(VCOMPILER_ZIG) || defined(VCOMPILER_GHS) || \
+    defined(VCOMPILER_TINYC) || defined(VCOMPILER_BORLAND) || defined(VCOMPILER_DMC) || \
+    defined(VCOMPILER_PELLES) || defined(VCOMPILER_IBM_Z)
+    
     #define vtypename _Generic
     #define vtypename_(x) vtypename((x), \
         _Bool: "_Bool", \
@@ -183,7 +197,13 @@
         long double *: "long double*", \
         void *: "void*", \
         default: "unknown")
+
+#else
+    // Fallback for compilers like MSVC that do not fully support _Generic
+    #define vtypename(x) "unknown"
+    #define vtypename_(x) vtypename(x)
 #endif
+
 
 //cross compiler assert
 #define VSTATIC_ASSERT(cond, msg) typedef char vstatic_assert_##msg[(cond) ? 1 : -1]
@@ -195,10 +215,10 @@
 #define vTODO(msg) assert(false && "TODO: " #msg)
 
 #ifdef __cplusplus
-    #define vextern_c extern "C"
-    #define vextern_cpp extern "C++"
+    #define vext_c extern "C"
+    #define vext_cpp extern "C++"
 #else
-    #define vextern_c
+    #define vext_c
 #endif
 
 #endif // __vdef__

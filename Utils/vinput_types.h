@@ -1,4 +1,4 @@
-#ifdef __vinput_types__
+#ifndef __vinput_types__
 #define __vinput_types__
 /**
  * @brief Represents mouse buttons.
