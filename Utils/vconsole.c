@@ -71,7 +71,7 @@ int ToAnsi(VCONSOLE_ASCII ascii) {
 const char* ToColorCode(VCONSOLE_COLOR color) {
     switch (color) {
     case VCONSOLE_COLOR_BLACK:        return "\033[30m";
-    case VCONSOLE_COLOR_BlUE:         return "\033[34m";
+    case VCONSOLE_COLOR_BLUE:         return "\033[34m";
     case VCONSOLE_COLOR_GREEN:        return "\033[32m";
     case VCONSOLE_COLOR_CYAN:         return "\033[36m";
     case VCONSOLE_COLOR_RED:          return "\033[31m";
