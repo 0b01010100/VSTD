@@ -77,6 +77,7 @@
     #define vinline __inline__
     #define vnoreturn __attribute__((noreturn))
     #define vrestrict __restrict
+    #define vthread_local __thread
     #if defined(WIN32) || defined(_WIN32) || defined(WIN64) || defined(_WIN64)
         #define vexport __attribute__((dllexport))
     #else
@@ -90,6 +91,7 @@
     #define vinline __inline
     #define vnoreturn __declspec(noreturn)
     #define vrestrict __restrict
+    #define vthread_local __declspec(thread)
     #define vexport __declspec(dllexport)
 
 #elif defined(VCOMPILER_INTEL)
@@ -99,6 +101,7 @@
     #define vinline __inline__
     #define vnoreturn __attribute__((noreturn))
     #define vrestrict __restrict
+    #define vthread_local __thread
     #define vexport __declspec(dllexport)
 
 #elif defined(VCOMPILER_SUN) || defined(VCOMPILER_PGI) || defined(VCOMPILER_ARM) || defined(VCOMPILER_IBM_XL)
@@ -108,6 +111,7 @@
     #define vinline __inline__
     #define vnoreturn __attribute__((noreturn))
     #define vrestrict __restrict
+    #define vthread_local __thread
     #define vexport __attribute__((visibility("default")))
 
 #elif defined(VCOMPILER_KEIL)
@@ -117,16 +121,17 @@
     #define vinline __inline
     #define vnoreturn __declspec(noreturn)
     #define vrestrict __restrict
+    #define vthread_local __thread
     #define vexport
 
 #elif defined(VCOMPILER_IAR)
     #define VSET_SYMBOL(symbol)
     #define vpacked __packed
-    //if not supported might have to fall back to a newer version of the compiler
     #define valign(x) _Pragma("data_alignment=" #x)
     #define vinline __inline
     #define vnoreturn __noreturn
     #define vrestrict __restrict
+    #define vthread_local __thread
     #define vexport
 
 #elif defined(VCOMPILER_ZIG) || defined(VCOMPILER_TINYC) || defined(VCOMPILER_BORLAND) || defined(VCOMPILER_DMC) || defined(VCOMPILER_PELLES) || defined(VCOMPILER_GHS) || defined(VCOMPILER_IBM_Z)
@@ -136,6 +141,7 @@
     #define vinline __inline__
     #define vnoreturn __attribute__((noreturn))
     #define vrestrict __restrict
+    #define vthread_local __thread
     #define vexport __attribute__((visibility("default")))
 
 #elif defined(VCOMPILER_WATCOM) || defined(VCOMPILER_EMSCRIPTEN)
@@ -145,6 +151,7 @@
     #define vinline __inline__
     #define vnoreturn __attribute__((noreturn))
     #define vrestrict __restrict
+    #define vthread_local __thread
     #define vexport __attribute__((visibility("default")))
 
 #else
@@ -154,9 +161,9 @@
     #define vinline
     #define vnoreturn
     #define vrestrict
+    #define vthread_local
     #define vexport
 #endif
-
 
 // might not work in MSVC (since MSVC doesn't fully support _Generic until C11 or later)
 #if defined(vC11) && defined(VCOMPILER_GNU) || defined(VCOMPILER_CLANG) || defined(VCOMPILER_INTEL) || \

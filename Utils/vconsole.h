@@ -1,3 +1,6 @@
+//@ref at https://stackoverflow.com/questions/4842424/list-of-ansi-color-escape-sequences
+
+
 /**
  * @brief Console text colors.
  * 
