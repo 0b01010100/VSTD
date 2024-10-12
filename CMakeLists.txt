@@ -24,11 +24,11 @@ else()
     add_definitions(-DU_UNKNOWN)
 endif()
 
-add_subdirectory(Utils)
+add_subdirectory(vstd)
 
-add_executable(VUTLlS_TEST test/logger_test.c)
+add_executable(VUTLlS_TEST test/vec_test.c)
 
-target_link_libraries(VUTLlS_TEST PUBLIC VUtils)
+target_link_libraries(VUTLlS_TEST PUBLIC vstd)
 
 set_target_properties(VUTLlS_TEST PROPERTIES
   LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"

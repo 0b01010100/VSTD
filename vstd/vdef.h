@@ -166,7 +166,7 @@
 #endif
 
 // might not work in MSVC (since MSVC doesn't fully support _Generic until C11 or later)
-#if defined(vC11) && defined(VCOMPILER_GNU) || defined(VCOMPILER_CLANG) || defined(VCOMPILER_INTEL) || \
+#if defined(vC11) || defined(vC17) || defined(vC20) || defined(vC23) && defined(VCOMPILER_GNU) || defined(VCOMPILER_CLANG) || defined(VCOMPILER_INTEL) || \
     defined(VCOMPILER_SUN) || defined(VCOMPILER_ARM) || defined(VCOMPILER_PGI) || \
     defined(VCOMPILER_IBM_XL) || defined(VCOMPILER_ZIG) || defined(VCOMPILER_GHS) || \
     defined(VCOMPILER_TINYC) || defined(VCOMPILER_BORLAND) || defined(VCOMPILER_DMC) || \
@@ -211,7 +211,6 @@
     #define vtypename_(x) vtypename(x)
 #endif
 
-
 //cross compiler assert
 #define VSTATIC_ASSERT(cond, msg) typedef char vstatic_assert_##msg[(cond) ? 1 : -1]
 
@@ -226,6 +225,91 @@
     #define vext_cpp extern "C++"
 #else
     #define vext_c
+#endif
+
+// LOGIC 
+
+//make more clear terinary
+
+//else-branch
+#define velse :
+//else if-branch
+#define velif(cond, dos) : vif(cond, dos)
+//if-branch
+#define vif(cond, dos) (cond)? dos
+
+#define vmacth(val) switch(val){
+#define vopt(c, jmp) case c: {jmp}
+#define vmacth_end }
+
+// User-Defined-Types
+
+#define vstruct(name, ...) typedef struct name\
+{\
+    __VA_ARGS__\
+}name;
+
+#define vunion(name, ...) typedef struct name\
+{\
+    __VA_ARGS__\
+}name;
+
+#define vfunc(ret, name, ...) ret name(__VA_ARGS__)
+
+// str
+
+#define vTEXT(txt) txt
+#define vToStr(val) #val
+
+// mem
+
+/** 
+ * Macro to safely allocate memory
+ * @param ptr Pointer to the previously allocated memory block.
+ * @param type The type of object, used to compute the new size.
+ * @param size The size of the object.
+ * @param onfaild any other code you would want to run if the malloc fails
+ * @return A pointer to the reallocated memory block, or NULL if the allocation fails.
+*/
+#define vsafe_malloc(ptr, type, size, onfaild) \
+    do { \
+        ptr = (type*)malloc(size * sizeof(type)); \
+        if (!ptr) { \
+            fprintf(stderr, "Memory allocation failed for %s at %s:%d\n", #ptr, __FILE__, __LINE__); \
+            onfaild; \
+        } \
+    } while (0)
+
+/** Macro to resize a memory block, similar to C's `realloc` function
+ * @param ptr Pointer to the previously allocated memory block.
+ * @param type The type of object, used to compute the new size.
+ * @param new_count The new number of objects.
+ * @return A pointer to the reallocated memory block, or NULL if the allocation fails.
+*/
+#define vsafe_realloc(ptr, type, new_count) (type*)realloc(ptr, (new_count) * sizeof(type))
+
+/** 
+    * Checks if the pointer is vailed and this frees frees memory
+    * @param ptr Pointer to the previously allocated memory block.
+    * @note must include <stdlib.h>
+*/
+#define vsafe_free(ptr) \
+    do { \
+        if (ptr) { \
+            free(ptr); \
+            ptr = NULL; \
+        } \
+    } while (0)
+
+#define vnil NULL
+#define vnull NULL
+#define vNull NULL
+
+
+#ifdef __cplusplus
+#define vAddressOf(v) (&reinterpret_cast<const char &>(v))
+#else
+#define vAddressOf(v) (&(v))
 #endif
 
 #endif // __vdef__

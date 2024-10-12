@@ -14,33 +14,28 @@ extern "C" {
 
 // Define shared library suffix based on the platform
 #if defined(WIN32) || defined(_WIN32) || defined(WIN64) || defined(_WIN64)
-    #define vslib_SUFFIX ".dll"
+    #define VSLIB_SUFFIX ".dll"
 #elif defined(__APPLE__)
-    #define vslib_SUFFIX ".dylib"
+    #define VSLIB_SUFFIX ".dylib"
 #elif defined(__unix__) || defined(__unix)
-    #define vslib_SUFFIX ".so"
+    #define VSLIB_SUFFIX ".so"
 #else
     #error "Unsupported platform"
 #endif
 
 // Define shared library prefix based on the compiler
 #if defined(__MINGW32__) || defined(__MINGW64__) || defined(__GNUC__) || defined(__GNUG__) || defined(__clang__)
-    #define vslib_PREFIX "lib"
+    #define VSLIB_PREFIX "lib"
 #else//others
-    #define vslib_PREFIX ""
+    #define VSLIB_PREFIX ""
 #endif
 
 // Pointer to a shared library function
-typedef void *vslib_pfn;
+typedef void *vslib_fn;
 
-typedef const char *vslib_pfnname;
-
-// Path of the shard library file
-typedef const char *vslib_path;
-
-// Platform Specific handle to a Shared Library
+// Handle to a Shared Library
 typedef struct vslib {
-    void* handle;  
+    void* handle;  // // Platform Specific handle to a Shared Library
 } vslib;
 
 /**
@@ -51,23 +46,23 @@ typedef struct vslib {
  * @param add_suffix Whether to add a suffix to the library name.
  * @return An `vslib` structure with the handle to the loaded library.
  */
-vslib vslib_Load(vslib_path libraryName, bool add_prefix, bool add_suffix);
+vslib vslib_load(const char* libraryName, bool add_prefix, bool add_suffix);
 
 /**
  * @brief Get a function pointer from the shared library.
  * 
  * @param lib Pointer to the `vslib` structure representing the library.
- * @param functionName The name of the function to retrieve.
- * @return A function pointer to the requested function.
+ * @param fn_name The name of the function to retrieve.
+ * @return A function pointer to the requested function. NULL if invalid input
  */
-vslib_pfn vslib_Getpfn(vslib* lib, vslib_pfnname functionName);
+vslib_fn vslib_get_fn(vslib* lib, const char* fn_name);
 
 /**
  * @brief Unload a shared library.
  * 
  * @param lib Pointer to the `vslib` structure representing the library to unload.
  */
-void vslib_Unload(vslib* lib);
+void vslib_unload(vslib* lib);
 
 #ifdef __cplusplus
 }

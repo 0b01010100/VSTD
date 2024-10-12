@@ -1,7 +1,6 @@
 #include "vslib.h"
 #include <string.h>
 #include <stdlib.h>
-#include <string.h>
 #include <stdio.h>
 #if defined(WIN32) || defined(_WIN32) || defined(WIN64) || defined(_WIN64)
 #include <windows.h>
@@ -9,7 +8,7 @@
 #include <dlfcn.h>
 #endif
 
-vslib vslib_Load(vslib_path libraryName, bool add_prefix, bool add_suffix)
+vslib vslib_load(const char* libraryName, bool add_prefix, bool add_suffix)
 {
     if(!libraryName) 
     {
@@ -21,8 +20,8 @@ vslib vslib_Load(vslib_path libraryName, bool add_prefix, bool add_suffix)
     if(add_prefix || add_suffix){
 
         size_t temp_len = strlen(libraryName);
-        size_t prefix_len = ((vslib_PREFIX == NULL)? 0 : strlen(vslib_PREFIX));
-        size_t suffix_len = ((vslib_SUFFIX == NULL)? 0 : strlen(vslib_SUFFIX));
+        size_t prefix_len = ((VSLIB_PREFIX == NULL)? 0 : strlen(VSLIB_PREFIX));
+        size_t suffix_len = ((VSLIB_SUFFIX == NULL)? 0 : strlen(VSLIB_SUFFIX));
 
         temp = malloc((prefix_len + temp_len + suffix_len + 1) * sizeof(char));
         if(!temp) 
@@ -33,13 +32,13 @@ vslib vslib_Load(vslib_path libraryName, bool add_prefix, bool add_suffix)
         temp[prefix_len + temp_len + suffix_len] = '\0';
 
         if(add_prefix){
-            strncpy(temp, vslib_PREFIX, prefix_len);
+            strncpy(temp, VSLIB_PREFIX, prefix_len);
         }
 
         strncpy(temp + prefix_len, libraryName, temp_len);
 
         if(add_suffix){
-            strncpy(temp + prefix_len + temp_len, vslib_SUFFIX, suffix_len);
+            strncpy(temp + prefix_len + temp_len, VSLIB_SUFFIX, suffix_len);
         }
         
         
@@ -64,26 +63,26 @@ vslib vslib_Load(vslib_path libraryName, bool add_prefix, bool add_suffix)
     return lib;
 }
 
-vslib_pfn vslib_Getpfn(vslib* lib, vslib_pfnname functionName){
-    if (!lib || !lib->handle || !functionName) {
-        fprintf(stderr, "vslib.c: Invalid arguments: lib or functionName is NULL\n");
+vslib_fn vslib_get_fn(vslib* lib, const char* fn_name){
+    if (!lib || !lib->handle || !fn_name) {
+        fprintf(stderr, "vslib.c: Invalid arguments: lib or function Name is NULL\n");
         return NULL;
     }
 
 #ifdef _WIN32
-    vslib_pfn funcPtr = (vslib_pfn)GetProcAddress((HMODULE)lib->handle, functionName);
+    vslib_fn funcPtr = (vslib_fn)GetProcAddress((HMODULE)lib->handle, fn_name);
 #else
-    vslib_pfn funcPtr = (vslib_pfn)dlsym(lib->handle, functionName);
+    vslib_fn funcPtr = (vslib_fn)dlsym(lib->handle, fn_name);
 #endif
 
     if (!funcPtr) {
-        fprintf(stderr, "vslib.c: Failed to load function pointer: %s\n", functionName);
+        fprintf(stderr, "vslib.c: Failed to load function pointer: %s\n", fn_name);
     }
 
     return funcPtr;
 }
 
-void vslib_Unload(vslib *lib) {
+void vslib_unload(vslib *lib) {
     if (lib && lib->handle) {
 #ifdef _WIN32
         if (!FreeLibrary((HMODULE)lib->handle)) {

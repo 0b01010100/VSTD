@@ -4,8 +4,8 @@
  * This API extends `<string.h>` with additional methods for convenience.
  * @note that this is not part of the C standard library but a separate extension. Have Fun
 */
-#ifndef __vstring__
-#define __vstring__
+#ifndef __stringex__
+#define __stringex__
 #include <stdbool.h> // for bool type
 #include <string.h>
 #include <stdint.h> // for size_t and ssize_t(For Unix)
@@ -350,11 +350,11 @@ void str_free(char * src);
  * @param str_ The string to iterate over
  * @param action The action to perform on each iteration(if any) -> Optional
 */
-#define str_foreach(item, str_, len, action) \
+#define str_foreach(item, str_, action) \
     strn_foreach(item, str_, strlen(str_), action)
 
 
 #ifdef __cplusplus
 }
 #endif
-#endif
+#endif // __stringex__

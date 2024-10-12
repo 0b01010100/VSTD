@@ -1,7 +1,17 @@
 #include <stdint.h>
+#if defined(WIN32) || defined(_WIN32) || defined(WIN64) || defined(_WIN64)
+#include <BaseTsd.h>
+typedef SSIZE_T ssize_t;
+#ifndef size_t
+typedef SIZE_T size_t;
+#endif
+#endif
 
 #define vtrue (1)
 #define vfalse (0)
+
+#define vyes vtrue
+#define vno vfalse
 
 /* 8-bit bool */
 typedef union vb8 {
@@ -158,7 +168,7 @@ typedef union vb128 {
     #if defined(__GNUC__) || defined(__clang__)
     __uint128_t data;
     #else
-    char[16] data;
+    char data[16];
     #endif
     
     struct {
@@ -291,7 +301,9 @@ typedef union vb128 {
         uint64_t b126  : 1;  // bit 126
         uint64_t b127  : 1;  // bit 127
   };
-};
+}vb128;
+
+
 typedef int8_t vi8;
 typedef uint8_t vui8;
 typedef int16_t vi16;
@@ -302,11 +314,16 @@ typedef int64_t vi64;
 typedef uint64_t vui64;
 typedef uint64_t vui128;
 
-typedef char* vstr;              // Pointer to mutable string
-typedef const char* vcstr;       // Pointer to immutable string
+typedef char* vcp;              // Pointer to mutable string
+typedef const char* vccp;       // Pointer to immutable string
 
-typedef wchar_t* vwstr;          // Pointer to mutable wide-string
-typedef const wchar_t* vwcstr;   // Pointer to immutable wide-string
+typedef wchar_t* vwcp;          // Pointer to mutable wide-string
+typedef const wchar_t* vwccp;   // Pointer to immutable wide-string
+
+typedef size_t vs; 
+typedef ssize_t vss; 
+
+typedef void* vvp; 
 
 #ifdef vretro
 // Legacy types

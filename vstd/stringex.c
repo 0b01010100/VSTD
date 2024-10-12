@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
-#include <vstring.h>
+#include <stringex.h>
 
 char * str_create_ex(const char * str, bool allocate)
 {
