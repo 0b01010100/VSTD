@@ -28,8 +28,17 @@
     ]
   },
   "ExpandedNodes": [
-    ""
+    "",
+    "\\vstd",
+    "\\vstd\\debug",
+    "\\vstd\\math",
+    "\\vstd\\memory",
+    "\\vstd\\memory\\allocators",
+    "\\vstd\\platform",
+    "\\vstd\\strings",
+    "\\vstd\\threads",
+    "\\vstd\\time"
   ],
-  "SelectedNode": "\\C:\\Users\\josdd\\repos\\p\\VUtilities\\CMakeLists.txt\\VUTLlS_TEST.exe (bin\\VUTLlS_TEST.exe)\\C:\\Users\\josdd\\repos\\p\\VUtilities\\test\\console.c",
+  "SelectedNode": "\\vstd\\logger.h",
   "PreviewInSolutionExplorer": false
 }

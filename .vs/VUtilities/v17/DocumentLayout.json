@@ -3,6 +3,289 @@
   "WorkspaceRootPath": "C:\\Users\\josdd\\repos\\p\\VUtilities\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\logger.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\logger.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\logger.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\logger.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\CMakeLists.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CMakeLists.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\version.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\version.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\input_types.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\input_types.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\defines.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\defines.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\time\\vclock.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\time\\vclock.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\time\\vclock.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\time\\vclock.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\threads\\worker_thread.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\threads\\worker_thread.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\threads\\vthread.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\threads\\vthread.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\threads\\vsemaphore.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\threads\\vsemaphore.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\threads\\threadpool.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\threads\\threadpool.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\threads\\threadpool.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\threads\\threadpool.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\strings\\vstring.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\strings\\vstring.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\strings\\vstring.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\strings\\vstring.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\platform\\platform_win32.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\platform\\platform_win32.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\platform\\platform_nix.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\platform\\platform_nix.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\platform\\platform_macos.m||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\platform\\platform_macos.m||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\platform\\platform_linux.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\platform\\platform_linux.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\platform\\platform.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\platform\\platform.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\platform\\filesystem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\platform\\filesystem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\platform\\filesystem.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\platform\\filesystem.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\memory\\vmemory.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\memory\\vmemory.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\memory\\vmemory.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\memory\\vmemory.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\memory\\allocators\\linear_allocator.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\memory\\allocators\\linear_allocator.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\memory\\allocators\\linear_allocator.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\memory\\allocators\\linear_allocator.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\memory\\allocators\\dynamic_allocator.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\memory\\allocators\\dynamic_allocator.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\memory\\allocators\\dynamic_allocator.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\memory\\allocators\\dynamic_allocator.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\math\\vmath.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\math\\vmath.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\math\\vmath.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\math\\vmath.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\math\\mtwister.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\math\\mtwister.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\math\\mtwister.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\math\\mtwister.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\math\\math_types.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\math\\math_types.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\math\\geometry_3d.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\math\\geometry_3d.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\math\\geometry_3d.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\math\\geometry_3d.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\math\\geometry_2d.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\math\\geometry_2d.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\math\\geometry.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\math\\geometry.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\math\\geometry.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\math\\geometry.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\identifiers\\vhandle.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\identifiers\\vhandle.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\identifiers\\vhandle.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\identifiers\\vhandle.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\identifiers\\uuid.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\identifiers\\uuid.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\identifiers\\identifier.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\identifiers\\identifier.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\identifiers\\identifier.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\identifiers\\identifier.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\debug\\vassert.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\debug\\vassert.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\darray.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\containers\\darray.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\darray.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\containers\\darray.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\freelist.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\containers\\freelist.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\freelist.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\containers\\freelist.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\hashtable.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\containers\\hashtable.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\hashtable.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\containers\\hashtable.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\queue.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\containers\\queue.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\queue.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\containers\\queue.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\registry.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\containers\\registry.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\registry.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\containers\\registry.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\ring_queue.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\containers\\ring_queue.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\ring_queue.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\containers\\ring_queue.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\stack.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\containers\\stack.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\stack.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\containers\\stack.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\identifiers\\uuid.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\identifiers\\uuid.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\threads\\vmutex.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\threads\\vmutex.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\threads\\worker_thread.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\threads\\worker_thread.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\debug\\kassert.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\debug\\kassert.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\memory\\kmemory.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\memory\\kmemory.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\memory\\kmemory.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\memory\\kmemory.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\ko\\defines.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ko\\defines.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\AppData\\Local\\Temp\\e79ac5e8-a879-426a-8be3-987eedcc456d_kohi-main.zip.56d\\kohi-main\\kohi.core\\src\\defines.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\vdef.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\vdef.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\vvec.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\containers\\vvec.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\debug\\vterm.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\debug\\vterm.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\debug\\vterm.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\debug\\vterm.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\platform\\vinput_types.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vstd\\platform\\vinput_types.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\test\\console.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:test\\console.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -22,10 +305,6 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CMakePresets.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\josdd\\repos\\p\\VUtilities\\CMakeLists.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CMakeLists.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|CMake Overview Pages||{B1CAA5B0-FEB1-4350-8AB9-F895876842F2}"
     },
     {
@@ -40,50 +319,947 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "vconsole.h",
-              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\Utils\\vconsole.h",
-              "RelativeDocumentMoniker": "Utils\\vconsole.h",
-              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\Utils\\vconsole.h",
-              "RelativeToolTip": "Utils\\vconsole.h",
-              "ViewState": "AQIAACEAAAAAAAAAAAA2wDAAAAAXAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-09-17T00:20:11.942Z",
+              "DocumentIndex": 3,
+              "Title": "version.txt",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\version.txt",
+              "RelativeDocumentMoniker": "vstd\\version.txt",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\version.txt",
+              "RelativeToolTip": "vstd\\version.txt",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-11-17T06:35:11.926Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "vconsole.c",
-              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\Utils\\vconsole.c",
-              "RelativeDocumentMoniker": "Utils\\vconsole.c",
-              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\Utils\\vconsole.c",
-              "RelativeToolTip": "Utils\\vconsole.c",
-              "ViewState": "AQIAAEsAAAAAAAAAAAAAAHYAAAADAAAA",
+              "DocumentIndex": 7,
+              "Title": "vclock.c",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\time\\vclock.c",
+              "RelativeDocumentMoniker": "vstd\\time\\vclock.c",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\time\\vclock.c",
+              "RelativeToolTip": "vstd\\time\\vclock.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-09-17T00:19:12.177Z",
+              "WhenOpened": "2024-11-17T06:34:54.847Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "geometry.c",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\math\\geometry.c",
+              "RelativeDocumentMoniker": "vstd\\math\\geometry.c",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\math\\geometry.c",
+              "RelativeToolTip": "vstd\\math\\geometry.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-11-17T06:32:49.454Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "identifier.c",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\identifiers\\identifier.c",
+              "RelativeDocumentMoniker": "vstd\\identifiers\\identifier.c",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\identifiers\\identifier.c",
+              "RelativeToolTip": "vstd\\identifiers\\identifier.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-11-17T06:21:48.36Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "vhandle.c",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\identifiers\\vhandle.c",
+              "RelativeDocumentMoniker": "vstd\\identifiers\\vhandle.c",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\identifiers\\vhandle.c",
+              "RelativeToolTip": "vstd\\identifiers\\vhandle.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-11-17T06:21:42.974Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "geometry_3d.c",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\math\\geometry_3d.c",
+              "RelativeDocumentMoniker": "vstd\\math\\geometry_3d.c",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\math\\geometry_3d.c",
+              "RelativeToolTip": "vstd\\math\\geometry_3d.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-11-17T06:21:37.641Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "vmath.c",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\math\\vmath.c",
+              "RelativeDocumentMoniker": "vstd\\math\\vmath.c",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\math\\vmath.c",
+              "RelativeToolTip": "vstd\\math\\vmath.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-11-17T06:21:30.4Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "mtwister.c",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\math\\mtwister.c",
+              "RelativeDocumentMoniker": "vstd\\math\\mtwister.c",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\math\\mtwister.c",
+              "RelativeToolTip": "vstd\\math\\mtwister.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-11-17T06:21:27.541Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "filesystem.c",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\platform\\filesystem.c",
+              "RelativeDocumentMoniker": "vstd\\platform\\filesystem.c",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\platform\\filesystem.c",
+              "RelativeToolTip": "vstd\\platform\\filesystem.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-11-17T06:21:00.789Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "threadpool.c",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\threads\\threadpool.c",
+              "RelativeDocumentMoniker": "vstd\\threads\\threadpool.c",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\threads\\threadpool.c",
+              "RelativeToolTip": "vstd\\threads\\threadpool.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-11-17T06:20:22.421Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "logger.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\logger.h",
+              "RelativeDocumentMoniker": "vstd\\logger.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\logger.h",
+              "RelativeToolTip": "vstd\\logger.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACgAAAA+AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-17T06:08:52.657Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "logger.c",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\logger.c",
+              "RelativeDocumentMoniker": "vstd\\logger.c",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\logger.c",
+              "RelativeToolTip": "vstd\\logger.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-11-17T06:08:51.919Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "input_types.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\input_types.h",
+              "RelativeDocumentMoniker": "vstd\\input_types.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\input_types.h",
+              "RelativeToolTip": "vstd\\input_types.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-17T06:08:50.794Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "defines.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\defines.h",
+              "RelativeDocumentMoniker": "vstd\\defines.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\defines.h",
+              "RelativeToolTip": "vstd\\defines.h",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAAFcBAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-17T06:08:48.069Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "vclock.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\time\\vclock.h",
+              "RelativeDocumentMoniker": "vstd\\time\\vclock.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\time\\vclock.h",
+              "RelativeToolTip": "vstd\\time\\vclock.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-17T06:08:40.712Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "worker_thread.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\threads\\worker_thread.h",
+              "RelativeDocumentMoniker": "vstd\\threads\\worker_thread.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\threads\\worker_thread.h",
+              "RelativeToolTip": "vstd\\threads\\worker_thread.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-17T06:08:38.586Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "worker_thread.c",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\threads\\worker_thread.c",
+              "RelativeDocumentMoniker": "vstd\\threads\\worker_thread.c",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\threads\\worker_thread.c",
+              "RelativeToolTip": "vstd\\threads\\worker_thread.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-11-17T06:08:37.933Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "vthread.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\threads\\vthread.h",
+              "RelativeDocumentMoniker": "vstd\\threads\\vthread.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\threads\\vthread.h",
+              "RelativeToolTip": "vstd\\threads\\vthread.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-17T06:08:35.924Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "vmutex.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\threads\\vmutex.h",
+              "RelativeDocumentMoniker": "vstd\\threads\\vmutex.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\threads\\vmutex.h",
+              "RelativeToolTip": "vstd\\threads\\vmutex.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-17T06:08:33.988Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "vsemaphore.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\threads\\vsemaphore.h",
+              "RelativeDocumentMoniker": "vstd\\threads\\vsemaphore.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\threads\\vsemaphore.h",
+              "RelativeToolTip": "vstd\\threads\\vsemaphore.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-17T06:08:32.817Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "threadpool.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\threads\\threadpool.h",
+              "RelativeDocumentMoniker": "vstd\\threads\\threadpool.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\threads\\threadpool.h",
+              "RelativeToolTip": "vstd\\threads\\threadpool.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-17T06:08:31.02Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "vstring.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\strings\\vstring.h",
+              "RelativeDocumentMoniker": "vstd\\strings\\vstring.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\strings\\vstring.h",
+              "RelativeToolTip": "vstd\\strings\\vstring.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-17T06:08:26.573Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "platform_nix.c",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\platform\\platform_nix.c",
+              "RelativeDocumentMoniker": "vstd\\platform\\platform_nix.c",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\platform\\platform_nix.c",
+              "RelativeToolTip": "vstd\\platform\\platform_nix.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0BAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-11-17T06:08:23.976Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "platform_win32.c",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\platform\\platform_win32.c",
+              "RelativeDocumentMoniker": "vstd\\platform\\platform_win32.c",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\platform\\platform_win32.c",
+              "RelativeToolTip": "vstd\\platform\\platform_win32.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAANgAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-11-17T06:08:23.084Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "platform_linux.c",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\platform\\platform_linux.c",
+              "RelativeDocumentMoniker": "vstd\\platform\\platform_linux.c",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\platform\\platform_linux.c",
+              "RelativeToolTip": "vstd\\platform\\platform_linux.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAK4BAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-11-17T06:08:21.591Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "platform_macos.m",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\platform\\platform_macos.m",
+              "RelativeDocumentMoniker": "vstd\\platform\\platform_macos.m",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\platform\\platform_macos.m",
+              "RelativeToolTip": "vstd\\platform\\platform_macos.m",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAHUBAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-11-17T06:08:17.198Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "platform.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\platform\\platform.h",
+              "RelativeDocumentMoniker": "vstd\\platform\\platform.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\platform\\platform.h",
+              "RelativeToolTip": "vstd\\platform\\platform.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-17T06:08:13.29Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "filesystem.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\platform\\filesystem.h",
+              "RelativeDocumentMoniker": "vstd\\platform\\filesystem.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\platform\\filesystem.h",
+              "RelativeToolTip": "vstd\\platform\\filesystem.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-17T06:08:09.583Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "mtwister.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\math\\mtwister.h",
+              "RelativeDocumentMoniker": "vstd\\math\\mtwister.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\math\\mtwister.h",
+              "RelativeToolTip": "vstd\\math\\mtwister.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-17T06:07:26.891Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "math_types.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\math\\math_types.h",
+              "RelativeDocumentMoniker": "vstd\\math\\math_types.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\math\\math_types.h",
+              "RelativeToolTip": "vstd\\math\\math_types.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-17T06:07:23.957Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "vmath.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\math\\vmath.h",
+              "RelativeDocumentMoniker": "vstd\\math\\vmath.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\math\\vmath.h",
+              "RelativeToolTip": "vstd\\math\\vmath.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-17T06:07:20.504Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "geometry_3d.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\math\\geometry_3d.h",
+              "RelativeDocumentMoniker": "vstd\\math\\geometry_3d.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\math\\geometry_3d.h",
+              "RelativeToolTip": "vstd\\math\\geometry_3d.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-17T06:07:17.521Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "geometry_2d.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\math\\geometry_2d.h",
+              "RelativeDocumentMoniker": "vstd\\math\\geometry_2d.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\math\\geometry_2d.h",
+              "RelativeToolTip": "vstd\\math\\geometry_2d.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-17T06:07:15.787Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "geometry.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\math\\geometry.h",
+              "RelativeDocumentMoniker": "vstd\\math\\geometry.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\math\\geometry.h",
+              "RelativeToolTip": "vstd\\math\\geometry.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-17T06:07:13.075Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "vhandle.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\identifiers\\vhandle.h",
+              "RelativeDocumentMoniker": "vstd\\identifiers\\vhandle.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\identifiers\\vhandle.h",
+              "RelativeToolTip": "vstd\\identifiers\\vhandle.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-17T06:07:06.466Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "uuid.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\identifiers\\uuid.h",
+              "RelativeDocumentMoniker": "vstd\\identifiers\\uuid.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\identifiers\\uuid.h",
+              "RelativeToolTip": "vstd\\identifiers\\uuid.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-17T06:07:02.786Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "uuid.c",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\identifiers\\uuid.c",
+              "RelativeDocumentMoniker": "vstd\\identifiers\\uuid.c",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\identifiers\\uuid.c",
+              "RelativeToolTip": "vstd\\identifiers\\uuid.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-11-17T06:06:58.881Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "queue.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\queue.h",
+              "RelativeDocumentMoniker": "vstd\\containers\\queue.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\queue.h",
+              "RelativeToolTip": "vstd\\containers\\queue.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-17T06:06:33.91Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "freelist.c",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\freelist.c",
+              "RelativeDocumentMoniker": "vstd\\containers\\freelist.c",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\freelist.c",
+              "RelativeToolTip": "vstd\\containers\\freelist.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-11-17T06:06:26.804Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 61,
+              "Title": "kassert.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\debug\\kassert.h",
+              "RelativeDocumentMoniker": "vstd\\debug\\kassert.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\debug\\kassert.h",
+              "RelativeToolTip": "vstd\\debug\\kassert.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwUAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-17T05:59:38.977Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "identifier.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\identifiers\\identifier.h",
+              "RelativeDocumentMoniker": "vstd\\identifiers\\identifier.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\identifiers\\identifier.h",
+              "RelativeToolTip": "vstd\\identifiers\\identifier.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-17T05:59:37.167Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "vstring.c",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\strings\\vstring.c",
+              "RelativeDocumentMoniker": "vstd\\strings\\vstring.c",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\strings\\vstring.c",
+              "RelativeToolTip": "vstd\\strings\\vstring.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-11-17T05:58:59.439Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "queue.c",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\queue.c",
+              "RelativeDocumentMoniker": "vstd\\containers\\queue.c",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\queue.c",
+              "RelativeToolTip": "vstd\\containers\\queue.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-11-17T05:58:22.969Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "hashtable.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\hashtable.h",
+              "RelativeDocumentMoniker": "vstd\\containers\\hashtable.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\hashtable.h",
+              "RelativeToolTip": "vstd\\containers\\hashtable.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-17T05:56:56.308Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "hashtable.c",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\hashtable.c",
+              "RelativeDocumentMoniker": "vstd\\containers\\hashtable.c",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\hashtable.c",
+              "RelativeToolTip": "vstd\\containers\\hashtable.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-11-17T05:56:46.533Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "freelist.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\freelist.h",
+              "RelativeDocumentMoniker": "vstd\\containers\\freelist.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\freelist.h",
+              "RelativeToolTip": "vstd\\containers\\freelist.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-17T05:56:45.371Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "darray.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\darray.h",
+              "RelativeDocumentMoniker": "vstd\\containers\\darray.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\darray.h",
+              "RelativeToolTip": "vstd\\containers\\darray.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-17T05:56:40.997Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "registry.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\registry.h",
+              "RelativeDocumentMoniker": "vstd\\containers\\registry.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\registry.h",
+              "RelativeToolTip": "vstd\\containers\\registry.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-17T05:55:21.015Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "ring_queue.c",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\ring_queue.c",
+              "RelativeDocumentMoniker": "vstd\\containers\\ring_queue.c",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\ring_queue.c",
+              "RelativeToolTip": "vstd\\containers\\ring_queue.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-11-17T05:55:15.775Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "ring_queue.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\ring_queue.h",
+              "RelativeDocumentMoniker": "vstd\\containers\\ring_queue.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\ring_queue.h",
+              "RelativeToolTip": "vstd\\containers\\ring_queue.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-17T05:55:11.406Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "stack.c",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\stack.c",
+              "RelativeDocumentMoniker": "vstd\\containers\\stack.c",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\stack.c",
+              "RelativeToolTip": "vstd\\containers\\stack.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC4AAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-11-17T05:54:04.376Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "stack.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\stack.h",
+              "RelativeDocumentMoniker": "vstd\\containers\\stack.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\stack.h",
+              "RelativeToolTip": "vstd\\containers\\stack.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-17T05:53:47.77Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "registry.c",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\registry.c",
+              "RelativeDocumentMoniker": "vstd\\containers\\registry.c",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\registry.c",
+              "RelativeToolTip": "vstd\\containers\\registry.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGwAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-11-17T05:51:47.636Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 62,
+              "Title": "kmemory.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\memory\\kmemory.h",
+              "RelativeDocumentMoniker": "vstd\\memory\\kmemory.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\memory\\kmemory.h",
+              "RelativeToolTip": "vstd\\memory\\kmemory.h",
+              "ViewState": "AQIAALEAAAAAAAAAAADwv94AAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-17T05:43:47.423Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 63,
+              "Title": "kmemory.c",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\memory\\kmemory.c",
+              "RelativeDocumentMoniker": "vstd\\memory\\kmemory.c",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\memory\\kmemory.c",
+              "RelativeToolTip": "vstd\\memory\\kmemory.c",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAAAUAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-11-17T05:40:12.807Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "darray.c",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\darray.c",
+              "RelativeDocumentMoniker": "vstd\\containers\\darray.c",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\darray.c",
+              "RelativeToolTip": "vstd\\containers\\darray.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-11-17T05:35:12.362Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 65,
+              "Title": "defines.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\AppData\\Local\\Temp\\e79ac5e8-a879-426a-8be3-987eedcc456d_kohi-main.zip.56d\\kohi-main\\kohi.core\\src\\defines.h",
+              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\e79ac5e8-a879-426a-8be3-987eedcc456d_kohi-main.zip.56d\\kohi-main\\kohi.core\\src\\defines.h",
+              "ToolTip": "C:\\Users\\josdd\\AppData\\Local\\Temp\\e79ac5e8-a879-426a-8be3-987eedcc456d_kohi-main.zip.56d\\kohi-main\\kohi.core\\src\\defines.h [Read Only]",
+              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Temp\\e79ac5e8-a879-426a-8be3-987eedcc456d_kohi-main.zip.56d\\kohi-main\\kohi.core\\src\\defines.h [Read Only]",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-14T23:40:41.225Z",
+              "EditorCaption": " [Read Only]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 66,
+              "Title": "vdef.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\vdef.h",
+              "RelativeDocumentMoniker": "vstd\\vdef.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\vdef.h",
+              "RelativeToolTip": "vstd\\vdef.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-14T23:40:05.797Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 67,
+              "Title": "vvec.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\vvec.h",
+              "RelativeDocumentMoniker": "vstd\\containers\\vvec.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\containers\\vvec.h",
+              "RelativeToolTip": "vstd\\containers\\vvec.h",
+              "ViewState": "AQIAADkAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-14T23:39:15.345Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 68,
+              "Title": "vterm.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\debug\\vterm.h",
+              "RelativeDocumentMoniker": "vstd\\debug\\vterm.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\debug\\vterm.h",
+              "RelativeToolTip": "vstd\\debug\\vterm.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-14T23:39:08.315Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 69,
+              "Title": "vterm.c",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\debug\\vterm.c",
+              "RelativeDocumentMoniker": "vstd\\debug\\vterm.c",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\debug\\vterm.c",
+              "RelativeToolTip": "vstd\\debug\\vterm.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-11-14T23:38:34.098Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "vassert.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\debug\\vassert.h",
+              "RelativeDocumentMoniker": "vstd\\debug\\vassert.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\debug\\vassert.h",
+              "RelativeToolTip": "vstd\\debug\\vassert.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-14T23:38:17.836Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "linear_allocator.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\memory\\allocators\\linear_allocator.h",
+              "RelativeDocumentMoniker": "vstd\\memory\\allocators\\linear_allocator.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\memory\\allocators\\linear_allocator.h",
+              "RelativeToolTip": "vstd\\memory\\allocators\\linear_allocator.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-14T23:35:26.458Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "linear_allocator.c",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\memory\\allocators\\linear_allocator.c",
+              "RelativeDocumentMoniker": "vstd\\memory\\allocators\\linear_allocator.c",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\memory\\allocators\\linear_allocator.c",
+              "RelativeToolTip": "vstd\\memory\\allocators\\linear_allocator.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-11-14T23:34:47.251Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "dynamic_allocator.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\memory\\allocators\\dynamic_allocator.h",
+              "RelativeDocumentMoniker": "vstd\\memory\\allocators\\dynamic_allocator.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\memory\\allocators\\dynamic_allocator.h",
+              "RelativeToolTip": "vstd\\memory\\allocators\\dynamic_allocator.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-14T23:34:38.131Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "dynamic_allocator.c",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\memory\\allocators\\dynamic_allocator.c",
+              "RelativeDocumentMoniker": "vstd\\memory\\allocators\\dynamic_allocator.c",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\memory\\allocators\\dynamic_allocator.c",
+              "RelativeToolTip": "vstd\\memory\\allocators\\dynamic_allocator.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFcAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-11-14T23:33:20.7Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "vmemory.c",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\memory\\vmemory.c",
+              "RelativeDocumentMoniker": "vstd\\memory\\vmemory.c",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\memory\\vmemory.c",
+              "RelativeToolTip": "vstd\\memory\\vmemory.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEoBAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-11-14T23:32:22.47Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 64,
+              "Title": "defines.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\ko\\defines.h",
+              "RelativeDocumentMoniker": "ko\\defines.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\ko\\defines.h",
+              "RelativeToolTip": "ko\\defines.h",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-14T23:28:58.969Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 70,
+              "Title": "vinput_types.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\platform\\vinput_types.h",
+              "RelativeDocumentMoniker": "vstd\\platform\\vinput_types.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\platform\\vinput_types.h",
+              "RelativeToolTip": "vstd\\platform\\vinput_types.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-14T23:28:44.322Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "vmemory.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\memory\\vmemory.h",
+              "RelativeDocumentMoniker": "vstd\\memory\\vmemory.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\vstd\\memory\\vmemory.h",
+              "RelativeToolTip": "vstd\\memory\\vmemory.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-14T23:25:22.489Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 73,
+              "Title": "vconsole.h",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\Utils\\vconsole.h",
+              "RelativeDocumentMoniker": "Utils\\vconsole.h",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\Utils\\vconsole.h",
+              "RelativeToolTip": "Utils\\vconsole.h",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-09-17T00:20:11.942Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 72,
+              "Title": "vconsole.c",
+              "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\Utils\\vconsole.c",
+              "RelativeDocumentMoniker": "Utils\\vconsole.c",
+              "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\Utils\\vconsole.c",
+              "RelativeToolTip": "Utils\\vconsole.c",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-09-17T00:19:12.177Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 71,
               "Title": "console.c",
               "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\test\\console.c",
               "RelativeDocumentMoniker": "test\\console.c",
               "ToolTip": "C:\\Users\\josdd\\repos\\p\\VUtilities\\test\\console.c",
               "RelativeToolTip": "test\\console.c",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-09-17T00:16:50.242Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-17T00:16:50.242Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 74,
               "Title": "CMakeTestCCompiler.cmake",
               "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-3.28\\Modules\\CMakeTestCCompiler.cmake",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-3.28\\Modules\\CMakeTestCCompiler.cmake",
@@ -91,22 +1267,20 @@
               "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-3.28\\Modules\\CMakeTestCCompiler.cmake",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAEIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-09-17T00:15:55.859Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-17T00:15:55.859Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 76,
               "Title": "CMake Overview Pages",
               "DocumentMoniker": "CMake Overview Pages",
               "ToolTip": "CMake Overview Pages",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-09-17T00:15:46.25Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-17T00:15:46.25Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "CMakeLists.txt",
               "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\CMakeLists.txt",
               "RelativeDocumentMoniker": "CMakeLists.txt",
@@ -119,7 +1293,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 75,
               "Title": "CMakePresets.json",
               "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\CMakePresets.json",
               "RelativeDocumentMoniker": "CMakePresets.json",
@@ -132,7 +1306,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 77,
               "Title": "TODO.md",
               "DocumentMoniker": "C:\\Users\\josdd\\repos\\p\\VUtilities\\TODO.md",
               "RelativeDocumentMoniker": "TODO.md",
