@@ -1,6 +1,5 @@
 🎮 Game Engine Utils
 A collection of custom utilities for a game engine I'm developing, all coded in C. These utilities are designed to be lightweight, efficient, and compatible with both C and C++. 
-Also note that none of these tool depend on each other(For example removing vstr.h and vstr.c will not impact any other files), so feel free to grab any set of files with out having to download all the utils. 
 
 ✨ Features
 Cross-Language Compatibility: Seamlessly work in both C and C++ environments.
